@@ -1,13 +1,9 @@
 ![thumbnail](./public/images/readme.jpeg)
 # 🪐alvaldes.vercel.app
 
----
-
 👋Hi guys, here is my personal web site. Build as a [Next.js](https://nextjs.org/) project bootstrapped with `create-next-app`.
 
 ## 🛠️Built using
-
----
 
 - [Next.js](https://nextjs.org/) - A React framework with hybrid static & server rendering, and route pre-fetching, etc.
 
@@ -19,8 +15,6 @@
 
 ## 👟Running locally
 
----
-
 ```sh
 $ git clone https://github.com/alvaldes/Homepage.git
 $ cd Homepage
@@ -29,8 +23,6 @@ $ npm run dev  # Open http://localhost:3000 with your browser
 ```
 
 ## 📂**Project Structure**
-
----
 
 ```sh
 $PROJECT_ROOT
@@ -48,12 +40,8 @@ $PROJECT_ROOT
 
 ## Contribute 🤜🤛
 
----
-
 If you find a bug, or would like to incorporate new features, you are definitely welcome to create a Pull Request to improve the page👍.
 
 ## License
-
----
 
 Copyright (c) 2022 Angel L. Valdés [MIT License](https://opensource.org/licenses/MIT)
