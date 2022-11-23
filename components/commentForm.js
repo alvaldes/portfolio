@@ -1,17 +1,17 @@
+import { EmailIcon } from '@chakra-ui/icons'
 import {
+  Button,
   Container,
   Divider,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
   Heading,
   Textarea,
-  Button,
-  FormControl,
-  FormLabel,
-  FormErrorMessage
+  useColorModeValue
 } from '@chakra-ui/react'
-import { EmailIcon } from '@chakra-ui/icons'
-import { useColorModeValue } from '@chakra-ui/react'
-import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import Section from './section'
 
 const Form = props => {
@@ -28,7 +28,7 @@ const Form = props => {
       let body = `body=${encodeURIComponent(comment)}`
       // router.push('/thanks')
       router.push(
-        `mailto:noreplay.alvaldes@gmail.com?subject=${encodeURIComponent(
+        `mailto:angelluis2605@gmail.com?subject=${encodeURIComponent(
           `Message from Portfolio`
         )}&${body}`
       )

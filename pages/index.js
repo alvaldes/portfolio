@@ -1,23 +1,23 @@
-import NextLink from 'next/link'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 import {
-  Container,
   Box,
+  Button,
+  Container,
   Heading,
+  Icon,
   Image,
   Link,
-  Button,
   List,
-  Icon,
   ListItem,
   useColorModeValue
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
-import Section from '../components/section'
-import Paragraph from '../components/paragraph'
-import { BioSection, BioYear } from '../components/bio'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
+import NextLink from 'next/link'
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import Banner from '../components/banner'
+import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layout/article'
+import Paragraph from '../components/paragraph'
+import Section from '../components/section'
 
 const Page = () => {
   return (
@@ -134,13 +134,13 @@ const Page = () => {
           </Heading>
           <List>
             <ListItem>
-              <Link href="http://www.twitter.com/alvaldes97" target="_blank">
+              <Link href="http://www.twitter.com/alvaldes_" target="_blank">
                 <Button
                   variant="ghost"
                   colorScheme="teal"
                   leftIcon={<Icon as={FaTwitter} />}
                 >
-                  @alvaldes97
+                  @alvaldes_
                 </Button>
               </Link>
             </ListItem>
@@ -157,7 +157,7 @@ const Page = () => {
             </ListItem>
             <ListItem>
               <Link
-                href="https://www.linkedin.com/in/angel-l-valdes-sanchez/"
+                href="https://www.linkedin.com/in/alvaldes/"
                 target="_blank"
               >
                 <Button
@@ -165,7 +165,7 @@ const Page = () => {
                   colorScheme="teal"
                   leftIcon={<Icon as={FaLinkedin} />}
                 >
-                  @angel-l-valdes-sanchez
+                  @alvaldes
                 </Button>
               </Link>
             </ListItem>
