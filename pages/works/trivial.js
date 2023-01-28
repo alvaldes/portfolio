@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { Container, Badge, Link, List, ListItem, Image } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Title, WorkImage, WorkFirstImage, Meta } from '../../components/work'
-import P from '../../components/paragraph'
-import Layout from '../../components/layout/article'
+import { Badge, Container, Image, Link, List, ListItem } from '@chakra-ui/react'
+import { useState } from 'react'
 import BlackOverlay from '../../components/blackOverlay'
+import Layout from '../../components/layout/article'
+import P from '../../components/paragraph'
+import { Meta, Title, WorkFirstImage, WorkImage } from '../../components/work'
 
 const Work = () => {
   const [isViewer, setIsViewer] = useState(false)
@@ -14,7 +14,7 @@ const Work = () => {
       <Container maxW="container.md">
         <WorkFirstImage src="/images/trivial/thumbFirst.jpeg" alt="Trivial" />
         <Title>
-          Trivial <Badge>2022-</Badge>
+          Trivial <Badge>2022</Badge>
         </Title>
         <P>
           <strong>Trivial</strong> is a type of game in which players are asked

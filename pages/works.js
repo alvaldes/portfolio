@@ -1,9 +1,9 @@
 import { Container, Heading, SimpleGrid } from '@chakra-ui/react'
-import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
-import thumbTrivialCard from '../public/images/trivial/thumbCard.jpeg'
 import Layout from '../components/layout/article'
-
+import Section from '../components/section'
+import thumbAtermCard from '../public/images/aterm/thumbCard.png'
+import thumbTrivialCard from '../public/images/trivial/thumbCard.jpeg'
 const Works = () => {
   return (
     <Layout title="Works">
@@ -13,6 +13,11 @@ const Works = () => {
         </Heading>
 
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          <Section>
+            <WorkGridItem id="aterm" title="aterm" thumbnail={thumbAtermCard}>
+              A interactive portfolio web terminal.
+            </WorkGridItem>
+          </Section>
           <Section>
             <WorkGridItem
               id="trivial"
