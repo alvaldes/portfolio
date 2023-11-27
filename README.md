@@ -1,11 +1,12 @@
 ![thumbnail](./public/images/readme.jpeg)
-# 🪐alvaldes.vercel.app
+# 🪐[ //:alvaldes.vercel.app](https://alvaldes.vercel.app/)
 
 👋Hi guys, here is my personal web site. Build as a [Next.js](https://nextjs.org/) project bootstrapped with `create-next-app`.
 
 ## 🛠️Built using
+- [Node](https://nodejs.org/en) (v16.20.2) - An open-source, cross-platform JavaScript runtime environment 
 
-- [Next.js](https://nextjs.org/) - A React framework with hybrid static & server rendering, and route pre-fetching, etc.
+- [Next.js](https://nextjs.org/) (v12.0.0) - A React framework with hybrid static & server rendering, and route pre-fetching, etc.
 
 - [ChackraUI](https://chakra-ui.com/) - A simple, modular and accessible component library for React.
 
@@ -16,8 +17,8 @@
 ## 👟Running locally
 
 ```sh
-$ git clone https://github.com/alvaldes/Homepage.git
-$ cd Homepage
+$ git clone https://github.com/alvaldes/portfolio.git
+$ cd portfolio
 $ npm install
 $ npm run dev  # Open http://localhost:3000 with your browser
 ```

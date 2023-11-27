@@ -18,8 +18,10 @@ import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layout/article'
 import Paragraph from '../components/paragraph'
 import Section from '../components/section'
+import { useTranslation } from '../libs/i18n';
 
 const Page = () => {
+  const {t} = useTranslation();
   return (
     <Layout>
       <Container maxW="container.md">
@@ -33,14 +35,14 @@ const Page = () => {
             align="center"
             maxW="3xl"
           >
-            Hello, I&apos; m a Software Engineer base in Cuba!
+            {t.home.banner}
           </Box>
           <Box display={{ md: 'flex' }}>
             <Box flexGrow={1} mt={{ base: 0, md: 10 }}>
               <Heading as="h1" size="lg" variant="page-title">
                 Angel L. Valdés
               </Heading>
-              <p>Web Developer (Front-end / Back-end / Design)</p>
+              <p>{t.home.skills}</p>
             </Box>
             <Box
               flexShrink={0}
@@ -73,27 +75,19 @@ const Page = () => {
 
         <Section delay={0.2}>
           <Heading as="h3" variant="section-title" mt={14}>
-            Work
+            {t.home['work-title']}
           </Heading>
           <Paragraph>
-            Angel is a newly graduated computer engineer offering enthusiasm and
-            innovative ideas. Demonstrated experience in web programming and
-            passionate about dynamic interfaces and clean code. Experienced
-            working with teams to produce impactful, leading-edge websites that
-            engage customers and deliver business results. Well-versed in design
-            standards and user preferences. Background includes responsive
-            designing websites in Agile environments. Exceptional team player
-            with an analytical approach to developing useful solutions.
-            Currently, proyect called{' '}
-            <NextLink href="/works/trivial">
-              <Link>Trivial</Link>
+            {t.home['work-descip']}{' '}
+            <NextLink href={'/works/'+t.home['current-link']}>
+              <Link>{t.home['current-name']}</Link>
             </NextLink>
             .
           </Paragraph>
           <Box align="center" my={4}>
             <NextLink href="/works">
               <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
-                My Portfolio
+                {t.home['my-portfolio']}
               </Button>
             </NextLink>
           </Box>
@@ -101,36 +95,34 @@ const Page = () => {
 
         <Section delay={0.2}>
           <Heading as="h3" variant="section-title" mt={10}>
-            Bio
+          {t.home.bio.bio}
           </Heading>
           <BioSection>
             <BioYear>1997</BioYear>
-            Born in Havana, Cuba.
+            {t.home.bio['1997']}
           </BioSection>
           <BioSection>
             <BioYear>2021</BioYear>
-            Completed the degree in Computer Engineering at Universidad de las
-            Ciencias Informáticas (UCI).
+            {t.home.bio['2021']}
           </BioSection>
           <BioSection>
-            <BioYear>2022 to present</BioYear>
-            Works as a Front-end dev at Universidad Tecnológica de La Habana
-            "José Antonio Echeverría" (CUJAE).
+            <BioYear>{`2022 ${t.home.bio['to-present']}`}</BioYear>
+            {t.home.bio['2022']}
           </BioSection>
         </Section>
 
         <Section delay={0.3}>
           <Heading as="h3" variant="section-title" mt={10}>
-            I{useColorModeValue('🖤', '🤍')}
+            {t.home.love.love}{useColorModeValue('🖤', '🤍')}
           </Heading>
           <Paragraph>
-            Photography, Design, Swim, Dancing, Karaoke and Coffee
+            {t.home.love.list}
           </Paragraph>
         </Section>
 
         <Section delay={0.3}>
           <Heading as="h3" variant="section-title" mt={10}>
-            My Links
+            {t.home['my-links']}
           </Heading>
           <List>
             <ListItem>

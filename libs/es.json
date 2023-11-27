@@ -1,0 +1,41 @@
+{
+    "nav":{
+        "works": "Trabajos",
+        "contact": "Contacto",
+        "source": "Código",
+        "view-source": "Ver Código"
+    },
+    "contact-me": {
+        "title": "Contactame",
+        "subject": " Mensaje del Portafolio",
+        "message": "Mensaje",
+        "placeholder": "Ingresa el mensaje aquí",
+        "send": "Enviar",
+        "error": "Debes insertar un mensaje."
+    },
+    "home":{
+        "banner": "Hola, soy Ingeriero de Software y vivo en Cuba!",
+        "skills": "Desarrollador Web (Front-end / Back-end / Diseño)",
+        "work-title": "Trabajo",
+        "work-descip": "Angel es un ingeniero informático recién graduado que ofrece entusiasmo e ideas innovadoras. Experiencia demostrada en programación web y apasionado por las interfaces dinámicas y el código limpio. Experiencia trabajando con equipos para producir sitios web impactantes y de vanguardia que atraigan a los clientes y brinden resultados comerciales. Conocedor de los estándares de diseño y las preferencias del usuario. La experiencia incluye el diseño de sitios web responsivos en entornos ágiles. Trabajador de equipo excepcional con un enfoque analítico para desarrollar soluciones útiles. Actualmente, trabajando en",
+        "current-name": "Trivial",
+        "current-link": "trivial",
+        "my-portfolio": "Mi Portafolio",
+        "bio":{
+            "bio":"Bio",
+            "1997": "Nací en La Habana, Cuba.",
+            "2021": "Completé la carrera de Ingeniería en Ciencias Informáticas en la Universidad de las Ciencias Informáticas (UCI).",
+            "2022": "Trabajé como desarrollador Front-end en la Universidad Tecnológica de La Habana \"José Antonio Echeverría\" (CUJAE).",
+            "to-present": "al presente"
+        },
+        "love": {
+            "love": "Yo",
+            "list": "Fotografía, Diseño, Nadar, Bailar, Karaoke y Café"
+        },
+        "my-links": "Mis Enlaces"
+    },
+    "works":{
+        "personal": "Proyectos Personales"
+    },
+    "copy-right":"Todos los Derechos Reservados."
+}

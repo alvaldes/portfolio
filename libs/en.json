@@ -1,0 +1,41 @@
+{
+    "nav":{
+        "works": "Works",
+        "contact": "Contact",
+        "source": "Source",
+        "view-source": "View Source"
+    },
+    "contact-me": {
+        "title": "Contact Me",
+        "subject": " Message from Portfolio",
+        "message": "Message",
+        "placeholder": "Enter you message here",
+        "send": "Send",
+        "error": "Message is required."
+    },
+    "home":{
+        "banner": "Hello, I'm a Software Engineer base in Cuba!",
+        "skills": "Web Developer (Front-end / Back-end / Design)",
+        "work-title": "Work",
+        "work-descip": "Angel is a newly graduated computer engineer offering enthusiasm and innovative ideas. Demonstrated experience in web programming and passionate about dynamic interfaces and clean code. Experienced working with teams to produce impactful, leading-edge websites that engage customers and deliver business results. Well-versed in design standards and user preferences. Background includes responsive designing websites in Agile environments. Exceptional team player with an analytical approach to developing useful solutions. Currently, proyect called",
+        "current-name": "Trivial",
+        "current-link": "trivial",
+        "my-portfolio": "My Portfolio",
+        "bio":{
+            "bio":"Bio",
+            "1997": "Born in Havana, Cuba.",
+            "2021": "Completed the degree in Computer Engineering at Universidad de las Ciencias Informáticas (UCI).",
+            "2022": "Works as a Front-end dev at Universidad Tecnológica de La Habana \"José Antonio Echeverría\" (CUJAE).",
+            "to-present": "to present"
+        },
+        "love": {
+            "love": "I",
+            "list": "Photography, Design, Swim, Dancing, Karaoke and Coffee"
+        },
+        "my-links": "My Links"
+    },
+    "works":{
+        "personal": "Personal Proyects"
+    },
+    "copy-right":"Todos los Derechos Reservados."
+}

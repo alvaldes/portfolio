@@ -2,10 +2,14 @@ import Head from 'next/head'
 import { Box, Container } from '@chakra-ui/react'
 import Navbar from '../navbar.js'
 import CommentForm from '../commentForm.js'
+import { useTranslation } from '../../libs/i18n.js'
 
 const Main = ({ children, router }) => {
   const d = new Date()
   const year = d.getFullYear()
+
+  const {t} = useTranslation();
+
   return (
     <Box as="main" pb={8}>
       <Head>
@@ -18,9 +22,9 @@ const Main = ({ children, router }) => {
           name="keywords"
           content="Angel, Valdés, alvaldes, software, code, programming, development, web,"
         />
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="author" content="Angel L. Valdés" />
-        <title>Angel Valdés - Homepage</title>
+        <title>Angel Valdés</title>
       </Head>
 
       <Navbar path={router.asPath} />
@@ -31,7 +35,7 @@ const Main = ({ children, router }) => {
       <Container align="center" maxW="container.md">
         <CommentForm id="contact" />
         <Box as="span" color="gray.500">
-          &copy; {year} Angel Valdés. All Rights Reserved.
+          &copy; {year} Angel Valdés. {t['copy-right']}
         </Box>
       </Container>
     </Box>

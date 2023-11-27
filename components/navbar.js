@@ -17,7 +17,9 @@ import {
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './theme-toggle-button'
+import LanguageToggleButton from './language-toggle-button'
 import { FaGithub } from 'react-icons/fa'
+import { useTranslation } from '../libs/i18n'
 
 const LinkItem = ({ href, path, externalLink, children }) => {
   const active = path === href
@@ -49,6 +51,8 @@ const LinkItem = ({ href, path, externalLink, children }) => {
 
 const Navbar = props => {
   const { path } = props
+  const {t} = useTranslation();
+
   return (
     <Box
       position="fixed"
@@ -81,25 +85,26 @@ const Navbar = props => {
           mt={{ base: 4, md: 0 }}
         >
           <LinkItem href="/works" path={path}>
-            Works
+            {t.nav.works}
           </LinkItem>
           <LinkItem href="/#contact" path={path}>
-            Contact
+            {t.nav.contact}
           </LinkItem>
           {/* <LinkItem href="/posts" path={path}>
             Posts
           </LinkItem> */}
           <LinkItem
-            href="https://github.com/alvaldes/Homepage"
+            href="https://github.com/alvaldes/portfolio"
             path={path}
             externalLink
           >
-            <Icon as={FaGithub} w={3.5} h={3.5} /> Source
+            <Icon as={FaGithub} w={3.5} h={3.5} /> {t.nav.source}
           </LinkItem>
         </Stack>
 
         <Box flex={1} align="right">
-          <ThemeToggleButton />
+          <ThemeToggleButton/>
+          <LanguageToggleButton />
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu>
               <MenuButton
@@ -110,17 +115,17 @@ const Navbar = props => {
               />
               <MenuList>
                 <NextLink href="/works" passHref>
-                  <MenuItem as={Link}>Works</MenuItem>
+                  <MenuItem as={Link}>{t.nav.works}</MenuItem>
                 </NextLink>
 
                 <NextLink href="/#contact" passHref>
-                  <MenuItem as={Link}>Contact</MenuItem>
+                  <MenuItem as={Link}>{t.nav.contact}</MenuItem>
                 </NextLink>
                 {/* <NextLink href="/posts" passHref>
                   <MenuItem as={Link}>Posts</MenuItem>
                 </NextLink> */}
-                <MenuItem as={Link} href="https://github.com/alvaldes/Homepage">
-                  View Source
+                <MenuItem as={Link} href="https://github.com/alvaldes/portfolio">
+                  {t.nav['view-source']}
                 </MenuItem>
               </MenuList>
             </Menu>
