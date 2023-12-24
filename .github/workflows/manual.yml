@@ -1,17 +1,17 @@
-name: Make a weekly visit to keep Supabase API active
+name: Weekly visit to keep Supabase API active
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
   make-visit:
     runs-on: ubuntu-latest
     steps:
-    - name: Send request
-      run: |
-        RESPONSE=$(curl -s -o output.txt -w "%{http_code}" -X GET "https://alvaldes.vercel.app/works")
-        echo "response status: $RESPONSE"
-        echo "response data:"
-        cat output.txt
+      - name: Make API call
+        run: |
+          curl 'https://ytkkatlinrdjkvlnawjy.supabase.co/rest/v1/work?select=*&languageCode=eq.es&order=id.asc' \
+          -H 'apikey: ${{ secrets.SUPABASE_KEY }}' \
+          -H 'authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}' \
+          --compressed
