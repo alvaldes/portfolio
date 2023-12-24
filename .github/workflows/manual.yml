@@ -10,14 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Send request
-      id: solicitude-api
-      uses: muhfaris/request-action@v1
-      with:
-        URL: "https://alvaldes.vercel.app/works"
-        method: GET
-    - name: Show response status
       run: |
-        echo "Estado de la respuesta: ${{ steps.solicitude-api.outputs.response-status }}"
-    - name: Show response data
-      run: |
-        echo "Datos de la respuesta: ${{ steps.solicitude-api.outputs.response-data }}"
+        RESPONSE=$(curl -s -o output.txt -w "%{http_code}" -X GET "https://alvaldes.vercel.app/works")
+        echo "response status: $RESPONSE"
+        echo "response data:"
+        cat output.txt
