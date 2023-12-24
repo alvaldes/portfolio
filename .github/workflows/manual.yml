@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Make API call
         run: |
-          curl 'https://ytkkatlinrdjkvlnawjy.supabase.co/rest/v1/work?select=*&languageCode=eq.es&order=id.asc' \
+          curl '${{ secrets.SUPABASE_URL }}/rest/v1/work?select=*&languageCode=eq.es&order=id.asc' \
           -H 'apikey: ${{ secrets.SUPABASE_KEY }}' \
-          -H 'authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}' \
+          -H 'authorization: Bearer ${{ secrets.SUPABASE_KEY }}' \
           --compressed
