@@ -40,12 +40,12 @@ export default async function Home({
               <Image 
                 src='/images/blob.svg' 
                 alt='blob' 
-                className='absolute -z-0 size-36 md:size-60 brightness-50 contrast-100 -hue-rotate-30' 
+                className='absolute -z-0 size-36 md:size-60 brightness-50 contrast-125 hue-rotate-15 dark:brightness-50 dark:contrast-100 dark:hue-rotate-0' 
                 width={200} height={200}/>
               <Image 
                 src='/images/angel.webp' 
                 alt='angel' 
-                className='rounded-full z-10 mt-4 sm:mt-4 md:mt-9 ml-0 border-teal-800 border-4 size-28 md:size-40' 
+                className='rounded-full z-10 mt-4 sm:mt-4 md:mt-9 ml-0 border-teal-800 dark:border-teal-600 border-2 size-28 md:size-40' 
                 width={130} height={130}/>
             </div>
           </div>
