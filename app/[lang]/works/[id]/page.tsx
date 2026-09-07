@@ -10,6 +10,7 @@ import SectionTransition from "../../components/SectionTransition";
 interface Project {
     id: string;
     title: string;
+    year: string;
     tag: string;
     stack: string;
     shortDescription: string;

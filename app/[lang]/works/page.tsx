@@ -7,6 +7,7 @@ import SectionTransition from "../components/SectionTransition";
 interface Project {
     id: string;
     title: string;
+    year: string;
     tag: string;
     stack: string;
     shortDescription: string;
@@ -32,7 +33,7 @@ export default async function Works({
             <h1 className="text-2xl font-bold mb-2">{works.title}</h1>
             <Divider></Divider>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 my-6">
-                {works.projects.map((item) => (
+                {works.projects.map((item: Project) => (
                     <CardItem
                         key={item.id}
                         data={item}
