@@ -125,6 +125,20 @@
                 "thumbCard": "/images/trivial/thumbCard.webp",
                 "thumbFirst": "/images/trivial/thumbFirst.webp",
                 "thumbMockup": "/images/trivial/thumbMockup.webp"
+            },
+            {
+                "id": "localllm-dataforge",
+                "title": "LocalLLM-DataForge",
+                "year": "2024",
+                "shortDescription": "Un pipeline simplificado inspirado en Distilabel para creación de datasets sintéticos usando pandas DataFrames y modelos Ollama locales.",
+                "longDescription": "**LocalLLM-DataForge** es una arquitectura de pipeline de datos para descomponer historias de usuario en tareas de desarrollo usando LLMs locales con Ollama. Inspirado en Distilabel, organiza el procesamiento siguiendo el flujo natural de los datos: Entrada → Procesamiento LLM → Validación/Reparación → Salida. Incluye soporte nativo para pandas DataFrames, arquitectura de pasos modular, caché automático, procesamiento paralelo por lotes, validación LLM-as-a-judge, comparación de generadores duales y reparación JSON para manejo robusto de salidas de LLMs.",
+                "sourceCode": "https://github.com/alvaldes/localllm-dataforge",
+                "platform": "Python/CLI",
+                "active": 1,
+                "stack": "Python, Pandas, Ollama, Pytest",
+                "thumbCard": "/images/localllm-dataforge/thumbCard.webp",
+                "thumbFirst": "/images/localllm-dataforge/thumbFirst.webp",
+                "thumbMockup": "/images/localllm-dataforge/thumbMockup.webp"
             }
         ]
     },

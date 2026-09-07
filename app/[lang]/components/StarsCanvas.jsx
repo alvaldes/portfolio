@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 
 const Stars = (props) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.2 }));
+  const [sphere] = useState(() => random.inSphere(new Float32Array(4998), { radius: 1.2 }));
   const {theme} = useTheme()
 
   useFrame((state, delta) => {
