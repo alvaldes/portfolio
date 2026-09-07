@@ -11,7 +11,7 @@ interface Project {
     id: string;
     title: string;
     year: string;
-    tag: string;
+    tag?: string;
     stack: string;
     shortDescription: string;
     longDescription: string;
