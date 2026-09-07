@@ -6,7 +6,7 @@
 ![Next.js Badge](https://img.shields.io/badge/Next.js-16.1.6-black?logo=next.js&logoColor=white&style=flat)
 ![React Badge](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white&style=flat)
 ![TypeScript Badge](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white&style=flat)
-![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white&style=flat)
+![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind_CSS-3.4.0-06B6D4?logo=tailwindcss&logoColor=white&style=flat)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](#)
 
 </div>
@@ -25,7 +25,7 @@
 - **[React 19](https://react.dev/)** - Library for user interfaces
 - **[TypeScript](https://www.typescriptlang.org/)** - Typed superset of JavaScript
 - **[HeroUI](https://heroui.com/)** - UI component library (latest stable)
-- **[Tailwind CSS v4](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Tailwind CSS v3.4](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[React Three Fiber](https://docs.pmnd.rs/react-three-fiber)** - React renderer for Three.js
 - **[Framer Motion](https://www.framer.com/motion/)** - Animation library
 - **[next-themes](https://github.com/pacocoursey/next-themes)** - Theme management (dark/light)
@@ -43,7 +43,7 @@
 
 ### Prerequisites
 
-- **Node.js 24.13.0** (see `.nvmrc` or `.node-version`)
+- **Node.js 20+** (LTS recommended)
 - **pnpm** (recommended)
 
 ### Installation
@@ -89,7 +89,6 @@ portfolio/
 ├── public/
 │   └── images/             # Static assets
 ├── .eslintrc.json          # ESLint configuration
-├── .node-version           # Node version specification
 ├── AGENTS.md               # AI agent instructions
 ├── CLAUDE.md               # AI development guidelines
 ├── i18n.config.ts          # i18n configuration
