@@ -11,7 +11,7 @@ export const Buymeacoffee = ({label}:any) => {
 
     return (
         <Link
-            href="https://buymeacoffee.com/alvaldesde6"
+            href="https://buymeacoffee.com/alvaldes"
             aria-label="Buy me a coffee"
             target='_blank'
             className="relative flex w-fit sm:mr-4 group rounded-lg overflow-hidden"

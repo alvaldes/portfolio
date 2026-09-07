@@ -120,4 +120,4 @@ MIT
 
 Give a ⭐ if you like this website!
 
-<a href="https://www.buymeacoffee.com/alvaldesde6"><img src="public/images/buymeacoffee-landscape.png" height="60px" width="auto"/></a>
+<a href="https://buymeacoffee.com/alvaldes"><img src="public/images/buymeacoffee-landscape.png" height="60px" width="auto"/></a>
