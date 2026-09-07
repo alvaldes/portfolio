@@ -30,7 +30,7 @@ export default async function Work({
     }>) {
     const { lang, id } = await params
     const { works } = await getDictionary(lang as Locale)
-    const project = works.projects.find(p => p.id === id)
+    const project = works.projects.find((p: Project) => p.id === id)
     const stackList = project?.stack === undefined ? [] : project.stack.split(',')
     return (
         <SectionTransition delay={0.2} id={id} className="container">
