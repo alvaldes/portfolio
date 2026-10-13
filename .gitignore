@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ai tooling local state
+.atl/
+.claude/
+.cursor/
+.trae/
+.codex/
