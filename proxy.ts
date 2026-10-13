@@ -40,9 +40,14 @@ function getShortLocale(locale: string): string {
 export function proxy(request: NextRequest) {
     const pathname = request.nextUrl.pathname
 
-    // Check if the pathname already has a valid locale (short codes)
-    const shortLocales = i18n.locales.map(getShortLocale)
-    const hasValidLocale = shortLocales.some(
+    // Check if the pathname already has a valid locale. The routes are generated
+    // from `i18n.locales`, so they are `/en-US` and `/es-ES`, while the links this
+    // app builds use the short form and `lib/dictionary.ts` maps it. Both spellings
+    // name the same language, so either one means the path is already localised.
+    // Checking only the short form made `/en-US/works` read as un-localised, and
+    // prefixing it produced `/en/en-US/works`, which is a 404.
+    const localeForms = i18n.locales.flatMap(locale => [locale, getShortLocale(locale)])
+    const hasValidLocale = localeForms.some(
         locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     )
 
