@@ -14,6 +14,7 @@
     "@heroui/react": "latest",
     "@heroui/system": "latest",
     "@heroui/theme": "latest",
+    "@justinribeiro/lite-youtube": "^1.9.0",
     "@react-three/drei": "latest",
     "@react-three/fiber": "latest",
     "clsx": "^2.1.1",

@@ -13,8 +13,8 @@
         "bio": "Biografía",
         "resume": "Con más de 10 años de experiencia en desarrollo web, me especializo en crear soluciones dinámicas, responsivas y centradas en el usuario. Mi experiencia en tecnologías modernas, dedicación a un código limpio y eficiente, y pasión por ofrecer experiencias de usuario impactantes me distinguen. Actualmente, contribuyo al desarrollo de proyectos de alto impacto, demostrando mi capacidad para resolver desafíos complejos y fomentar la innovación. Descubre mi trabajo más reciente en ",
         "currentProject": {
-            "label": "csv2trello",
-            "url": "/works/csv2trello"
+            "label": "storico",
+            "url": "/works/storico"
         },
         "cv_url": "https://drive.google.com/file/d/1zcSLu7A4woxAbUoTX0m79aM1ba461fBW/view?usp=drive_link",
         "timeline": [
@@ -51,7 +51,27 @@
         "website": "Sitio Web",
         "sourceCode": "Código",
         "stack": "Stack",
+        "video": "Video",
+        "channel": "Canal de YouTube",
+        "play": "Reproducir",
         "projects": [
+            {
+                "id": "storico",
+                "title": "Storico",
+                "year": "2026",
+                "shortDescription": "Herramienta impulsada por LLMs que convierte historias de usuario en lenguaje natural en tareas Kanban estructuradas.",
+                "longDescription": "**Storico** es una herramienta impulsada por LLMs que automatiza la descomposición de historias de usuario en lenguaje natural en tareas Kanban estructuradas. Un backend hexagonal en FastAPI valida cada historia contra el formato de historia de usuario (Como … quiero … para …), extrae su actor, acción y beneficio, y genera tareas editables y versionadas con modelos locales de Ollama o con un proveedor en la nube. El frontend en Astro y React convierte esas tareas en un tablero Kanban que podés reestructurar, y cualquier selección se puede exportar a CSV, JSON o Markdown, o enviarse directamente a un tablero de Trello. Es mi proyecto de tesis de maestría en la Universidad Tecnológica de la Mixteca (UTM), en Oaxaca, México.",
+                "website": "https://storico.vercel.app/",
+                "sourceCode": "https://github.com/alvaldes/storico",
+                "video": "https://youtu.be/VLvg0Lpxmng",
+                "channel": "https://www.youtube.com/@storico-app",
+                "platform": "Web",
+                "active": 1,
+                "stack": "Python, FastAPI, Astro, React, PostgreSQL, Ollama",
+                "thumbCard": "/images/storico/thumbCard.webp",
+                "thumbFirst": "/images/storico/thumbFirst.webp",
+                "thumbMockup": "/images/storico/thumbMockup.webp"
+            },
             {
                 "id":"csv2trello",
                 "title": "csv2trello",

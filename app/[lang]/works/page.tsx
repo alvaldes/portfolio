@@ -14,6 +14,8 @@ interface Project {
     longDescription: string;
     website?: string;
     sourceCode: string;
+    video?: string;
+    channel?: string;
     platform: string;
     active: number;
     thumbCard: string;

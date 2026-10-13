@@ -13,8 +13,8 @@
         "bio": "Biography",
         "resume": "With over 10 years of web development expertise, I specialize in crafting dynamic, responsive, and user-focused solutions. My proficiency in modern technologies, dedication to clean and efficient code, and passion for delivering impactful user experiences set me apart. Currently, I contribute to the development of high-impact projects, showcasing my ability to solve complex challenges and drive innovation. Check out my latest work on ",
         "currentProject": {
-            "label": "csv2trello",
-            "url": "/works/csv2trello"
+            "label": "storico",
+            "url": "/works/storico"
         },
         "cv_url": "https://drive.google.com/file/d/1NrRTXBB4hjzgrJ6jf4F5bmZP5nJZCA0u/view?usp=drive_link",
         "timeline": [
@@ -51,7 +51,27 @@
         "website": "Website",
         "sourceCode": "Source Code",
         "stack": "Stack",
+        "video": "Video",
+        "channel": "YouTube channel",
+        "play": "Play",
         "projects": [
+            {
+                "id": "storico",
+                "title": "Storico",
+                "year": "2026",
+                "shortDescription": "LLM-powered tool that turns natural language user stories into structured Kanban tasks.",
+                "longDescription": "**Storico** is an LLM-powered tool that automates decomposing natural language user stories into structured Kanban tasks. A hexagonal FastAPI backend validates each story against the user story format (As a(n) … I want … so that …), extracts its actor, action and benefit, and generates editable, versioned tasks with local Ollama models or a cloud provider. The Astro and React frontend turns those tasks into a Kanban board you can restructure, and any selection can be exported as CSV, JSON or Markdown, or sent straight to a Trello board. It is my Master's thesis project at the Technological University of the Mixteca (UTM) in Oaxaca, Mexico.",
+                "website": "https://storico.vercel.app/",
+                "sourceCode": "https://github.com/alvaldes/storico",
+                "video": "https://youtu.be/VLvg0Lpxmng",
+                "channel": "https://www.youtube.com/@storico-app",
+                "platform": "Web",
+                "active": 1,
+                "stack": "Python, FastAPI, Astro, React, PostgreSQL, Ollama",
+                "thumbCard": "/images/storico/thumbCard.webp",
+                "thumbFirst": "/images/storico/thumbFirst.webp",
+                "thumbMockup": "/images/storico/thumbMockup.webp"
+            },
             {
                 "id": "localllm-dataforge",
                 "title": "LocalLLM-DataForge",
