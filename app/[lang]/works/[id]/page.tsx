@@ -103,7 +103,7 @@ export default async function Work({
                 <Image 
                 isZoomed
                 radius="sm"
-                alt={`${id}-thumbFirst`} 
+                alt={`${id}-thumbMockup`} 
                 src={project?.thumbMockup} 
                 className="w-full h-auto object-cover"/>
             </div>
