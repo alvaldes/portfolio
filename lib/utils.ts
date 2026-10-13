@@ -33,5 +33,12 @@ export function youTubeVideoId(url: string): string | null {
         }
     }
 
+    // `/embed/videoseries?list=…` is a playlist, not a video, and `videoseries`
+    // is eleven id-shaped characters, so without this it would be handed back
+    // as the id of a video that does not exist.
+    if (candidate === 'videoseries') {
+        return null
+    }
+
     return candidate && /^[A-Za-z0-9_-]{11}$/.test(candidate) ? candidate : null
 }
