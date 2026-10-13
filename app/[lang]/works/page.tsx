@@ -16,6 +16,7 @@ interface Project {
     sourceCode: string;
     video?: string;
     channel?: string;
+    videoPoster?: string;
     platform: string;
     active: number;
     thumbCard: string;

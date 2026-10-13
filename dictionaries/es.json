@@ -65,6 +65,7 @@
                 "sourceCode": "https://github.com/alvaldes/storico",
                 "video": "https://youtu.be/VLvg0Lpxmng",
                 "channel": "https://www.youtube.com/@storico-app",
+                "videoPoster": "/images/storico/videoPoster.webp",
                 "platform": "Web",
                 "active": 1,
                 "stack": "Python, FastAPI, Astro, React, PostgreSQL, Ollama",

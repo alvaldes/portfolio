@@ -21,6 +21,7 @@ interface Project {
     sourceCode: string;
     video?: string;
     channel?: string;
+    videoPoster?: string;
     platform: string;
     active: number;
     thumbCard: string;
@@ -96,7 +97,7 @@ export default async function Work({
                             </Link>
                         )}
                     </div>
-                    <LiteYouTube videoId={videoId} title={project.title} playLabel={works.play}/>
+                    <LiteYouTube videoId={videoId} title={project.title} playLabel={works.play} poster={project.videoPoster}/>
                 </>
             )}
             <div className="h-full py-8 flex items-center justify-center rounded-none md:rounded-xl overflow-hidden w-full">
