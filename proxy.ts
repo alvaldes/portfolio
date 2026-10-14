@@ -32,37 +32,36 @@ function getLocale(request: NextRequest): string | undefined {
     return locale
 }
 
-// Extract short locale code (e.g., 'en' from 'en-US') for URL paths
-function getShortLocale(locale: string): string {
-    return locale.split('-')[0].toLowerCase()
+function isLocale(segment: string | undefined): boolean {
+    return segment !== undefined && (i18n.locales as readonly string[]).includes(segment)
 }
 
 export function proxy(request: NextRequest) {
     const pathname = request.nextUrl.pathname
 
-    // Check if the pathname already has a valid locale. The routes are generated
-    // from `i18n.locales`, so they are `/en-US` and `/es-ES`, while the links this
-    // app builds use the short form and `lib/dictionary.ts` maps it. Both spellings
-    // name the same language, so either one means the path is already localised.
-    // Checking only the short form made `/en-US/works` read as un-localised, and
-    // prefixing it produced `/en/en-US/works`, which is a 404.
-    const localeForms = i18n.locales.flatMap(locale => [locale, getShortLocale(locale)])
-    const hasValidLocale = localeForms.some(
-        locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    )
-
-    // If the pathname doesn't have a valid locale, add the default prefix
-    if (!hasValidLocale) {
-        const locale = getLocale(request) ?? i18n.defaultLocale
-        const shortLocale = getShortLocale(locale)
-
-        return NextResponse.redirect(
-        new URL(
-            `/${shortLocale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
-            request.url
-        )
-        )
+    // The BCP 47 spellings `/en-US` and `/es-ES` were the canonical routes before
+    // the app moved to the short codes, so they keep working as permanent
+    // redirects. `matchLocale` still negotiates from tags like `en-US`, but in a
+    // path the region suffix is not a locale: without this, `/en-US/works` reads
+    // as un-localised and gets prefixed into `/es/en-US/works`, which is a 404.
+    const regionalLocale = pathname.match(/^\/([a-z]{2})-[a-z]{2}(?=\/|$)/i)
+    if (regionalLocale && isLocale(regionalLocale[1].toLowerCase())) {
+        const url = request.nextUrl.clone()
+        url.pathname = pathname.replace(regionalLocale[0], `/${regionalLocale[1].toLowerCase()}`)
+        return NextResponse.redirect(url, 308)
     }
+
+    // A path whose first segment is already a canonical locale needs no redirect.
+    if (isLocale(pathname.split('/')[1])) {
+        return
+    }
+
+    const locale = getLocale(request) ?? i18n.defaultLocale
+
+    const url = request.nextUrl.clone()
+    url.pathname = pathname === '/' ? `/${locale}` : `/${locale}${pathname}`
+
+    return NextResponse.redirect(url)
 }
 
 export const config = {

@@ -9,34 +9,34 @@ import { i18n } from '@/i18n.config'
 
 export default function LangSwitcher() {
   const pathName = usePathname()
-  const currentLocale = pathName.split('/')[1];
 
-  const pathnameIsMissingLocale = i18n.locales.every(
-    locale => !pathName.startsWith(`/${locale}/`) && pathName !== `/${locale}`
-  )
+  // The locale is always the first segment of a localised path, and `proxy.ts`
+  // keeps BCP 47 spellings like `/en-US` out of the app, so comparing that one
+  // segment against `i18n.locales` is enough to know which language is rendered.
+  const [firstSegment = '', ...rest] = pathName.split('/').slice(1)
+  const currentLocale = (i18n.locales as readonly string[]).includes(firstSegment)
+    ? firstSegment
+    : undefined
+  const switchToEnglish = currentLocale !== undefined && currentLocale !== i18n.defaultLocale
 
   const redirectedPathName = (locale: string) => {
-    if (!pathName) return '/'
-
-    if (pathnameIsMissingLocale) {
-      if (locale === i18n.defaultLocale) return pathName
-      return `/${locale}${pathName}`
-    } else {
-      const segments = pathName.split('/')
-      segments[1] = locale
-      return segments.join('/')
+    // Without a locale in the path there is nothing to replace, so the target
+    // language is prefixed instead.
+    if (currentLocale === undefined) {
+      return pathName === '/' || pathName === '' ? `/${locale}` : `/${locale}${pathName}`
     }
+    return `/${[locale, ...rest].join('/')}`
   }
 
-  if (currentLocale !== i18n.defaultLocale && !pathnameIsMissingLocale){
+  if (switchToEnglish) {
     return (
-      <Button as={Link} href={redirectedPathName('en')} isIconOnly className='bg-indigo-200 text-black p-1.5' size='sm' aria-label='theme-toggle'>
+      <Button as={Link} href={redirectedPathName('en')} isIconOnly className='bg-indigo-200 text-black p-1.5' size='sm' aria-label='English'>
         <AmericanIcon/>
       </Button>
   )
   } else {
     return (
-      <Button as={Link} href={redirectedPathName('es')} isIconOnly className='bg-amber-600 text-white p-1.5' size='sm' aria-label='theme-toggle'>
+      <Button as={Link} href={redirectedPathName('es')} isIconOnly className='bg-amber-600 text-white p-1.5' size='sm' aria-label='Español'>
         <SpainIcon/>
       </Button>
   )

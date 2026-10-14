@@ -3,10 +3,11 @@
 import { Link } from "@heroui/react"
 import { usePathname } from "next/navigation"
 import { ReactElement } from "react"
+import { pathWithoutLocale } from "@/lib/utils"
 
 export default function LinkItem({label, href, icon, lang, props}: {label: string, href: string, icon?: ReactElement, lang: string, props?: any}) {
     const usePath = usePathname()
-    const pathname = usePath.slice(3) === '' ? '/' : usePath.slice(3)
+    const pathname = pathWithoutLocale(usePath)
     const path = `/${lang}${href}`
     return (
         <Link

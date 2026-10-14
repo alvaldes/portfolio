@@ -11,10 +11,11 @@ import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation"
+import { pathWithoutLocale } from "@/lib/utils"
 
 export default function Navbar({ lang, dictionary }: { lang: Locale, dictionary:any }) {
     const usePath = usePathname()
-    const pathname = usePath.slice(3) === '' ? '/' : usePath.slice(3)
+    const pathname = pathWithoutLocale(usePath)
 
     return (
       <nav className="bg-transparent fixed w-full z-20 top-0 start-0 backdrop-blur-md">

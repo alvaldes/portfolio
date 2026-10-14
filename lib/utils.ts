@@ -6,6 +6,15 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
+ * Drops the locale segment from a pathname so routes can be compared across
+ * languages: `/en/works` and `/es-ES/works` both resolve to `/works`. The locale
+ * is always the first segment, whatever its spelling.
+ */
+export function pathWithoutLocale(pathname: string): string {
+    return pathname.replace(/^\/[^/]+/, '') || '/'
+}
+
+/**
  * Reads the 11-character video id out of the YouTube URLs the dictionaries
  * store: watch links, short links, embeds, shorts and live links. Only a
  * YouTube host carrying a well-formed id resolves, so an unrelated link or a
