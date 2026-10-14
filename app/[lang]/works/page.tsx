@@ -36,12 +36,13 @@ export default async function Works({
             <h1 className="text-2xl font-bold mb-2">{works.title}</h1>
             <Divider></Divider>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 my-6">
-                {works.projects.map((item: Project) => (
+                {works.projects.map((item: Project, index: number) => (
                     <CardItem
                         key={item.id}
                         data={item}
                         lang={lang}
                         buttonText={works.more}
+                        preload={index === 0}
                     />
                 ))}
             </div>

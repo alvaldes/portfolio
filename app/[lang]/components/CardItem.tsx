@@ -1,6 +1,7 @@
 'use client'
 
-import { Badge, Divider, Card, CardBody, CardFooter, Image, Link } from '@heroui/react'
+import { Badge, Divider, Card, CardBody, CardFooter, Link } from '@heroui/react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { FiArrowRight } from "react-icons/fi"
 import { cn } from "@/lib/utils"
@@ -18,6 +19,7 @@ interface CardItemProps {
   lang: string
   colSpan?: string
   buttonText: string
+  preload?: boolean
 }
 
 export default function CardItem({
@@ -25,6 +27,7 @@ export default function CardItem({
   lang,
   colSpan,
   buttonText,
+  preload,
 }: CardItemProps) {
   return (
     <motion.div
@@ -44,14 +47,19 @@ export default function CardItem({
               variant="shadow"
               placement="top-right"
             >
+              {/* `next/image` serves a resized variant instead of the 1024-1382px source,
+                  and it renders the picture itself: the HeroUI `Image` this replaces started
+                  at `opacity-0` and only faded in once the client had hydrated. The box is
+                  height-driven (`w-auto` against a fixed height), so `sizes` is expressed in
+                  px: at most 240px tall with the widest thumbnail source at ~1.15 ratio. */}
               <Image
-                shadow="none"
-                loading="lazy"
                 alt={data.title}
-                className="object-fill w-auto h-[140px] sm:h-[240px] md:h-[200px] mx-auto"
                 src={data.thumbCard}
                 width={200}
                 height={200}
+                sizes="(min-width: 640px) 280px, 165px"
+                preload={preload}
+                className="object-contain w-auto h-[140px] sm:h-[240px] md:h-[200px] mx-auto"
               />
             </Badge>
           </div>
