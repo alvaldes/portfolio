@@ -74,6 +74,20 @@
                 "thumbMockup": "/images/storico/thumbMockup.webp"
             },
             {
+                "id": "flowmodoro",
+                "title": "Flowmodoro",
+                "year": "2026",
+                "shortDescription": "Focus timer that counts up while you work and turns your flow time into a proportional break.",
+                "longDescription": "**Flowmodoro** is a focus timer that drops the rigid Pomodoro intervals: it counts **up** while you work and, when you decide to stop, calculates a proportional break — around 20% of the session by default, adjustable from 8% to 50%. The Expo and React Native Android app installs from a direct download, keeps every session on the device, and on the Pro plan adds cloud sync, deeper statistics and the automation extras, backed by Supabase and Stripe. Alarms, notifications and an optional auto-focus cycle after each break complete the flow.",
+                "website": "https://flowmodoro-app.vercel.app/",
+                "platform": "Android, Web",
+                "active": 1,
+                "stack": "Expo, React Native, TypeScript, Supabase, Stripe",
+                "thumbCard": "/images/flowmodoro/thumbCard.webp",
+                "thumbFirst": "/images/flowmodoro/thumbFirst.webp",
+                "thumbMockup": "/images/flowmodoro/thumbMockup.webp"
+            },
+            {
                 "id": "localllm-dataforge",
                 "title": "LocalLLM-DataForge",
                 "year": "2026",
