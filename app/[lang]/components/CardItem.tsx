@@ -39,7 +39,7 @@ export default function CardItem({
       <Card shadow="sm" isBlurred className="h-full relative overflow-hidden">
         <CardBody className="overflow-visible pt-4 pb-2 px-6 bg-gradient-to-b from-5% to-transparent dark:from-primary-800 dark:to-70%">
           {/* Image with Badge */}
-          <div className="flex justify-center mb-4 relative z-10">
+          <div className="flex justify-center mb-4 relative z-10 rounded-[1.25rem] p-3 bg-black/[0.035] ring-1 ring-inset ring-black/[0.08] dark:bg-white/[0.055] dark:ring-white/10">
             <Badge
               content={data.year}
               color="warning"
@@ -59,12 +59,12 @@ export default function CardItem({
                 height={200}
                 sizes="(min-width: 640px) 280px, 165px"
                 preload={preload}
-                className="object-contain w-auto h-[140px] sm:h-[240px] md:h-[200px] mx-auto"
+                className="object-contain w-auto h-[140px] sm:h-[240px] md:h-[200px] mx-auto rounded-[0.875rem]"
               />
             </Badge>
           </div>
 
-          <div className="absolute inset-x-0 top-0 h-[calc(140px+2rem+1rem)] sm:h-[calc(240px+2rem+1rem)] md:h-[calc(200px+2rem+1rem)] bg-gradient-to-t from-primary/0 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-t-xl" />
+          <div className="absolute inset-x-0 top-0 h-[calc(140px+4.5rem)] sm:h-[calc(240px+4.5rem)] md:h-[calc(200px+4.5rem)] bg-gradient-to-t from-primary/0 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-t-xl" />
 
           <span className="font-bold text-xl mb-2 relative z-10">{data.title}</span>
           <p className="text-pretty font-light text-medium text-zinc-800 dark:text-gray-300">
