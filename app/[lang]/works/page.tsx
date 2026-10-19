@@ -13,7 +13,7 @@ interface Project {
     shortDescription: string;
     longDescription: string;
     website?: string;
-    sourceCode: string;
+    sourceCode?: string;
     video?: string;
     channel?: string;
     videoPoster?: string;

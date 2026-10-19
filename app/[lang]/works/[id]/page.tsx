@@ -18,7 +18,7 @@ interface Project {
     shortDescription: string;
     longDescription: string;
     website?: string;
-    sourceCode: string;
+    sourceCode?: string;
     video?: string;
     channel?: string;
     videoPoster?: string;
@@ -68,13 +68,15 @@ export default async function Work({
                         </Link>
                     </p>
                 )}
-                <p className="flex flex-wrap">
-                    <span className="flex font-bold mr-2 items-center">
-                        <FaGithub className="mr-1"/>
-                        {works.sourceCode}:
-                    </span>
-                    <Link href={project?.sourceCode} isExternal showAnchorIcon color="secondary">{project?.sourceCode.substring(18)}</Link>
-                </p>
+                {project?.sourceCode && (
+                    <p className="flex flex-wrap">
+                        <span className="flex font-bold mr-2 items-center">
+                            <FaGithub className="mr-1"/>
+                            {works.sourceCode}:
+                        </span>
+                        <Link href={project.sourceCode} isExternal showAnchorIcon color="secondary">{project.sourceCode.substring(18)}</Link>
+                    </p>
+                )}
                 <div className="grid grid-flow-col sm:flex items-start">
                     <span className="flex font-bold mr-1 items-center">
                         <CommandLineIcon width={18} className="mr-1"/>
