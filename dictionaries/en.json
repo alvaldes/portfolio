@@ -7,16 +7,16 @@
     },
     "home": {
         "banner":"Hello, I'm a Software Engineer base in Mexico!",
-        "experience": "+9 years",
+        "experience": "Since 2016",
         "name": "Angel L. Valdés",
-        "description": "Web Developer (Full-Stack)",
+        "description": "Frontend & Full-Stack Developer",
         "bio": "Biography",
-        "resume": "With over 10 years of web development expertise, I specialize in crafting dynamic, responsive, and user-focused solutions. My proficiency in modern technologies, dedication to clean and efficient code, and passion for delivering impactful user experiences set me apart. Currently, I contribute to the development of high-impact projects, showcasing my ability to solve complex challenges and drive innovation. Check out my latest work on ",
+        "resume": "Frontend-focused Full-Stack Developer passionate about UX/UI. I have been programming since 2016 and have nearly 3 years of professional experience building Angular, React and Spring Boot applications, including public transportation apps for the Basque Country (Spain). I am currently pursuing a Master's degree in Software Engineering, researching how LLMs can automate requirements engineering, and I integrate AI into products where it adds real value. Check out my latest work on ",
         "currentProject": {
             "label": "storico",
             "url": "/works/storico"
         },
-        "cv_url": "https://drive.google.com/file/d/1NrRTXBB4hjzgrJ6jf4F5bmZP5nJZCA0u/view?usp=drive_link",
+        "cv_url": "https://drive.google.com/file/d/1556Ps7OBVB0a0qEFa8fXScy93bq-U-3Q/view?usp=sharing",
         "timeline": [
             {
                 "date": "Sep-2024 to Present",
@@ -25,21 +25,21 @@
                 "icon": "rocketLaunch"
             },
             {
-                "date": "Dec-2022 to Oct-2024",
+                "date": "Dec-2022 to Sep-2024",
                 "title": "GENTALIA.SA",
-                "description": "From the position of a Full-Stack Developer, I had the opportunity to work with technologies such as Angular and Spring Boot on high-impact projects in high-risk sectors in Spain.",
+                "description": "As a Full-Stack Developer, I built and maintained public transportation apps for the Basque Country (Spain) with Angular and Spring Boot: Lurraldebus, with real-time arrival times and route planning between municipalities, and LurTicket, for mobile ticket purchases on long-distance routes.",
                 "icon": "briefcase"
             },
             {
-                "date": "Jan-2022 to Jan-2024",
+                "date": "Jan-2022 to Nov-2022",
                 "title": "CUJAE University",
-                "description": "I started working as a specialist in the Directorate of ICT Services (DISERTIC) at the Technological University of Havana José Antonio Echeverría (CUJAE).",
+                "description": "As a Full-Stack Web Developer at the Directorate of ICT Services (DISERTIC) of the Technological University of Havana José Antonio Echeverría (CUJAE), I built custom websites with React and Spring Boot and trained new team members.",
                 "icon": "buildingLibrary"
             },
             {
                 "date": "Sep-2016 to Dec-2021",
-                "title": "Computer Science Degree",
-                "description": "I pursued a degree in Computer Science at the University of Computer Science (UCI) in Havana.",
+                "title": "Computer Science Engineering Degree",
+                "description": "I earned a degree in Computer Science Engineering (Ingeniero en Ciencias Informáticas) at the University of Informatics Sciences (UCI) in Havana, graduating with 4.74/5. The degree is revalidated in Mexico by the SEP.",
                 "icon": "academicCap"
             }
         ]

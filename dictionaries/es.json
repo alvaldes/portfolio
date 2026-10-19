@@ -7,16 +7,16 @@
     },
     "home": {
         "banner":"Hola, soy un Ingeniero de Software residente en México!",
-        "experience": "+9 años",
+        "experience": "Desde 2016",
         "name": "Angel L. Valdés",
-        "description": "Desarrollador Web (Full-Stack)",
+        "description": "Desarrollador Frontend y Full-Stack",
         "bio": "Biografía",
-        "resume": "Con más de 10 años de experiencia en desarrollo web, me especializo en crear soluciones dinámicas, responsivas y centradas en el usuario. Mi experiencia en tecnologías modernas, dedicación a un código limpio y eficiente, y pasión por ofrecer experiencias de usuario impactantes me distinguen. Actualmente, contribuyo al desarrollo de proyectos de alto impacto, demostrando mi capacidad para resolver desafíos complejos y fomentar la innovación. Descubre mi trabajo más reciente en ",
+        "resume": "Desarrollador Full-Stack con enfoque en frontend y pasión por el UX/UI. Programo desde 2016 y tengo casi 3 años de experiencia profesional construyendo aplicaciones con Angular, React y Spring Boot, incluidas apps de transporte público para el País Vasco (España). Actualmente curso una Maestría en Ingeniería de Software, donde investigo cómo los LLMs pueden automatizar la ingeniería de requisitos, e integro IA en productos cuando aporta valor real. Descubre mi trabajo más reciente en ",
         "currentProject": {
             "label": "storico",
             "url": "/works/storico"
         },
-        "cv_url": "https://drive.google.com/file/d/1zcSLu7A4woxAbUoTX0m79aM1ba461fBW/view?usp=drive_link",
+        "cv_url": "https://drive.google.com/file/d/1cd6pyAceOjnHdsVBi9efrO5dFfUilqV_/view?usp=sharing",
         "timeline": [
             {
                 "date": "Sep-2024 al Presente",
@@ -25,21 +25,21 @@
                 "icon": "rocketLaunch"
             },
             {
-                "date": "Dic-2022 a Oct-2024",
+                "date": "Dic-2022 a Sep-2024",
                 "title": "GENTALIA.SA",
-                "description": "Desde el puesto de Desarrollador Full-Stack, tuve la oportunidad de trabajar con tecnologías como Angular y Spring Boot en proyectos de alto impacto en sectores de alto riesgo en España.",
+                "description": "Como Desarrollador Full-Stack, desarrollé y mantuve apps de transporte público para el País Vasco (España) con Angular y Spring Boot: Lurraldebus, con tiempos de llegada en tiempo real y planificación de rutas entre municipios, y LurTicket, para la compra de boletos móviles en rutas de larga distancia.",
                 "icon": "briefcase"
             },
             {
-                "date": "Ene-2022 a Ene-2024",
+                "date": "Ene-2022 a Nov-2022",
                 "title": "Universidad CUJAE",
-                "description": "Comencé a trabajar como especialista en la Dirección de Servicios de las TIC (DISERTIC) en la Universidad Tecnológica de La Habana José Antonio Echeverría (CUJAE).",
+                "description": "Como Desarrollador Web Full-Stack en la Dirección de Servicios de las TIC (DISERTIC) de la Universidad Tecnológica de La Habana José Antonio Echeverría (CUJAE), desarrollé sitios web a medida con React y Spring Boot y formé a nuevos miembros del equipo.",
                 "icon": "buildingLibrary"
             },
             {
                 "date": "Sep-2016 a Dic-2021",
                 "title": "Ingeniería en Ciencias Informáticas",
-                "description": "Estudié una Ingeniería en Ciencias Informáticas en la Universidad de las Ciencias Informáticas (UCI) en La Habana.",
+                "description": "Me gradué como Ingeniero en Ciencias Informáticas en la Universidad de las Ciencias Informáticas (UCI) en La Habana, con un promedio de 4.74/5. El título está revalidado en México por la SEP.",
                 "icon": "academicCap"
             }
         ]
