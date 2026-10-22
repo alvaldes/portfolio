@@ -1,0 +1,69 @@
+---
+import { getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
+import type { Project } from "../lib/projects";
+
+interface Props {
+	project: Project;
+	// Only the first card loads eagerly: it is the one above the fold.
+	eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const href = getLocalizedPathname(`/works/${project.id}`, lang);
+---
+
+<article
+	class="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white/50 shadow-sm backdrop-blur transition-transform duration-300 hover:-translate-y-1 dark:bg-white/5"
+>
+	<div class="relative px-6 pt-4 pb-2 dark:bg-linear-to-b dark:from-[#044655] dark:from-5% dark:to-transparent dark:to-70%">
+		<div class="relative z-10 mb-4 flex justify-center rounded-[1.25rem] bg-black/[0.035] p-3 ring-1 ring-black/[0.08] ring-inset dark:bg-white/[0.055] dark:ring-white/10">
+			<img
+				src={project.thumbCard}
+				alt={project.title}
+				width="200"
+				height="200"
+				loading={eager ? "eager" : "lazy"}
+				fetchpriority={eager ? "high" : undefined}
+				class="mx-auto h-[140px] w-auto rounded-[0.875rem] object-contain sm:h-[240px] md:h-[200px]"
+			/>
+			<span class="absolute -top-2 -right-2 rounded-full bg-amber-500 px-2 py-0.5 text-sm text-black shadow-md shadow-amber-500/40">
+				{project.year}
+			</span>
+		</div>
+
+		<div
+			class="pointer-events-none absolute inset-x-0 top-0 h-[calc(140px+4.5rem)] rounded-t-xl bg-linear-to-t from-primary/0 via-primary/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:h-[calc(240px+4.5rem)] md:h-[calc(200px+4.5rem)]"
+		>
+		</div>
+
+		<h2 class="relative z-10 mb-2 text-xl font-bold">{project.title}</h2>
+		<p class="font-light text-pretty text-zinc-800 dark:text-gray-300">{project.shortDescription}</p>
+	</div>
+
+	<hr class="mt-auto border-foreground/15" />
+
+	<div class="px-6 pt-2 pb-4">
+		<a href={href} class="group/btn inline-flex w-fit items-center gap-2 text-sm font-medium transition-all duration-300 hover:gap-3">
+			<span class="relative text-primary">
+				{t("works.more")}
+				<span class="absolute -bottom-0.5 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover/btn:w-full"></span>
+			</span>
+			<svg
+				class="size-4 text-primary transition-transform duration-300 group-hover:translate-x-0.5"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<line x1="5" y1="12" x2="19" y2="12"></line>
+				<polyline points="12 5 19 12 12 19"></polyline>
+			</svg>
+		</a>
+	</div>
+</article>

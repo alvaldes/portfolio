@@ -7,19 +7,20 @@ import "../styles/global.css";
 
 interface Props {
 	title?: string;
+	description?: string;
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { title = t("site.title") } = Astro.props;
+const { title = t("site.title"), description = t("site.description") } = Astro.props;
 
 ---
 
 <!doctype html>
 <html lang={lang}>
 	<head>
-		<BaseHead lang={lang} title={title} description={t("site.description")} />
+		<BaseHead lang={lang} title={title} description={description} />
 	</head>
 	<body class="container mx-auto bg-background px-4 pb-8 font-mplus text-foreground">
 		<!-- Grid backdrop with a soft glow, as in portfolio-next. -->

@@ -1,0 +1,113 @@
+---
+import { marked } from "marked";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { youTubeVideoId, type Project } from "../lib/projects";
+import ExternalLink from "./ExternalLink.astro";
+import GithubIcon from "./icons/GithubIcon.astro";
+import OutlineIcon from "./icons/OutlineIcon.astro";
+import { YOUTUBE_ICON } from "./icons/paths";
+import LiteYouTube from "./LiteYouTube.astro";
+import Section from "./Section.astro";
+import Stacks from "./Stacks.astro";
+
+interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+// Rendered at build time; the descriptions are our own dictionary content.
+const descriptionHtml = await marked.parse(project.longDescription);
+const stackList = project.stack.split(",");
+const videoId = project.video ? youTubeVideoId(project.video) : null;
+const websiteIsUrl = project.website?.startsWith("http") ?? false;
+const imageClass = "h-auto w-full object-cover transition-transform duration-500 hover:scale-105";
+---
+
+<Section delay={0.2} id={project.id}>
+	<div class="flex h-20 w-full items-center justify-center overflow-hidden sm:h-32 md:rounded-xl lg:h-40">
+		<img src={project.thumbFirst} alt={`${project.id}-thumbFirst`} class:list={[imageClass, "rounded-sm"]} />
+	</div>
+
+	<h1 class="mt-4 text-2xl font-bold">{project.title}</h1>
+	<hr class="border-foreground/15" />
+	<div class="my-3 text-pretty" set:html={descriptionHtml} />
+
+	<div class="flex flex-col gap-2">
+		{
+			project.website && (
+				<p class="flex flex-wrap">
+					<span class="mr-2 flex items-center font-bold">
+						<OutlineIcon name="globeAlt" class="mr-1 size-[18px]" />
+						{t("works.website")}:
+					</span>
+					<ExternalLink href={project.website} disabled={!websiteIsUrl}>
+						{websiteIsUrl ? project.website.substring(8) : project.website}
+					</ExternalLink>
+				</p>
+			)
+		}
+		{
+			project.sourceCode && (
+				<p class="flex flex-wrap">
+					<span class="mr-2 flex items-center font-bold">
+						<GithubIcon class="mr-1 size-4" />
+						{t("works.sourceCode")}:
+					</span>
+					<ExternalLink href={project.sourceCode}>{project.sourceCode.substring(18)}</ExternalLink>
+				</p>
+			)
+		}
+		<div class="grid grid-flow-col items-start sm:flex">
+			<span class="mr-1 flex items-center font-bold">
+				<OutlineIcon name="commandLine" class="mr-1 size-[18px]" />
+				{t("works.stack")}:
+			</span>
+			<Stacks data={stackList} />
+		</div>
+	</div>
+
+	{
+		project.video && (
+			<>
+				<hr class="my-6 border-foreground/15" />
+				<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+					<span class="flex items-center font-bold">
+						{videoId ? (
+							<svg class="mr-2 size-5 text-red-600" viewBox={YOUTUBE_ICON.viewBox} fill="currentColor" aria-hidden="true">
+								<path d={YOUTUBE_ICON.d} />
+							</svg>
+						) : (
+							<OutlineIcon name="film" class="mr-2 size-5" />
+						)}
+						{t("works.video")}
+					</span>
+					{project.channel && (
+						<ExternalLink href={project.channel} class="text-sm">
+							{t("works.channel")}
+						</ExternalLink>
+					)}
+				</div>
+				{videoId ? (
+					<LiteYouTube videoId={videoId} title={project.title} playLabel={t("works.play")} poster={project.videoPoster} />
+				) : (
+					<video
+						controls
+						playsinline
+						preload="none"
+						poster={project.videoPoster}
+						src={project.video}
+						title={project.title}
+						class="block aspect-video w-full rounded-xl bg-black"
+					/>
+				)}
+			</>
+		)
+	}
+
+	<div class="flex h-full w-full items-center justify-center overflow-hidden py-8 md:rounded-xl">
+		<img src={project.thumbMockup} alt={`${project.id}-thumbMockup`} loading="lazy" class:list={[imageClass, "rounded-sm"]} />
+	</div>
+</Section>

@@ -1,0 +1,17 @@
+---
+import type { GetStaticPaths } from "astro";
+import WorkDetail from "../../../components/WorkDetail.astro";
+import { useTranslations } from "../../../i18n/utils";
+import Layout from "../../../layouts/Layout.astro";
+import { getProjects, type Project } from "../../../lib/projects";
+
+export const getStaticPaths = (() =>
+	getProjects("en").map((project) => ({ params: { id: project.id }, props: { project } }))) satisfies GetStaticPaths;
+
+const { project } = Astro.props as { project: Project };
+const t = useTranslations("en");
+---
+
+<Layout title={`${project.title} | ${t("site.title")}`} description={project.shortDescription}>
+	<WorkDetail project={project} />
+</Layout>

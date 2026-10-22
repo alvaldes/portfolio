@@ -59,5 +59,7 @@ export function pathNameIsInLanguage(pathname: string, lang: UiType): boolean {
 export function getLocalizedPathname(pathname: string, lang: UiType): string {
 	const segments = pathname.split("/").filter(Boolean);
 	if (isLanguage(segments[0])) segments.shift();
+	// The 404 page only exists once, unprefixed: send the other language to its home.
+	if (segments[0] === "404" || segments[0] === "404.html") segments.length = 0;
 	return getRelativeLocaleUrl(lang, segments.join("/"));
 }
