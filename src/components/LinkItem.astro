@@ -1,0 +1,29 @@
+---
+import {
+  Container,
+  Box,
+  Link,
+  Stack,
+  Heading,
+  Flex,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuButton,
+  IconButton,
+  Icon,
+  useColorModeValue
+} from '@chakra-ui/react'
+
+interface Props {
+    href: string,
+    path: string,
+    externalLing: string,
+}
+
+const {href, path, externalLing} = Astro.props
+
+const active = path === href
+const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+
+---
