@@ -44,6 +44,9 @@
 	--primary-foreground: #f0e7bd;
 	--secondary: #a1455c;
 	--secondary-strong: #8d354b;
+	/* The theme toggle previews the other theme: a palette night in light, a warm sun in dark. */
+	--toggle: #2b3564;
+	--toggle-foreground: #f0e7bd;
 }
 
 .dark {
@@ -53,6 +56,8 @@
 	--primary-foreground: #202020;
 	--secondary: #818cda;
 	--secondary-strong: #adb6eb;
+	--toggle: #f3ad68;
+	--toggle-foreground: #121212;
 }
 
 @theme inline {
@@ -62,6 +67,8 @@
 	--color-primary-foreground: var(--primary-foreground);
 	--color-secondary: var(--secondary);
 	--color-secondary-strong: var(--secondary-strong);
+	--color-toggle: var(--toggle);
+	--color-toggle-foreground: var(--toggle-foreground);
 
 	--font-mplus: "M PLUS Rounded 1c", ui-sans-serif, system-ui, sans-serif;
 	--font-comfortaa: "Comfortaa", ui-sans-serif, system-ui, sans-serif;
