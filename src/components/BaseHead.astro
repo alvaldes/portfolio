@@ -1,26 +1,12 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
-import {
-	LANGUAGES,
-	pathNameIsInLanguage,
-	DEFAULT_LANG,
-	getLocalizedPathname,
-	type UiType,
-} from "../i18n/utils";
-// import "../styles/global.css";
+import { LANGUAGES, getLocalizedPathname, type UiType } from "../i18n/utils";
 
 interface Props {
 	title: string;
 	description: string;
 	image?: string;
-	lang: string;
+	lang: UiType;
 }
-
-// const canonicalPathname = pathNameIsInLanguage(Astro.url.pathname, DEFAULT_LANG)
-// 	? Astro.url.pathname
-// 	: getLocalizedPathname(Astro.url.pathname, DEFAULT_LANG);
-// const canonicalURL = new URL(canonicalPathname, Astro.site);
 
 const {
 	lang,
@@ -29,13 +15,14 @@ const {
 	image = "/blog-placeholder-1.jpg",
 } = Astro.props;
 
-// const alternateLang = Object.keys(LANGUAGES);
-// const alternateLinks = alternateLang.map((_lang) => {
-// 	return {
-// 		href: new URL(getLocalizedPathname(Astro.url.pathname, _lang as UiType), Astro.site),
-// 		hreflang: _lang,
-// 	};
-// });
+// Falls back to the request URL until `site` is set in astro.config.mjs.
+const siteURL = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+
+const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
+	href: new URL(getLocalizedPathname(Astro.url.pathname, hreflang), siteURL),
+	hreflang,
+}));
 ---
 
 <!-- Global Metadata -->
@@ -65,14 +52,14 @@ const {
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <!-- Canonical URL -->
-<!-- <link rel="canonical" href={canonicalURL} /> -->
+<link rel="canonical" href={canonicalURL} />
 
 <!-- Alternate URLs -->
-<!-- {
+{
 	alternateLinks.map(({ href, hreflang }) => (
 		<link rel="alternate" href={href} hreflang={hreflang} />
 	))
-} -->
+}
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -81,6 +68,7 @@ const {
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
+<meta property="og:locale" content={lang} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

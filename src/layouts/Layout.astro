@@ -1,28 +1,26 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Navbar from "../components/navbar.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import "../styles/global.css";
 // import CommentForm from '../commentForm.js'
 
 interface Props {
-	title: string;
+	title?: string;
 }
 
-const { title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { title = t("site.title") } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
 	<head>
-		<!-- <meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title> -->
-		<BaseHead lang="es" title={title} description='site.description' />
+		<BaseHead lang={lang} title={title} description={t("site.description")} />
 	</head>
 	<body>
 		<div class="pb-8">
@@ -34,7 +32,7 @@ const currentPath = Astro.url.pathname;
 			<div class="mx-auto text-center pt-1">
 			  <!-- <CommentForm id="contact" /> -->
 			  <span class="text-gray-800">
-				&copy; {new Date().getFullYear()} Angel Valdés. {'copy-right'}
+				&copy; {new Date().getFullYear()} Angel Valdés. {t("copy-right")}
 			  </span>
 			</div>
 		</div>

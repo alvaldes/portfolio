@@ -1,9 +1,13 @@
 ---
 import Card from "../../components/Card.astro";
+import LangLink from "../../components/LangLink.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Layout from "../../layouts/Layout.astro";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
-	<Layout title="">
+	<Layout>
 		<main>
 			<svg
 				class="astro-a"
@@ -33,16 +37,15 @@ import Layout from "../../layouts/Layout.astro";
 					</linearGradient>
 				</defs>
 			</svg>
-			<h1>t('site.description') <span class="text-gradient">Astro</span></h1>
-			<!-- <LanguageSelector showFlag={true} class="my-select-class" /> -->
+			<h1>{t("home.title")} <span class="text-gradient">Astro</span></h1>
 			<p class="instructions">
 				To get started, open the directory <code>src/pages</code> in your project.<br />
 				<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 			</p>
-			<!-- <div class="internal-links">
+			<div class="internal-links">
 				<LangLink language="en" />
 				<LangLink language="es" />
-			</div> -->
+			</div>
 			<ul role="list" class="link-card-grid">
 				<Card
 					href="https://docs.astro.build/"
