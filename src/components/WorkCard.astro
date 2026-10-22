@@ -23,7 +23,7 @@ const href = getLocalizedPathname(`/works/${project.id}`, lang);
 		<div class="relative z-10 mb-4 flex justify-center rounded-[1.25rem] bg-black/[0.035] p-3 ring-1 ring-black/[0.08] ring-inset dark:bg-white/[0.055] dark:ring-white/10">
 			<!-- Height-driven box (at most 240px tall), so the widths cover 1x and 2x of that. -->
 			<Image
-				src={getProjectImage(project.thumbCard)}
+				src={getProjectImage(project.id, project.thumbCard)}
 				alt={project.title}
 				widths={[165, 280, 330, 560]}
 				sizes="(min-width: 640px) 280px, 165px"

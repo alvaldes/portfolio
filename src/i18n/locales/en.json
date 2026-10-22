@@ -68,13 +68,13 @@
 				"sourceCode": "https://github.com/alvaldes/storico",
 				"video": "https://youtu.be/VLvg0Lpxmng",
 				"channel": "https://www.youtube.com/@storico-app",
-				"videoPoster": "/images/storico/videoPoster.webp",
+				"videoPoster": "videoPoster.webp",
 				"platform": "Web",
 				"active": 1,
 				"stack": "Python, FastAPI, Astro, React, PostgreSQL, Ollama",
-				"thumbCard": "/images/storico/thumbCard.webp",
-				"thumbFirst": "/images/storico/thumbFirst.webp",
-				"thumbMockup": "/images/storico/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			},
 			{
 				"id": "flowmodoro",
@@ -84,13 +84,13 @@
 				"longDescription": "**Flowmodoro** is a focus timer that drops the rigid Pomodoro intervals: it counts **up** while you work and, when you decide to stop, calculates a proportional break — around 20% of the session by default, adjustable from 8% to 50%. The Expo and React Native Android app installs from a direct download, keeps every session on the device, and on the Pro plan adds cloud sync, deeper statistics and the automation extras, backed by Supabase and Stripe. Alarms, notifications and an optional auto-focus cycle after each break complete the flow.",
 				"website": "https://flowmodoro-app.vercel.app/",
 				"video": "/videos/flowmodoro/brag.mp4",
-				"videoPoster": "/images/flowmodoro/videoPoster.webp",
+				"videoPoster": "videoPoster.webp",
 				"platform": "Android, Web",
 				"active": 1,
 				"stack": "Expo, React Native, TypeScript, Supabase, Stripe",
-				"thumbCard": "/images/flowmodoro/thumbCard.webp",
-				"thumbFirst": "/images/flowmodoro/thumbFirst.webp",
-				"thumbMockup": "/images/flowmodoro/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			},
 			{
 				"id": "localllm-dataforge",
@@ -102,9 +102,9 @@
 				"platform": "Python/CLI",
 				"active": 1,
 				"stack": "Python, Pandas, Ollama, Pytest",
-				"thumbCard": "/images/localllm-dataforge/thumbCard.webp",
-				"thumbFirst": "/images/localllm-dataforge/thumbFirst.webp",
-				"thumbMockup": "/images/localllm-dataforge/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			},
 			{
 				"id": "csv2trello",
@@ -116,9 +116,9 @@
 				"platform": "Terminal",
 				"active": 1,
 				"stack": "Python, Textual, Trello API",
-				"thumbCard": "/images/csv2trello/thumbCard.webp",
-				"thumbFirst": "/images/csv2trello/thumbFirst.webp",
-				"thumbMockup": "/images/csv2trello/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			},
 			{
 				"id": "web-tools",
@@ -131,9 +131,9 @@
 				"platform": "Web",
 				"active": 1,
 				"stack": "Astro, TailwindCSS, Notion API",
-				"thumbCard": "/images/web-tools/thumbCard.webp",
-				"thumbFirst": "/images/web-tools/thumbFirst.webp",
-				"thumbMockup": "/images/web-tools/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			},
 			{
 				"id": "search-intranet",
@@ -146,9 +146,9 @@
 				"platform": "Web",
 				"active": 1,
 				"stack": "React.JS, TailwindCSS",
-				"thumbCard": "/images/search-intranet/thumbCard.webp",
-				"thumbFirst": "/images/search-intranet/thumbFirst.webp",
-				"thumbMockup": "/images/search-intranet/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			},
 			{
 				"id": "aterm",
@@ -161,9 +161,9 @@
 				"platform": "Web",
 				"active": 1,
 				"stack": "HTML, CSS, JavaScript",
-				"thumbCard": "/images/aterm/thumbCard.webp",
-				"thumbFirst": "/images/aterm/thumbFirst.webp",
-				"thumbMockup": "/images/aterm/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			},
 			{
 				"id": "trivial",
@@ -176,9 +176,9 @@
 				"platform": "Web",
 				"active": 1,
 				"stack": "JavaScript, Node.js, React, Next.js, Chakra UI",
-				"thumbCard": "/images/trivial/thumbCard.webp",
-				"thumbFirst": "/images/trivial/thumbFirst.webp",
-				"thumbMockup": "/images/trivial/thumbMockup.webp"
+				"thumbCard": "thumbCard.webp",
+				"thumbFirst": "thumbFirst.webp",
+				"thumbMockup": "thumbMockup.webp"
 			}
 		]
 	},
