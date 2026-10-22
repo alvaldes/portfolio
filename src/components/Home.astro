@@ -47,7 +47,11 @@ const { home } = getDictionary(lang);
 			<div class="grid-portrait flex shrink-0 justify-center">
 				<!-- The blob box is 1.5x the photo so the shape shows the same margin at every size. -->
 				<div class="relative mx-3 mt-4 size-28 sm:mx-0 sm:size-32 md:mt-9 md:size-40">
-					<Blob aria-hidden="true" class="absolute -top-1/4 -left-1/4 size-[150%] text-primary" />
+					<!-- will-change gives the blur its own layer, so Safari repaints it whole instead of in clipped tiles. -->
+					<Blob
+						aria-hidden="true"
+						class="absolute -top-1/4 -left-1/4 size-[150%] text-primary blur-[1px] will-change-[filter]"
+					/>
 					<Image
 						src={portrait}
 						alt={home.name}
