@@ -15,7 +15,7 @@
       "source": "/",
       "destination": "/en/",
       "permanent": false,
-      "has": [{ "type": "header", "key": "accept-language", "value": { "re": "\\S" } }],
+      "has": [{ "type": "header", "key": "accept-language", "value": { "re": "[A-Za-z]{2}" } }],
       "missing": [
         { "type": "header", "key": "accept-language", "value": { "pre": "es" } },
         { "type": "cookie", "key": "lang" }
