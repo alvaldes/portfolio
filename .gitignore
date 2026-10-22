@@ -19,3 +19,11 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# ai tooling local state
+.atl/
+.claude/
+.cursor/
+.trae/
+.codex/
+.codegraph/
