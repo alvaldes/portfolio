@@ -17,9 +17,9 @@ const href = getLocalizedPathname(`/works/${project.id}`, lang);
 ---
 
 <article
-	class="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white/50 shadow-sm backdrop-blur transition-transform duration-300 hover:-translate-y-1 dark:bg-white/5"
+	class="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-black/5 shadow-sm backdrop-blur transition-transform duration-300 hover:-translate-y-1 dark:bg-white/5"
 >
-	<div class="relative px-6 pt-4 pb-2 dark:bg-linear-to-b dark:from-[#044655] dark:from-5% dark:to-transparent dark:to-70%">
+	<div class="relative px-6 pt-4 pb-2 dark:bg-linear-to-b dark:from-secondary/20 dark:from-5% dark:to-transparent dark:to-70%">
 		<div class="relative z-10 mb-4 flex justify-center rounded-[1.25rem] bg-black/[0.035] p-3 ring-1 ring-black/[0.08] ring-inset dark:bg-white/[0.055] dark:ring-white/10">
 			<!-- Height-driven box (at most 240px tall), so the widths cover 1x and 2x of that. -->
 			<Image
@@ -31,7 +31,7 @@ const href = getLocalizedPathname(`/works/${project.id}`, lang);
 				fetchpriority={eager ? "high" : undefined}
 				class="mx-auto h-[140px] w-auto rounded-[0.875rem] object-contain sm:h-[240px] md:h-[200px]"
 			/>
-			<span class="absolute -top-2 -right-2 rounded-full bg-amber-500 px-2 py-0.5 text-sm text-black shadow-md shadow-amber-500/40">
+			<span class="absolute -top-2 -right-2 rounded-full bg-secondary px-2 py-0.5 text-sm text-primary-foreground shadow-md shadow-secondary/40">
 				{project.year}
 			</span>
 		</div>
@@ -42,7 +42,7 @@ const href = getLocalizedPathname(`/works/${project.id}`, lang);
 		</div>
 
 		<h2 class="relative z-10 mb-2 text-xl font-bold">{project.title}</h2>
-		<p class="font-light text-pretty text-zinc-800 dark:text-gray-300">{project.shortDescription}</p>
+		<p class="font-light text-pretty text-foreground/80">{project.shortDescription}</p>
 	</div>
 
 	<hr class="mt-auto border-foreground/15" />

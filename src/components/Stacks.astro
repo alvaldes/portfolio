@@ -9,7 +9,7 @@ const { data } = Astro.props;
 <ul class="flex flex-wrap justify-start gap-y-1">
 	{
 		data.map((stack) => (
-			<li class="ml-1 rounded-full bg-amber-500 px-2 py-0.5 text-xs text-black dark:border-2 dark:border-amber-500/40 dark:bg-amber-500/15 dark:text-amber-400">
+			<li class="ml-1 rounded-full border-2 border-secondary/40 bg-secondary/15 px-2 py-0.5 text-xs text-secondary-strong">
 				{stack.trim()}
 			</li>
 		))
