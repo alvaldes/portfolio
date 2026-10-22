@@ -9,7 +9,13 @@
       "source": "/",
       "destination": "/en/",
       "permanent": false,
-      "has": [{ "type": "header", "key": "accept-language" }],
+      "has": [{ "type": "cookie", "key": "lang", "value": { "eq": "en" } }]
+    },
+    {
+      "source": "/",
+      "destination": "/en/",
+      "permanent": false,
+      "has": [{ "type": "header", "key": "accept-language", "value": { "re": "\\S" } }],
       "missing": [
         { "type": "header", "key": "accept-language", "value": { "pre": "es" } },
         { "type": "cookie", "key": "lang" }
