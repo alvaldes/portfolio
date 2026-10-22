@@ -15,7 +15,7 @@ const {
 	image = "/blog-placeholder-1.jpg",
 } = Astro.props;
 
-// Falls back to the request URL until `site` is set in astro.config.mjs.
+// Falls back to the request URL when `site` is not set in astro.config.mjs.
 const siteURL = Astro.site ?? Astro.url;
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
 
