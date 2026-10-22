@@ -20,7 +20,7 @@ const linkClass = "text-zinc-800 hover:underline dark:text-blue-50";
 			<ThemeSwitcher />
 			<LangSwitcher />
 
-			<details class="relative md:hidden">
+			<details data-mobile-menu class="relative md:hidden">
 				<summary
 					aria-label={t("nav.menu")}
 					class="flex size-8 cursor-pointer list-none items-center justify-center rounded-lg border-2 border-zinc-300 p-1 text-zinc-800 dark:border-zinc-600 dark:text-blue-50 [&::-webkit-details-marker]:hidden"
@@ -54,3 +54,21 @@ const linkClass = "text-zinc-800 hover:underline dark:text-blue-50";
 		</div>
 	</div>
 </nav>
+
+<script>
+	// A <details> only closes from its own summary, so close the mobile menu
+	// when a link is chosen, on a click outside it, or on Escape.
+	for (const menu of document.querySelectorAll<HTMLDetailsElement>("[data-mobile-menu]")) {
+		menu.addEventListener("click", (event) => {
+			if ((event.target as Element).closest("a")) menu.open = false;
+		});
+		document.addEventListener("click", (event) => {
+			if (menu.open && !menu.contains(event.target as Node)) menu.open = false;
+		});
+		document.addEventListener("keydown", (event) => {
+			if (event.key !== "Escape" || !menu.open) return;
+			menu.open = false;
+			menu.querySelector("summary")?.focus();
+		});
+	}
+</script>
