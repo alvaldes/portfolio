@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import qrCode from "../assets/images/buymeacoffee_QR.png";
+
 const imageClass = "size-28";
 ---
 
@@ -9,11 +12,14 @@ const imageClass = "size-28";
 	rel="noopener noreferrer"
 	class="group relative flex w-fit overflow-hidden rounded-lg sm:mr-4"
 >
-	<img
-		src="/images/buymeacoffee_QR.png"
+	<!-- PNG keeps the QR edges sharp; lossy WebP could make it harder to scan. -->
+	<Image
+		src={qrCode}
 		alt="Buy me a coffee QR code"
-		width="112"
-		height="112"
+		width={112}
+		height={112}
+		densities={[1, 2]}
+		format="png"
 		loading="lazy"
 		class:list={[imageClass, "opacity-100 transition duration-200 group-hover:opacity-0"]}
 	/>

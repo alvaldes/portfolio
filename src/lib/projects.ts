@@ -1,4 +1,24 @@
+import type { ImageMetadata } from "astro";
 import { getDictionary, type UiType } from "../i18n/utils";
+
+// Project thumbnails live in src/assets so <Image> can resize them at build time.
+const PROJECT_IMAGES = import.meta.glob<{ default: ImageMetadata }>("/src/assets/projects/**/*.webp", {
+	eager: true,
+});
+
+/**
+ * Maps a dictionary path such as "/images/storico/thumbCard.webp" to its
+ * imported asset. Fails the build when the file is missing, instead of
+ * shipping a broken image.
+ */
+export function getProjectImage(dictionaryPath: string): ImageMetadata {
+	const key = dictionaryPath.replace(/^\/images\//, "/src/assets/projects/");
+	const image = PROJECT_IMAGES[key];
+	if (!image) {
+		throw new Error(`Project image not found: ${dictionaryPath} (expected ${key})`);
+	}
+	return image.default;
+}
 
 export interface Project {
 	id: string;

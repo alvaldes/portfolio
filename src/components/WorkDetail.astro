@@ -1,7 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { marked } from "marked";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import { youTubeVideoId, type Project } from "../lib/projects";
+import { getProjectImage, youTubeVideoId, type Project } from "../lib/projects";
 import ExternalLink from "./ExternalLink.astro";
 import GithubIcon from "./icons/GithubIcon.astro";
 import OutlineIcon from "./icons/OutlineIcon.astro";
@@ -24,11 +25,19 @@ const stackList = project.stack.split(",");
 const videoId = project.video ? youTubeVideoId(project.video) : null;
 const websiteIsUrl = project.website?.startsWith("http") ?? false;
 const imageClass = "h-auto w-full object-cover transition-transform duration-500 hover:scale-105";
+// Full-width images: the content column is 75% of the viewport from lg up.
+const fullWidth = { widths: [480, 768, 1024, 1536], sizes: "(min-width: 1024px) 75vw, 100vw" };
 ---
 
 <Section delay={0.2} id={project.id}>
 	<div class="flex h-20 w-full items-center justify-center overflow-hidden sm:h-32 md:rounded-xl lg:h-40">
-		<img src={project.thumbFirst} alt={`${project.id}-thumbFirst`} class:list={[imageClass, "rounded-sm"]} />
+		<Image
+			src={getProjectImage(project.thumbFirst)}
+			alt={`${project.id}-thumbFirst`}
+			loading="eager"
+			{...fullWidth}
+			class:list={[imageClass, "rounded-sm"]}
+		/>
 	</div>
 
 	<h1 class="mt-4 text-2xl font-bold">{project.title}</h1>
@@ -106,6 +115,11 @@ const imageClass = "h-auto w-full object-cover transition-transform duration-500
 	}
 
 	<div class="flex h-full w-full items-center justify-center overflow-hidden py-8 md:rounded-xl">
-		<img src={project.thumbMockup} alt={`${project.id}-thumbMockup`} loading="lazy" class:list={[imageClass, "rounded-sm"]} />
+		<Image
+			src={getProjectImage(project.thumbMockup)}
+			alt={`${project.id}-thumbMockup`}
+			{...fullWidth}
+			class:list={[imageClass, "rounded-sm"]}
+		/>
 	</div>
 </Section>
