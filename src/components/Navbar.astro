@@ -23,17 +23,17 @@ const linkClass = "text-zinc-800 hover:underline dark:text-blue-50";
 			<details data-mobile-menu class="relative md:hidden">
 				<summary
 					aria-label={t("nav.menu")}
-					class="flex size-8 cursor-pointer list-none items-center justify-center rounded-lg border-2 border-zinc-300 p-1 text-zinc-800 dark:border-zinc-600 dark:text-blue-50 [&::-webkit-details-marker]:hidden"
+					class="flex size-8 cursor-pointer list-none items-center justify-center rounded-lg bg-foreground/10 p-1 text-foreground hover:bg-foreground/15 [&::-webkit-details-marker]:hidden"
 				>
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
 					</svg>
 				</summary>
-				<div class="absolute end-0 mt-2 flex min-w-40 flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-4 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
+				<div class="absolute end-0 mt-2 flex min-w-40 flex-col gap-3 rounded-xl border border-foreground/10 bg-background p-4 shadow-lg">
 					<LinkItem label={t("nav.home")} href="/" />
 					<LinkItem label={t("nav.works")} href="/works" />
 					<a href="#contact-me" class={linkClass}>{t("nav.contact")}</a>
-					<a href={SOURCE_URL} target="_blank" rel="noopener noreferrer" class="flex items-center text-red-600 hover:underline">
+					<a href={SOURCE_URL} target="_blank" rel="noopener noreferrer" class:list={[linkClass, "flex items-center"]}>
 						<GithubIcon class="size-4" />
 						<span class="ml-1">{t("nav.source")}</span>
 					</a>
