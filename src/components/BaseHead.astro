@@ -31,6 +31,20 @@ const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Applies the saved or system theme before first paint to avoid a flash. -->
+<script is:inline>
+	(() => {
+		let theme = null;
+		try {
+			theme = localStorage.getItem("theme");
+		} catch {}
+		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		if (theme === "dark" || (theme === null && prefersDark)) {
+			document.documentElement.classList.add("dark");
+		}
+	})();
+</script>
+
 
 <!-- Font preloads -->
 <link

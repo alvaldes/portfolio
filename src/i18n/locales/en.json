@@ -4,6 +4,10 @@
         "description": "Welcome to my website!"
     },
     "nav":{
+        "home": "Home",
+        "menu": "Menu",
+        "toggle-theme": "Toggle theme",
+        "switch-language": "Leer en español",
         "works": "Works",
         "contact": "Contact",
         "source": "Source",

@@ -4,6 +4,10 @@
         "description": "Bienvenido a mi sitio web!"
     },
     "nav":{
+        "home": "Inicio",
+        "menu": "Menú",
+        "toggle-theme": "Cambiar tema",
+        "switch-language": "Read in English",
         "works": "Trabajos",
         "contact": "Contacto",
         "source": "Código",

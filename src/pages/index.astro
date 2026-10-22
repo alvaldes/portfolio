@@ -1,6 +1,5 @@
 ---
 import Card from "../components/Card.astro";
-import LangLink from "../components/LangLink.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import Layout from "../layouts/Layout.astro";
 
@@ -42,10 +41,6 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 				To get started, open the directory <code>src/pages</code> in your project.<br />
 				<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 			</p>
-			<div class="internal-links">
-				<LangLink language="en" />
-				<LangLink language="es" />
-			</div>
 			<ul role="list" class="link-card-grid">
 				<Card
 					

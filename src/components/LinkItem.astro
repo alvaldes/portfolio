@@ -1,29 +1,27 @@
 ---
-import {
-  Container,
-  Box,
-  Link,
-  Stack,
-  Heading,
-  Flex,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuButton,
-  IconButton,
-  Icon,
-  useColorModeValue
-} from '@chakra-ui/react'
+import { getLangFromUrl, getLocalizedPathname } from "../i18n/utils";
 
 interface Props {
-    href: string,
-    path: string,
-    externalLing: string,
+	label: string;
+	// Path without locale prefix, e.g. "/" or "/works".
+	href: string;
 }
 
-const {href, path, externalLing} = Astro.props
+const { label, href } = Astro.props;
 
-const active = path === href
-const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
-
+const lang = getLangFromUrl(Astro.url);
+const localizedHref = getLocalizedPathname(href, lang);
+const isActive = getLocalizedPathname(Astro.url.pathname, lang) === localizedHref;
 ---
+
+<a
+	href={localizedHref}
+	aria-current={isActive ? "page" : undefined}
+	class:list={[
+		"text-zinc-800 hover:underline dark:text-blue-50",
+		// Same as portfolio-next: the link to the current page is not shown.
+		{ hidden: isActive },
+	]}
+>
+	{label}
+</a>

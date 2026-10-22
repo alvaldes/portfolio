@@ -1,0 +1,41 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<button
+	type="button"
+	data-theme-toggle
+	aria-label={t("nav.toggle-theme")}
+	class="size-8 rounded-lg bg-purple-800 p-1.5 text-white dark:bg-yellow-400 dark:text-black"
+>
+	<svg class="dark:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M14.438 10.148c.19-.425-.321-.787-.748-.601A5.5 5.5 0 0 1 6.453 2.31c.186-.427-.176-.938-.6-.748a6.501 6.501 0 1 0 8.585 8.586Z"
+		></path>
+	</svg>
+	<svg class="hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+		></path>
+	</svg>
+</button>
+
+<script>
+	// The initial theme is applied by the inline script in BaseHead to avoid a flash.
+	for (const button of document.querySelectorAll("[data-theme-toggle]")) {
+		button.addEventListener("click", () => {
+			const isDark = document.documentElement.classList.toggle("dark");
+			try {
+				localStorage.setItem("theme", isDark ? "dark" : "light");
+			} catch {
+				// Storage can be unavailable (private mode); the toggle still works for this page.
+			}
+		});
+	}
+</script>
