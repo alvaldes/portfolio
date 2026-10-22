@@ -1,5 +1,5 @@
 import type { ImageMetadata } from "astro";
-import { getDictionary, type UiType } from "../i18n/utils";
+import { getDictionary, LANGUAGES, type UiType } from "../i18n/utils";
 
 // Project thumbnails live in src/assets so <Image> can resize them at build time.
 const PROJECT_IMAGES = import.meta.glob<{ default: ImageMetadata }>("/src/assets/projects/**/*.webp", {
@@ -40,7 +40,53 @@ export interface Project {
 	thumbMockup: string;
 }
 
+// The only fields that are written per language; every other field is shared data.
+const TRANSLATED_FIELDS = new Set<string>(["shortDescription", "longDescription"]);
+
+let localesChecked = false;
+
+/**
+ * Fails the build when the locales disagree on the projects: same ids in the
+ * same order, and identical shared fields (year, links, stack, images). A
+ * website that is not a URL is a description, so it may be translated.
+ */
+function assertProjectsMatchAcrossLocales(): void {
+	const [base, ...others] = (Object.keys(LANGUAGES) as UiType[]).map((lang) => ({
+		lang,
+		projects: getDictionary(lang).works.projects as Project[],
+	}));
+	if (!base) return;
+
+	for (const other of others) {
+		const baseIds = base.projects.map((project) => project.id).join(", ");
+		const otherIds = other.projects.map((project) => project.id).join(", ");
+		if (baseIds !== otherIds) {
+			throw new Error(
+				`Projects differ between "${base.lang}" (${baseIds}) and "${other.lang}" (${otherIds}): keep the same ids in the same order.`,
+			);
+		}
+
+		base.projects.forEach((project, index) => {
+			const counterpart = other.projects[index] as Project;
+			const fields = new Set([...Object.keys(project), ...Object.keys(counterpart)]) as Set<keyof Project>;
+			for (const field of fields) {
+				if (TRANSLATED_FIELDS.has(field)) continue;
+				if (field === "website" && !project.website?.startsWith("http")) continue;
+				if (project[field] !== counterpart[field]) {
+					throw new Error(
+						`Project "${project.id}" has a different "${field}" in "${base.lang}" (${String(project[field])}) and "${other.lang}" (${String(counterpart[field])}).`,
+					);
+				}
+			}
+		});
+	}
+}
+
 export function getProjects(lang: UiType): Project[] {
+	if (!localesChecked) {
+		assertProjectsMatchAcrossLocales();
+		localesChecked = true;
+	}
 	return getDictionary(lang).works.projects as Project[];
 }
 

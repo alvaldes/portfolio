@@ -110,6 +110,8 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 4. Optional: `video` (YouTube URL or a file in `public/videos/`) and `videoPoster` (a 16:9 image in `public/images/<id>/`).
 5. Run `bun run build`: a page is generated at `/works/<id>/` and `/en/works/<id>/`.
 
+> The build fails if the two dictionaries list different projects, list them in a different order, or disagree on a shared field (year, links, stack, images). Only `shortDescription`, `longDescription` and a non-URL `website` are translated.
+>
 > The type of translation keys is derived from `es.json` only, so `astro check` does not catch a key missing from `en.json`. Keep both files in sync.
 
 ## 🔑 License
