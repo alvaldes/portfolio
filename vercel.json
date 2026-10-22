@@ -3,5 +3,9 @@
   "framework": "astro",
   "installCommand": "bun install --frozen-lockfile",
   "buildCommand": "bun run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "redirects": [
+    { "source": "/es", "destination": "/", "permanent": true },
+    { "source": "/es/:path*", "destination": "/:path*", "permanent": true }
+  ]
 }
