@@ -9,10 +9,10 @@
 		"switch-language": "Leer en español"
 	},
 	"home": {
-		"banner": "Hello, I'm a Software Engineer base in Mexico!",
+		"banner": "Hello, I'm a Software Engineer based in Mexico!",
 		"experience": "Since 2016",
 		"name": "Angel L. Valdés",
-		"description": "Frontend & Full-Stack Developer",
+		"description": "Indie Developer · AI Researcher",
 		"bio": "Biography",
 		"resume": "Frontend-focused Full-Stack Developer passionate about UX/UI. I have been programming since 2016 and have nearly 3 years of professional experience building Angular, React and Spring Boot applications, including public transportation apps for the Basque Country (Spain). I am currently pursuing a Master's degree in Software Engineering, researching how LLMs can automate requirements engineering, and I integrate AI into products where it adds real value. Check out my latest work on ",
 		"currentProject": {
