@@ -12,7 +12,7 @@
 		"banner": "Hola, soy un Ingeniero de Software residente en México!",
 		"experience": "Desde 2016",
 		"name": "Angel L. Valdés",
-		"description": "Desarrollador independiente · Investigador en IA",
+		"description": "Desarrollador Independiente · Investigador en IA",
 		"bio": "Biografía",
 		"resume": "Desarrollador Full-Stack con enfoque en frontend y pasión por el UX/UI. Programo desde 2016 y tengo casi 3 años de experiencia profesional construyendo aplicaciones con Angular, React y Spring Boot, incluidas apps de transporte público para el País Vasco (España). Actualmente curso una Maestría en Ingeniería de Software, donde investigo cómo los LLMs pueden automatizar la ingeniería de requisitos, e integro IA en productos cuando aporta valor real. Descubre mi trabajo más reciente en ",
 		"currentProject": {
@@ -199,7 +199,7 @@
 	},
 	"site": {
 		"title": "Angel L. Valdés",
-		"description": "Ingeniero de software con más de 3 años de experiencia en desarrollo web"
+		"description": "Ingeniero de software en México. Desarrollador independiente e investigador en IA, con enfoque en frontend, UX/UI y productos con LLMs."
 	},
 	"copy-right": "Todos los Derechos Reservados."
 }
