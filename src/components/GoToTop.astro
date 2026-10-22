@@ -1,0 +1,23 @@
+---
+import OutlineIcon from "./icons/OutlineIcon.astro";
+---
+
+<button
+	type="button"
+	aria-label="go top"
+	data-go-to-top
+	class="fixed right-10 bottom-10 z-30 hidden size-10 animate-bounce cursor-pointer rounded-xl border-2 border-amber-300 bg-amber-100 p-2 text-amber-600 dark:border-amber-700 dark:bg-zinc-900"
+>
+	<OutlineIcon name="arrowUp" />
+</button>
+
+<script>
+	const button = document.querySelector<HTMLButtonElement>("[data-go-to-top]");
+	if (button) {
+		// Shown once the user has scrolled down 100 pixels.
+		const update = () => button.classList.toggle("hidden", window.scrollY <= 100);
+		window.addEventListener("scroll", update, { passive: true });
+		update();
+		button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+	}
+</script>

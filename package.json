@@ -1,50 +1,36 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "name": "portfolio-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
-    "start": "next start",
-    "lint": "eslint ."
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@formatjs/intl-localematcher": "0.5.2",
-    "@heroicons/react": "2.1.1",
-    "@heroui/react": "latest",
-    "@heroui/system": "latest",
-    "@heroui/theme": "latest",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/react": "^7.1.1",
     "@justinribeiro/lite-youtube": "^1.9.0",
-    "@react-three/drei": "latest",
-    "@react-three/fiber": "latest",
-    "clsx": "^2.1.1",
-    "framer-motion": "^11.11.17",
-    "maath": "0.10.7",
-    "marked": "11.1.1",
-    "negotiator": "0.6.3",
-    "next": "16.1.6",
-    "next-themes": "latest",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "react-icons": "4.12.0",
-    "tailwind-merge": "^3.4.0",
-    "tailwindcss-animate": "^1.0.7",
-    "three": "0.160.0"
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
+    "maath": "^0.10.8",
+    "marked": "^18.1.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.186.1",
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@types/negotiator": "0.6.1",
-    "@types/node": "20",
-    "@types/react": "19.2.10",
-    "@types/react-dom": "19.2.3",
-    "autoprefixer": "10.0.1",
-    "eslint": "8",
-    "eslint-config-next": "15.1.4",
-    "postcss": "8",
-    "tailwindcss": "3.4.0",
-    "typescript": "5"
-  },
-  "overrides": {
-    "@types/react": "19.2.10",
-    "@types/react-dom": "19.2.3"
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0"
   }
 }

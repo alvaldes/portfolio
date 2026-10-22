@@ -1,0 +1,23 @@
+---
+import { DEFAULT_LANG, getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Two languages only: the switcher always points to the one not being shown.
+const targetLang = lang === DEFAULT_LANG ? "en" : DEFAULT_LANG;
+const href = getLocalizedPathname(Astro.url.pathname, targetLang);
+---
+
+<a
+	href={href}
+	hreflang={targetLang}
+	aria-label={t("nav.switch-language")}
+	title={t("nav.switch-language")}
+	class:list={[
+		"flex size-8 items-center justify-center rounded-lg p-1.5",
+		targetLang === "en" ? "bg-indigo-200" : "bg-amber-600",
+	]}
+>
+	<img src={`/images/flags/${targetLang}.svg`} alt="" width="20" height="15" />
+</a>

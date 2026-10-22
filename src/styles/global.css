@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* Class-based dark mode, toggled by ThemeSwitcher on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Self-hosted latin subsets, same files portfolio-next ships (licenses in public/fonts). */
+@font-face {
+	font-family: "M PLUS Rounded 1c";
+	src: url("/fonts/m-plus-rounded-1c-latin-400.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "M PLUS Rounded 1c";
+	src: url("/fonts/m-plus-rounded-1c-latin-500.woff2") format("woff2");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "M PLUS Rounded 1c";
+	src: url("/fonts/m-plus-rounded-1c-latin-700.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Comfortaa";
+	src: url("/fonts/comfortaa-latin-700.woff2") format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Palette from the HeroUI themes in portfolio-next. */
+:root {
+	--background: #f0e7bd;
+	--foreground: #202023;
+	--primary: #0060aa;
+	--primary-foreground: #f0e7bd;
+	--secondary: #d16184;
+	--secondary-strong: #af4066;
+}
+
+.dark {
+	--background: #121212;
+	--foreground: #ecedee;
+	--primary: #3cbea7;
+	--primary-foreground: #202020;
+	--secondary: #8255fd;
+	--secondary-strong: #6420e1;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-strong: var(--secondary-strong);
+
+	--font-mplus: "M PLUS Rounded 1c", ui-sans-serif, system-ui, sans-serif;
+	--font-comfortaa: "Comfortaa", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+	--animate-flip-up: flip-up 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+	--animate-flip-down: flip-down 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+	--animate-fade-up: fade-up 0.8s ease-out both;
+
+	@keyframes flip-up {
+		0% {
+			transform: rotateX(0);
+		}
+		100% {
+			transform: rotateX(-180deg);
+		}
+	}
+
+	@keyframes flip-down {
+		0% {
+			transform: rotateX(-180deg);
+		}
+		100% {
+			transform: rotateX(0);
+		}
+	}
+
+	/* Replaces the framer-motion SectionTransition from portfolio-next. */
+	@keyframes fade-up {
+		0% {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}
+
+/* Banner grid: portrait beside the name on mobile, on the right from sm up. */
+.grid-template {
+	display: grid;
+	grid-template-areas:
+		"portrait info info"
+		"portrait info info"
+		"socials socials socials";
+	grid-template-rows: repeat(3, 1fr);
+	column-gap: 3px;
+}
+
+.grid-info {
+	grid-area: info;
+}
+
+.grid-socials {
+	grid-area: socials;
+}
+
+.grid-portrait {
+	grid-area: portrait;
+}
+
+@media (min-width: 640px) {
+	.grid-template {
+		grid-template-areas:
+			"info info portrait"
+			"socials socials portrait";
+		grid-template-rows: repeat(2, 1fr);
+		row-gap: 8px;
+	}
+}

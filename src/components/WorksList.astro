@@ -1,0 +1,18 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getProjects } from "../lib/projects";
+import Section from "./Section.astro";
+import WorkCard from "./WorkCard.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const projects = getProjects(lang);
+---
+
+<Section delay={0.2} id="works" class="w-full">
+	<h1 class="mb-2 text-2xl font-bold">{t("works.title")}</h1>
+	<hr class="border-foreground/15" />
+	<div class="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+		{projects.map((project, index) => <WorkCard project={project} eager={index === 0} />)}
+	</div>
+</Section>

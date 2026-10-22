@@ -1,0 +1,15 @@
+---
+import { SOLID_ICONS, type SolidIconName } from "./paths";
+
+interface Props {
+	name: SolidIconName;
+	class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const icon = SOLID_ICONS[name];
+---
+
+<svg class={className} viewBox={icon.viewBox} fill="currentColor" aria-hidden="true">
+	{icon.paths.map((d) => <path d={d} />)}
+</svg>

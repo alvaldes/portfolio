@@ -1,0 +1,11 @@
+---
+import WorksList from "../../../components/WorksList.astro";
+import { useTranslations } from "../../../i18n/utils";
+import Layout from "../../../layouts/Layout.astro";
+
+const t = useTranslations("en");
+---
+
+<Layout title={`${t("works.title")} | ${t("site.title")}`}>
+	<WorksList />
+</Layout>

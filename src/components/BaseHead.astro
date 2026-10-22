@@ -1,0 +1,85 @@
+---
+import { LANGUAGES, getLocalizedPathname, type UiType } from "../i18n/utils";
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+	lang: UiType;
+}
+
+const {
+	lang,
+	title,
+	description,
+	image = "/blog-placeholder-1.jpg",
+} = Astro.props;
+
+// Falls back to the request URL when `site` is not set in astro.config.mjs.
+const siteURL = Astro.site ?? Astro.url;
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+
+const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
+	href: new URL(getLocalizedPathname(Astro.url.pathname, hreflang), siteURL),
+	hreflang,
+}));
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Applies the saved or system theme before first paint to avoid a flash. -->
+<script is:inline>
+	(() => {
+		let theme = null;
+		try {
+			theme = localStorage.getItem("theme");
+		} catch {}
+		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		if (theme === "dark" || (theme === null && prefersDark)) {
+			document.documentElement.classList.add("dark");
+		}
+	})();
+</script>
+
+<!-- Font preloads: body text weight, self-hosted (see global.css). -->
+<link
+	rel="preload"
+	href="/fonts/m-plus-rounded-1c-latin-400.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Alternate URLs -->
+{
+	alternateLinks.map(({ href, hreflang }) => (
+		<link rel="alternate" href={href} hreflang={hreflang} />
+	))
+}
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:locale" content={lang} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />

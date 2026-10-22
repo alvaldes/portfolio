@@ -1,0 +1,92 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import OutlineIcon from "./icons/OutlineIcon.astro";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+const mail = t("footer.mail");
+const subject = t("footer.subject_text");
+const fieldClass = "w-full rounded-xl bg-black/5 px-3 py-2 dark:bg-white/10";
+const labelClass = "text-xs text-foreground/70";
+---
+
+<!--
+	Same behavior as portfolio-next's SendMsg: the message opens the visitor's mail client.
+	The mailto action is the no-JS fallback; the script builds a properly encoded URL.
+-->
+<form
+	id="contact-me"
+	action={`mailto:${mail}`}
+	method="get"
+	novalidate
+	data-contact-form
+	data-mail={mail}
+	data-subject={subject}
+	data-error={t("footer.error")}
+	class="mb-8 flex w-full flex-col gap-3 sm:mb-0"
+>
+	<h2 class="text-center text-xl font-medium sm:text-start">{t("footer.contact_me")}</h2>
+
+	<div class="mb-2 flex w-full flex-wrap gap-4 sm:mb-0 xl:flex-nowrap">
+		<div class:list={[fieldClass, "opacity-60"]}>
+			<span class={labelClass}>{t("footer.to")}</span>
+			<p class="flex items-center gap-1 text-sm">
+				<OutlineIcon name="envelope" class="size-4" />
+				{mail}
+			</p>
+		</div>
+		<div class:list={[fieldClass, "opacity-60"]}>
+			<span class={labelClass}>{t("footer.subject")}</span>
+			<p class="text-sm">{subject}</p>
+		</div>
+	</div>
+	<input type="hidden" name="subject" value={subject} />
+
+	<label class:list={[fieldClass, "block has-[textarea[aria-invalid=true]]:bg-red-500/15"]}>
+		<span class={labelClass}>{t("footer.message")} <span class="text-red-500">*</span></span>
+		<textarea
+			name="body"
+			required
+			rows="3"
+			placeholder={t("footer.message_text")}
+			aria-describedby="contact-error"
+			class="block w-full resize-y bg-transparent text-sm outline-none placeholder:text-foreground/50"
+		></textarea>
+	</label>
+	<p id="contact-error" class="-mt-2 hidden text-xs text-red-500" role="alert"></p>
+
+	<button
+		type="submit"
+		class="flex w-fit items-center gap-2 self-center rounded-xl bg-green-500/20 px-8 py-2 text-base font-medium text-green-700 hover:bg-green-500/30 dark:text-green-400"
+	>
+		{t("footer.send")}
+		<OutlineIcon name="paperAirplane" class="size-4" />
+	</button>
+</form>
+
+<script>
+	for (const form of document.querySelectorAll<HTMLFormElement>("[data-contact-form]")) {
+		const textarea = form.querySelector("textarea")!;
+		const error = form.querySelector<HTMLElement>("#contact-error")!;
+		const { mail = "", subject = "", error: errorMessage = "" } = form.dataset;
+
+		const setError = (message: string) => {
+			error.textContent = message;
+			error.classList.toggle("hidden", message === "");
+			textarea.setAttribute("aria-invalid", String(message !== ""));
+		};
+
+		textarea.addEventListener("input", () => setError(""));
+
+		form.addEventListener("submit", (event) => {
+			event.preventDefault();
+			const message = textarea.value;
+			if (message === "") {
+				setError(errorMessage);
+				return;
+			}
+			window.location.href = `mailto:${mail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+			textarea.value = "";
+		});
+	}
+</script>

@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import qrCode from "../assets/images/buymeacoffee_QR.png";
+
+const imageClass = "size-28";
+---
+
+<a
+	href="https://buymeacoffee.com/alvaldes"
+	aria-label="Buy me a coffee"
+	target="_blank"
+	rel="noopener noreferrer"
+	class="group relative flex w-fit overflow-hidden rounded-lg sm:mr-4"
+>
+	<!-- PNG keeps the QR edges sharp; lossy WebP could make it harder to scan. -->
+	<Image
+		src={qrCode}
+		alt="Buy me a coffee QR code"
+		width={112}
+		height={112}
+		densities={[1, 2]}
+		format="png"
+		loading="lazy"
+		class:list={[imageClass, "opacity-100 transition duration-200 group-hover:opacity-0"]}
+	/>
+	<img
+		src="/images/buymeacoffee.svg"
+		alt="Buy me a coffee"
+		width="112"
+		height="112"
+		loading="lazy"
+		class:list={[imageClass, "absolute opacity-0 brightness-95 transition duration-500 group-hover:opacity-100 dark:brightness-100"]}
+	/>
+</a>

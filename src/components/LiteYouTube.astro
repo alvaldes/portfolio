@@ -1,0 +1,20 @@
+---
+interface Props {
+	videoId: string;
+	title: string;
+	playLabel: string;
+	// 16:9 image; when set, no thumbnail is requested from i.ytimg.com.
+	poster?: string;
+}
+
+const { videoId, title, playLabel, poster } = Astro.props;
+---
+
+<lite-youtube videoid={videoId} videotitle={title} videoplay={playLabel} class="block w-full">
+	{poster && <img slot="image" src={poster} alt="" />}
+</lite-youtube>
+
+<script>
+	// Click-to-load player: the iframe is only created when the user hits play.
+	import "@justinribeiro/lite-youtube";
+</script>
