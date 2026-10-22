@@ -27,3 +27,4 @@ pnpm-debug.log*
 .trae/
 .codex/
 .codegraph/
+.vscode/
