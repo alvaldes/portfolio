@@ -15,10 +15,7 @@ const href = getLocalizedPathname(Astro.url.pathname, targetLang);
 	data-lang-switch={targetLang}
 	aria-label={t("nav.switch-language")}
 	title={t("nav.switch-language")}
-	class:list={[
-		"flex size-8 items-center justify-center rounded-lg p-1.5",
-		targetLang === "en" ? "bg-indigo-200" : "bg-amber-600",
-	]}
+	class="flex size-8 items-center justify-center rounded-lg bg-foreground/10 p-1.5 hover:bg-foreground/15"
 >
 	<img src={`/images/flags/${targetLang}.svg`} alt="" width="20" height="15" />
 </a>
