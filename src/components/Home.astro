@@ -74,23 +74,28 @@ const { home } = getDictionary(lang);
 			>
 				{home.cta}
 				<svg
-					class="size-4 transition-[translate] duration-300 group-hover:translate-x-1"
-					viewBox="0 0 16 16"
+					class="h-4 w-5 overflow-visible transition-[translate] duration-300 group-hover:translate-x-1 [&>path]:origin-center [&>path]:animate-flow-x [&>path]:[transform-box:fill-box]"
+					viewBox="0 0 20 16"
 					fill="currentColor"
 					aria-hidden="true"
 				>
-					<!-- Each chevron nudges on its own, the second one later, so they read as steps. -->
+					<!-- Three copies of one chevron, a third of the cycle apart, so they read as a conveyor. -->
 					<path
-						class="animate-nudge-x"
 						fill-rule="evenodd"
 						clip-rule="evenodd"
 						d="M4.53 4.345l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z"
 					></path>
 					<path
-						class="animate-nudge-x [animation-delay:300ms]"
+						style="animation-delay: -667ms"
 						fill-rule="evenodd"
 						clip-rule="evenodd"
-						d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Z"
+						d="M4.53 4.345l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z"
+					></path>
+					<path
+						style="animation-delay: -1333ms"
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M4.53 4.345l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z"
 					></path>
 				</svg>
 			</a>

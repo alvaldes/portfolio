@@ -71,7 +71,7 @@
 	--animate-flip-up: flip-up 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 	--animate-flip-down: flip-down 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 	--animate-fade-up: fade-up 0.8s ease-out both;
-	--animate-nudge-x: nudge-x 1.6s ease-in-out infinite;
+	--animate-flow-x: flow-x 2s linear infinite;
 
 	@keyframes flip-up {
 		0% {
@@ -91,14 +91,27 @@
 		}
 	}
 
-	/* Pulls the eye toward a call to action without moving its layout. */
-	@keyframes nudge-x {
-		0%,
-		100% {
+	/*
+	 * Conveyor of chevrons pointing at a call to action: each one fades in,
+	 * slides one slot, then shrinks out. Run several with delays a fraction of
+	 * the duration apart so a new chevron enters as the last one leaves.
+	 */
+	@keyframes flow-x {
+		0% {
+			opacity: 0;
 			transform: translateX(0);
 		}
-		50% {
-			transform: translateX(3px);
+		33.333% {
+			opacity: 1;
+			transform: translateX(5px);
+		}
+		66.667% {
+			opacity: 1;
+			transform: translateX(10px);
+		}
+		100% {
+			opacity: 0;
+			transform: translateX(15px) scale(0.5);
 		}
 	}
 
