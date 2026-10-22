@@ -175,7 +175,7 @@
 				"sourceCode": "https://github.com/alvaldes/Trivial",
 				"platform": "Web",
 				"active": 1,
-				"stack": "JavaScript, NodeJS, ReactJS, NextJS, Chackra-UI",
+				"stack": "JavaScript, Node.js, React, Next.js, Chakra UI",
 				"thumbCard": "/images/trivial/thumbCard.webp",
 				"thumbFirst": "/images/trivial/thumbFirst.webp",
 				"thumbMockup": "/images/trivial/thumbMockup.webp"
