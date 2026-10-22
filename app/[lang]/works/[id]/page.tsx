@@ -1,7 +1,7 @@
 import { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 import { youTubeVideoId } from "@/lib/utils";
-import { CommandLineIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
+import { CommandLineIcon, FilmIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Divider, Image, Link } from "@heroui/react";
 import { marked } from "marked";
 import { FaGithub, FaYoutube } from "react-icons/fa";
@@ -85,12 +85,14 @@ export default async function Work({
                     <Stacks data={stackList}/>
                 </div>
             </div>
-            {project?.video && videoId && (
+            {project?.video && (
                 <>
                     <Divider className="my-6"/>
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                         <span className="flex items-center font-bold">
-                            <FaYoutube className="mr-2 size-5 text-red-600"/>
+                            {videoId
+                                ? <FaYoutube className="mr-2 size-5 text-red-600"/>
+                                : <FilmIcon width={20} className="mr-2"/>}
                             {works.video}
                         </span>
                         {project.channel && (
@@ -99,7 +101,17 @@ export default async function Work({
                             </Link>
                         )}
                     </div>
-                    <LiteYouTube videoId={videoId} title={project.title} playLabel={works.play} poster={project.videoPoster}/>
+                    {videoId
+                        ? <LiteYouTube videoId={videoId} title={project.title} playLabel={works.play} poster={project.videoPoster}/>
+                        : <video
+                            controls
+                            playsInline
+                            preload="none"
+                            poster={project.videoPoster}
+                            src={project.video}
+                            title={project.title}
+                            className="block w-full aspect-video rounded-xl bg-black"
+                        />}
                 </>
             )}
             <div className="h-full py-8 flex items-center justify-center rounded-none md:rounded-xl overflow-hidden w-full">

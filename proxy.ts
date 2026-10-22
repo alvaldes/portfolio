@@ -66,5 +66,5 @@ export function proxy(request: NextRequest) {
 
 export const config = {
     // Matcher ignoring `/_next/` and `/api/`
-    matcher: ['/((?!api|_next|images|favicon.ico).*)']
+    matcher: ['/((?!api|_next|images|videos|favicon.ico).*)']
 }
