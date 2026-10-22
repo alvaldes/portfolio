@@ -33,13 +33,13 @@ const { home } = getDictionary(lang);
 
 		<div class="grid-template mt-6 py-2">
 			<div class="grid-info mt-8 flex flex-col items-start justify-start gap-1 self-start md:mt-12 lg:mt-14">
-				<h1 class="mb-2 text-2xl font-semibold md:text-3xl">{home.name}</h1>
-				<div class="relative pt-2 pr-0 sm:pt-0 sm:pr-14">
-					<h2 class="text-sm sm:text-lg">{home.description}</h2>
-					<span class="absolute -top-2 right-0 rounded-md bg-secondary px-1.5 text-xs text-primary-foreground shadow-md shadow-secondary/40 sm:-top-3 sm:text-sm">
+				<div class="mb-2 flex flex-wrap items-start gap-x-1.5 gap-y-1">
+					<h1 class="text-2xl font-semibold md:text-3xl">{home.name}</h1>
+					<span class="rounded-lg px-1.5 text-[8px] leading-3.5 font-bold bg-secondary text-primary-foreground shadow-md shadow-secondary/40 sm:text-[10px]">
 						{home.experience}
 					</span>
 				</div>
+				<h2 class="text-sm sm:text-lg">{home.description}</h2>
 			</div>
 			<div class="grid-socials flex items-center justify-center sm:mt-4 sm:items-start sm:justify-start">
 				<Socials withEmail cvUrl={home.cv_url} />
