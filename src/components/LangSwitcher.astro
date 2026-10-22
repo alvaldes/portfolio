@@ -12,6 +12,7 @@ const href = getLocalizedPathname(Astro.url.pathname, targetLang);
 <a
 	href={href}
 	hreflang={targetLang}
+	data-lang-switch={targetLang}
 	aria-label={t("nav.switch-language")}
 	title={t("nav.switch-language")}
 	class:list={[
@@ -21,3 +22,14 @@ const href = getLocalizedPathname(Astro.url.pathname, targetLang);
 >
 	<img src={`/images/flags/${targetLang}.svg`} alt="" width="20" height="15" />
 </a>
+
+<script>
+	// Remembers an explicit language choice. vercel.json only sends "/" to the
+	// browser's language while this cookie is missing, so choosing Spanish from
+	// an English browser does not bounce back to /en/.
+	for (const link of document.querySelectorAll<HTMLAnchorElement>("[data-lang-switch]")) {
+		link.addEventListener("click", () => {
+			document.cookie = `lang=${link.dataset.langSwitch}; path=/; max-age=31536000; samesite=lax`;
+		});
+	}
+</script>
