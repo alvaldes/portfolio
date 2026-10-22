@@ -11,9 +11,21 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",
+    "@astrojs/react": "^7.1.1",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.4.2",
+    "maath": "^0.10.8",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.3",
+    "three": "^0.186.1",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0"
   }
 }
