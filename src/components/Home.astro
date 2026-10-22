@@ -1,0 +1,92 @@
+---
+import EarthCanvas from "./islands/EarthCanvas";
+import StarsCanvas from "./islands/StarsCanvas";
+import { getDictionary, getLangFromUrl, getLocalizedPathname } from "../i18n/utils";
+import InteractionHint from "./InteractionHint.astro";
+import Section from "./Section.astro";
+import Socials from "./Socials.astro";
+import Timeline from "./Timeline.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const { home } = getDictionary(lang);
+---
+
+<article class="mx-auto flex flex-col">
+	<Section delay={0.2} id="banner" class="mt-3 flex flex-col gap-4">
+		<div class="relative h-64 sm:h-72 lg:h-96">
+			<!-- Islands: three.js only loads once the banner is on screen. -->
+			<div class="relative h-full">
+				<EarthCanvas client:visible />
+				<InteractionHint />
+			</div>
+			<div class="absolute inset-0 -z-10 h-auto w-full">
+				<StarsCanvas client:visible />
+			</div>
+		</div>
+
+		<span class="rounded-md bg-black/5 px-11 py-3 text-center font-comfortaa font-black dark:bg-white/10">
+			{home.banner}
+		</span>
+
+		<div class="grid-template mt-6 py-2">
+			<div class="grid-info mt-8 flex flex-col items-start justify-start gap-1 self-start md:mt-12 lg:mt-14">
+				<h1 class="mb-2 text-2xl font-semibold md:text-3xl">{home.name}</h1>
+				<div class="relative pt-2 pr-0 sm:pt-0 sm:pr-14">
+					<h2 class="text-sm sm:text-lg">{home.description}</h2>
+					<span class="absolute -top-2 right-0 rounded-md bg-amber-500 px-1.5 text-xs text-black sm:-top-3 sm:text-sm">
+						{home.experience}
+					</span>
+				</div>
+			</div>
+			<div class="grid-socials flex items-center justify-center sm:mt-4 sm:items-start sm:justify-start">
+				<Socials withEmail cvUrl={home.cv_url} />
+			</div>
+			<div class="grid-portrait flex shrink-0 justify-center">
+				<img
+					src="/images/blob.svg"
+					alt=""
+					width="200"
+					height="200"
+					class="absolute -z-0 size-36 brightness-50 contrast-125 hue-rotate-15 md:size-60 dark:brightness-50 dark:contrast-100 dark:hue-rotate-0"
+				/>
+				<img
+					src="/images/angel.webp"
+					alt={home.name}
+					width="130"
+					height="130"
+					class="z-10 mt-4 ml-0 size-28 rounded-full border-2 border-teal-800 md:mt-9 md:size-40 dark:border-teal-600"
+				/>
+			</div>
+		</div>
+	</Section>
+
+	<Section delay={0.3} id="bio" class="mt-8 flex flex-col gap-4 md:mt-0">
+		<h1 class="text-2xl font-bold">{home.bio}</h1>
+		<hr class="border-foreground/15" />
+		<p>
+			{home.resume}
+			<a href={getLocalizedPathname(home.currentProject.url, lang)} class="font-medium text-secondary hover:underline">
+				{home.currentProject.label}
+			</a>.
+		</p>
+		<div class="flex justify-center">
+			<a
+				href={getLocalizedPathname("/works", lang)}
+				class="flex items-center gap-2 rounded-xl bg-primary px-8 py-3 text-lg font-bold text-primary-foreground hover:opacity-90"
+			>
+				Portfolio
+				<svg class="size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Zm-8.25-3.25 3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z"
+					></path>
+				</svg>
+			</a>
+		</div>
+	</Section>
+
+	<Section delay={0.4} id="timeline">
+		<Timeline data={home.timeline} />
+	</Section>
+</article>

@@ -21,26 +21,27 @@ const { title = t("site.title") } = Astro.props;
 	<head>
 		<BaseHead lang={lang} title={title} description={t("site.description")} />
 	</head>
-	<body class="bg-zinc-50 dark:bg-zinc-900">
-		<div class="pb-8">
-			<Navbar />
-	  
-			<div class="pt-14 container mx-auto w-4/5 md:w-7/12">
-				<slot />
-			</div>
-			<div class="mx-auto text-center pt-1">
-			  <!-- <CommentForm id="contact" /> -->
-			  <span class="text-gray-800 dark:text-zinc-300">
-				&copy; {new Date().getFullYear()} Angel Valdés. {t("copy-right")}
-			  </span>
+	<body class="container mx-auto bg-background px-4 pb-8 font-mplus text-foreground">
+		<!-- Grid backdrop with a soft glow, as in portfolio-next. -->
+		<div class="fixed top-0 left-0 -z-10 size-full" aria-hidden="true">
+			<div class="absolute inset-0 -z-10 size-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px]">
+				<div class="absolute top-0 right-0 left-0 -z-10 m-auto size-[310px] rounded-full bg-rose-900 opacity-40 blur-[100px] dark:bg-amber-500 dark:opacity-20"></div>
 			</div>
 		</div>
+
+		<header class="lg:max-w-[75%]">
+			<Navbar />
+		</header>
+
+		<main class="mx-auto mt-20 w-full lg:max-w-[75%]">
+			<slot />
+		</main>
+
+		<footer class="mx-auto pt-1 text-center">
+			<!-- <CommentForm id="contact" /> -->
+			<span class="text-foreground/80">
+				&copy; {new Date().getFullYear()} Angel Valdés. {t("copy-right")}
+			</span>
+		</footer>
 	</body>
 </html>
-
-<style>
-	@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800;900&display=swap');
-	.link-font {
-		font-family: 'M PLUS Rounded 1c', sans-serif;
-	}
-  </style>

@@ -46,6 +46,11 @@ export function useTranslations(lang: UiType) {
 	};
 }
 
+// Structured content (lists, nested objects) that `t()` cannot return as a string.
+export function getDictionary(lang: UiType) {
+	return ui[lang];
+}
+
 export function pathNameIsInLanguage(pathname: string, lang: UiType): boolean {
 	return getLangFromUrl(new URL(pathname, "http://localhost")) === lang;
 }

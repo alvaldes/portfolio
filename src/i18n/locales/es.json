@@ -1,50 +1,204 @@
 {
-    "site": {
-        "title": "Astro Blog",
-        "description": "Bienvenido a mi sitio web!"
-    },
-    "nav":{
-        "home": "Inicio",
-        "menu": "Menú",
-        "toggle-theme": "Cambiar tema",
-        "switch-language": "Read in English",
-        "works": "Trabajos",
-        "contact": "Contacto",
-        "source": "Código",
-        "view-source": "Ver Código"
-    },
-    "contact-me": {
-        "title": "Contactame",
-        "subject": " Mensaje del Portafolio",
-        "message": "Mensaje",
-        "placeholder": "Ingresa el mensaje aquí",
-        "send": "Enviar",
-        "error": "Debes insertar un mensaje."
-    },
-    "home":{
-        "title": "Bienvenido a",
-        "banner": "Hola, soy Ingeriero de Software y vivo en Cuba!",
-        "skills": "Desarrollador Web (Front-end / Back-end / Diseño)",
-        "work-title": "Trabajo",
-        "work-descip": "Angel es un ingeniero informático recién graduado que ofrece entusiasmo e ideas innovadoras. Experiencia demostrada en programación web y apasionado por las interfaces dinámicas y el código limpio. Experiencia trabajando con equipos para producir sitios web impactantes y de vanguardia que atraigan a los clientes y brinden resultados comerciales. Conocedor de los estándares de diseño y las preferencias del usuario. La experiencia incluye el diseño de sitios web responsivos en entornos ágiles. Trabajador de equipo excepcional con un enfoque analítico para desarrollar soluciones útiles. Actualmente, trabajando en",
-        "current-name": "Trivial",
-        "current-link": "trivial",
-        "my-portfolio": "Mi Portafolio",
-        "bio":{
-            "bio":"Bio",
-            "1997": "Nací en La Habana, Cuba.",
-            "2021": "Completé la carrera de Ingeniería en Ciencias Informáticas en la Universidad de las Ciencias Informáticas (UCI).",
-            "2022": "Trabajé como desarrollador Front-end en la Universidad Tecnológica de La Habana \"José Antonio Echeverría\" (CUJAE).",
-            "to-present": "al presente"
-        },
-        "love": {
-            "love": "Yo",
-            "list": "Fotografía, Diseño, Nadar, Bailar, Karaoke y Café"
-        },
-        "my-links": "Mis Enlaces"
-    },
-    "works":{
-        "personal": "Proyectos Personales"
-    },
-    "copy-right":"Todos los Derechos Reservados."
+	"nav": {
+		"home": "Inicio",
+		"works": "Trabajos",
+		"contact": "Contáctame",
+		"source": "Código",
+		"menu": "Menú",
+		"toggle-theme": "Cambiar tema",
+		"switch-language": "Read in English"
+	},
+	"home": {
+		"banner": "Hola, soy un Ingeniero de Software residente en México!",
+		"experience": "Desde 2016",
+		"name": "Angel L. Valdés",
+		"description": "Desarrollador Frontend y Full-Stack",
+		"bio": "Biografía",
+		"resume": "Desarrollador Full-Stack con enfoque en frontend y pasión por el UX/UI. Programo desde 2016 y tengo casi 3 años de experiencia profesional construyendo aplicaciones con Angular, React y Spring Boot, incluidas apps de transporte público para el País Vasco (España). Actualmente curso una Maestría en Ingeniería de Software, donde investigo cómo los LLMs pueden automatizar la ingeniería de requisitos, e integro IA en productos cuando aporta valor real. Descubre mi trabajo más reciente en ",
+		"currentProject": {
+			"label": "storico",
+			"url": "/works/storico"
+		},
+		"cv_url": "https://drive.google.com/file/d/1cd6pyAceOjnHdsVBi9efrO5dFfUilqV_/view?usp=sharing",
+		"timeline": [
+			{
+				"date": "Sep-2024 al Presente",
+				"title": "Maestría en Ingeniería de Software",
+				"description": "Actualmente estoy cursando una Maestría en Ingeniería de Software en la Universidad Tecnológica de la Mixteca (UTM) en Oaxaca, México.",
+				"icon": "rocketLaunch"
+			},
+			{
+				"date": "Dic-2022 a Sep-2024",
+				"title": "GENTALIA.SA",
+				"description": "Como Desarrollador Full-Stack, desarrollé y mantuve apps de transporte público para el País Vasco (España) con Angular y Spring Boot: Lurraldebus, con tiempos de llegada en tiempo real y planificación de rutas entre municipios, y LurTicket, para la compra de boletos móviles en rutas de larga distancia.",
+				"icon": "briefcase"
+			},
+			{
+				"date": "Ene-2022 a Nov-2022",
+				"title": "Universidad CUJAE",
+				"description": "Como Desarrollador Web Full-Stack en la Dirección de Servicios de las TIC (DISERTIC) de la Universidad Tecnológica de La Habana José Antonio Echeverría (CUJAE), desarrollé sitios web a medida con React y Spring Boot y formé a nuevos miembros del equipo.",
+				"icon": "buildingLibrary"
+			},
+			{
+				"date": "Sep-2016 a Dic-2021",
+				"title": "Ingeniería en Ciencias Informáticas",
+				"description": "Me gradué como Ingeniero en Ciencias Informáticas en la Universidad de las Ciencias Informáticas (UCI) en La Habana, con un promedio de 4.74/5. El título está revalidado en México por la SEP.",
+				"icon": "academicCap"
+			}
+		]
+	},
+	"works": {
+		"title": "Proyectos",
+		"more": "Ver Detalles",
+		"goToWeb": "ir al Sitio",
+		"website": "Sitio Web",
+		"sourceCode": "Código",
+		"stack": "Stack",
+		"video": "Video",
+		"channel": "Canal de YouTube",
+		"play": "Reproducir",
+		"projects": [
+			{
+				"id": "storico",
+				"title": "Storico",
+				"year": "2026",
+				"shortDescription": "Herramienta impulsada por LLMs que convierte historias de usuario en lenguaje natural en tareas Kanban estructuradas.",
+				"longDescription": "**Storico** es una herramienta impulsada por LLMs que automatiza la descomposición de historias de usuario en lenguaje natural en tareas Kanban estructuradas. Un backend hexagonal en FastAPI valida cada historia contra el formato de historia de usuario (Como … quiero … para …), extrae su actor, acción y beneficio, y genera tareas editables y versionadas con modelos locales de Ollama o con un proveedor en la nube. El frontend en Astro y React convierte esas tareas en un tablero Kanban que podés reestructurar, y cualquier selección se puede exportar a CSV, JSON o Markdown, o enviarse directamente a un tablero de Trello. Es mi proyecto de tesis de maestría en la Universidad Tecnológica de la Mixteca (UTM), en Oaxaca, México.",
+				"website": "https://storico.vercel.app/",
+				"sourceCode": "https://github.com/alvaldes/storico",
+				"video": "https://youtu.be/VLvg0Lpxmng",
+				"channel": "https://www.youtube.com/@storico-app",
+				"videoPoster": "/images/storico/videoPoster.webp",
+				"platform": "Web",
+				"active": 1,
+				"stack": "Python, FastAPI, Astro, React, PostgreSQL, Ollama",
+				"thumbCard": "/images/storico/thumbCard.webp",
+				"thumbFirst": "/images/storico/thumbFirst.webp",
+				"thumbMockup": "/images/storico/thumbMockup.webp"
+			},
+			{
+				"id": "flowmodoro",
+				"title": "Flowmodoro",
+				"year": "2026",
+				"shortDescription": "Temporizador de foco que cuenta hacia arriba mientras trabajás y convierte ese tiempo de flow en un descanso proporcional.",
+				"longDescription": "**Flowmodoro** es un temporizador de foco que abandona los intervalos rígidos del Pomodoro: cuenta **hacia arriba** mientras trabajás y, cuando decidís cortar, calcula un descanso proporcional —alrededor del 20% de la sesión por defecto, ajustable entre 8% y 50%. La app de Android en Expo y React Native se instala con una descarga directa, guarda cada sesión en el dispositivo y, en el plan Pro, suma sincronización en la nube, estadísticas más profundas y los extras de automatización, sobre Supabase y Stripe. Alarmas, notificaciones y un ciclo opcional de auto-foco después de cada descanso completan el flow.",
+				"website": "https://flowmodoro-app.vercel.app/",
+				"video": "/videos/flowmodoro/brag.mp4",
+				"videoPoster": "/images/flowmodoro/videoPoster.webp",
+				"platform": "Android, Web",
+				"active": 1,
+				"stack": "Expo, React Native, TypeScript, Supabase, Stripe",
+				"thumbCard": "/images/flowmodoro/thumbCard.webp",
+				"thumbFirst": "/images/flowmodoro/thumbFirst.webp",
+				"thumbMockup": "/images/flowmodoro/thumbMockup.webp"
+			},
+			{
+				"id": "csv2trello",
+				"title": "csv2trello",
+				"year": "2026",
+				"shortDescription": "Herramienta interactiva TUI y CLI que convierte CSV en tableros Trello.",
+				"longDescription": "Herramienta interactiva TUI y CLI que convierte archivos CSV que contienen historias de usuarios y tareas en tableros Trello automáticamente.",
+				"sourceCode": "https://github.com/alvaldes/csv2trello",
+				"platform": "Terminal",
+				"active": 1,
+				"stack": "Python, Textual, Trello API",
+				"thumbCard": "/images/csv2trello/thumbCard.webp",
+				"thumbFirst": "/images/csv2trello/thumbFirst.webp",
+				"thumbMockup": "/images/csv2trello/thumbMockup.webp"
+			},
+			{
+				"id": "web-tools",
+				"title": "ωεβ Τσφδ",
+				"year": "2024",
+				"shortDescription": "Una colección completa de recursos y herramientas web.",
+				"longDescription": "Web Tools es un proyecto web innovador diseñado para simplificar el acceso a una colección seleccionada de herramientas y recursos web, impulsado por Astro e integrado con la API de Notion como su base de datos. Esta plataforma tiene como objetivo servir a desarrolladores, diseñadores, empresarios y cualquier persona que busque mejorar su presencia en línea con herramientas digitales eficientes y fáciles de usar.",
+				"website": "https://web-tools.vercel.app/",
+				"sourceCode": "https://github.com/alvaldes/web-tools",
+				"platform": "Web",
+				"active": 1,
+				"stack": "Astro, TailwindCSS, Notion API",
+				"thumbCard": "/images/web-tools/thumbCard.webp",
+				"thumbFirst": "/images/web-tools/thumbFirst.webp",
+				"thumbMockup": "/images/web-tools/thumbMockup.webp"
+			},
+			{
+				"id": "search-intranet",
+				"title": "search-intranet",
+				"year": "2022",
+				"shortDescription": "Un motor de búsqueda para la Intranet de CUJAE.",
+				"longDescription": "En la Universidad José Antonio Echeverría (CUJAE) de la Habana, Cuba, se ha implementado un motor de búsqueda para la Intranet. Este motor no solo es eficiente para buscar y localizar información relevante, sino que también interactúa con un Servicio de Directorio Ligero de Acceso a Directorios (LDAP). En el caso de CUJAE, esto permite que nuestro motor de búsqueda acceda a la información del directorio, como los detalles del usuario y la estructura de la red, para proporcionar resultados de búsqueda más precisos y personalizados. Cabe destacar que este motor de búsqueda está disponible solo en la red interna de nuestro campus universitario.",
+				"website": "red del campus universitario",
+				"sourceCode": "https://github.com/alvaldes/search-intranet",
+				"platform": "Web",
+				"active": 1,
+				"stack": "React.JS, TailwindCSS",
+				"thumbCard": "/images/search-intranet/thumbCard.webp",
+				"thumbFirst": "/images/search-intranet/thumbFirst.webp",
+				"thumbMockup": "/images/search-intranet/thumbMockup.webp"
+			},
+			{
+				"id": "aterm",
+				"title": "aterm",
+				"year": "2022",
+				"shortDescription": "Una terminal web interactiva para portfolios.",
+				"longDescription": "**aterm** es un sitio web estático o portfolio que simula una terminal. Sin embargo, la experiencia mejora considerablemente cuando los visitantes pueden interactuar escribiendo comandos y obtener resultados, similar a una terminal real. Puedes llamarlo Terminal Falso, ya que no ofrece las capacidades completas de un shell real, como SSH.",
+				"website": "https://aterm.netlify.app/",
+				"sourceCode": "https://github.com/alvaldes/aterm",
+				"platform": "Web",
+				"active": 1,
+				"stack": "HTML, CSS, JavaScript",
+				"thumbCard": "/images/aterm/thumbCard.webp",
+				"thumbFirst": "/images/aterm/thumbFirst.webp",
+				"thumbMockup": "/images/aterm/thumbMockup.webp"
+			},
+			{
+				"id": "trivial",
+				"title": "Trivial",
+				"year": "2021",
+				"shortDescription": "Un juego donde los jugadores responden preguntas sobre diferentes temas y tratan de acertar la mayor cantidad posible.",
+				"longDescription": "**Trivial** es un tipo de juego en el cual los participantes responden preguntas sobre diversos temas con el objetivo de obtener la mayor cantidad de respuestas correctas posible. Además de mejorar y ampliar el conocimiento, ya sea de manera general o en áreas más específicas, este estilo de juego está diseñado para que los concursantes se diviertan mientras participan. Su principal objetivo es fomentar la discusión y el debate saludable entre los participantes. De hecho, no es obligatorio que los ganadores de la Trivia reciban un premio y casi todos están de acuerdo con eso, ya que el principal objetivo es disfrutar y aprender al mismo tiempo. Las preguntas y respuestas de la Trivia se pueden adaptar a cualquier audiencia y pueden utilizarse en escuelas y universidades para ayudar en el desarrollo de habilidades lingüísticas y evaluar niveles de conocimiento y habilidades.",
+				"website": "https://trivial.alvaldes.vercel.app",
+				"sourceCode": "https://github.com/alvaldes/Trivial",
+				"platform": "Web",
+				"active": 1,
+				"stack": "JavaScript, Node.JS, React.JS, Next.JS, Chackra-UI",
+				"thumbCard": "/images/trivial/thumbCard.webp",
+				"thumbFirst": "/images/trivial/thumbFirst.webp",
+				"thumbMockup": "/images/trivial/thumbMockup.webp"
+			},
+			{
+				"id": "localllm-dataforge",
+				"title": "LocalLLM-DataForge",
+				"year": "2024",
+				"shortDescription": "Un pipeline simplificado inspirado en Distilabel para creación de datasets sintéticos usando pandas DataFrames y modelos Ollama locales.",
+				"longDescription": "**LocalLLM-DataForge** es una arquitectura de pipeline de datos para descomponer historias de usuario en tareas de desarrollo usando LLMs locales con Ollama. Inspirado en Distilabel, organiza el procesamiento siguiendo el flujo natural de los datos: Entrada → Procesamiento LLM → Validación/Reparación → Salida. Incluye soporte nativo para pandas DataFrames, arquitectura de pasos modular, caché automático, procesamiento paralelo por lotes, validación LLM-as-a-judge, comparación de generadores duales y reparación JSON para manejo robusto de salidas de LLMs.",
+				"sourceCode": "https://github.com/alvaldes/localllm-dataforge",
+				"platform": "Python/CLI",
+				"active": 1,
+				"stack": "Python, Pandas, Ollama, Pytest",
+				"thumbCard": "/images/localllm-dataforge/thumbCard.webp",
+				"thumbFirst": "/images/localllm-dataforge/thumbFirst.webp",
+				"thumbMockup": "/images/localllm-dataforge/thumbMockup.webp"
+			}
+		]
+	},
+	"footer": {
+		"contact_me": "Escribeme 🧑‍💻",
+		"to": "a:",
+		"mail": "alvaldes.dev@gmail.com",
+		"subject": "Asunto:",
+		"subject_text": "Consulta del portafolio: ¡Conectemos!",
+		"message": "Mensaje",
+		"message_text": "Ingresa el mensaje aquí",
+		"send": "Enviar",
+		"error": "Debe especificar el mensaje antes de enviarlo.",
+		"copy1": "Gracias a",
+		"copy2": "por su inspiración.",
+		"buyMeACoffee": "¡Apóyame con un café!"
+	},
+	"site": {
+		"title": "Angel L. Valdés",
+		"description": "Ingeniero de software con más de 3 años de experiencia en desarrollo web"
+	},
+	"copy-right": "Todos los Derechos Reservados."
 }

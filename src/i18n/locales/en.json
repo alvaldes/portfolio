@@ -1,50 +1,204 @@
 {
-    "site": {
-        "title": "Astro Blog",
-        "description": "Welcome to my website!"
-    },
-    "nav":{
-        "home": "Home",
-        "menu": "Menu",
-        "toggle-theme": "Toggle theme",
-        "switch-language": "Leer en español",
-        "works": "Works",
-        "contact": "Contact",
-        "source": "Source",
-        "view-source": "View Source"
-    },
-    "contact-me": {
-        "title": "Contact Me",
-        "subject": " Message from Portfolio",
-        "message": "Message",
-        "placeholder": "Enter you message here",
-        "send": "Send",
-        "error": "Message is required."
-    },
-    "home":{
-        "title": "Welcome to",
-        "banner": "Hello, I'm a Software Engineer base in Cuba!",
-        "skills": "Web Developer (Front-end / Back-end / Design)",
-        "work-title": "Work",
-        "work-descip": "Angel is a newly graduated computer engineer offering enthusiasm and innovative ideas. Demonstrated experience in web programming and passionate about dynamic interfaces and clean code. Experienced working with teams to produce impactful, leading-edge websites that engage customers and deliver business results. Well-versed in design standards and user preferences. Background includes responsive designing websites in Agile environments. Exceptional team player with an analytical approach to developing useful solutions. Currently, proyect called",
-        "current-name": "Trivial",
-        "current-link": "trivial",
-        "my-portfolio": "My Portfolio",
-        "bio":{
-            "bio":"Bio",
-            "1997": "Born in Havana, Cuba.",
-            "2021": "Completed the degree in Computer Engineering at Universidad de las Ciencias Informáticas (UCI).",
-            "2022": "Works as a Front-end dev at Universidad Tecnológica de La Habana \"José Antonio Echeverría\" (CUJAE).",
-            "to-present": "to present"
-        },
-        "love": {
-            "love": "I",
-            "list": "Photography, Design, Swim, Dancing, Karaoke and Coffee"
-        },
-        "my-links": "My Links"
-    },
-    "works":{
-        "personal": "Personal Proyects"
-    },
-    "copy-right":"All Rights Reserved."
+	"nav": {
+		"home": "Home",
+		"works": "Works",
+		"contact": "Contact me",
+		"source": "Source Code",
+		"menu": "Menu",
+		"toggle-theme": "Toggle theme",
+		"switch-language": "Leer en español"
+	},
+	"home": {
+		"banner": "Hello, I'm a Software Engineer base in Mexico!",
+		"experience": "Since 2016",
+		"name": "Angel L. Valdés",
+		"description": "Frontend & Full-Stack Developer",
+		"bio": "Biography",
+		"resume": "Frontend-focused Full-Stack Developer passionate about UX/UI. I have been programming since 2016 and have nearly 3 years of professional experience building Angular, React and Spring Boot applications, including public transportation apps for the Basque Country (Spain). I am currently pursuing a Master's degree in Software Engineering, researching how LLMs can automate requirements engineering, and I integrate AI into products where it adds real value. Check out my latest work on ",
+		"currentProject": {
+			"label": "storico",
+			"url": "/works/storico"
+		},
+		"cv_url": "https://drive.google.com/file/d/1556Ps7OBVB0a0qEFa8fXScy93bq-U-3Q/view?usp=sharing",
+		"timeline": [
+			{
+				"date": "Sep-2024 to Present",
+				"title": "Master's Degree in Software Engineering",
+				"description": "I am currently pursuing a Master’s degree in Software Engineering at the Technological University of the Mixteca (UTM) in Oaxaca, Mexico.",
+				"icon": "rocketLaunch"
+			},
+			{
+				"date": "Dec-2022 to Sep-2024",
+				"title": "GENTALIA.SA",
+				"description": "As a Full-Stack Developer, I built and maintained public transportation apps for the Basque Country (Spain) with Angular and Spring Boot: Lurraldebus, with real-time arrival times and route planning between municipalities, and LurTicket, for mobile ticket purchases on long-distance routes.",
+				"icon": "briefcase"
+			},
+			{
+				"date": "Jan-2022 to Nov-2022",
+				"title": "CUJAE University",
+				"description": "As a Full-Stack Web Developer at the Directorate of ICT Services (DISERTIC) of the Technological University of Havana José Antonio Echeverría (CUJAE), I built custom websites with React and Spring Boot and trained new team members.",
+				"icon": "buildingLibrary"
+			},
+			{
+				"date": "Sep-2016 to Dec-2021",
+				"title": "Computer Science Engineering Degree",
+				"description": "I earned a degree in Computer Science Engineering (Ingeniero en Ciencias Informáticas) at the University of Informatics Sciences (UCI) in Havana, graduating with 4.74/5. The degree is revalidated in Mexico by the SEP.",
+				"icon": "academicCap"
+			}
+		]
+	},
+	"works": {
+		"title": "Projects",
+		"more": "View Details",
+		"goToWeb": "go to website",
+		"website": "Website",
+		"sourceCode": "Source Code",
+		"stack": "Stack",
+		"video": "Video",
+		"channel": "YouTube channel",
+		"play": "Play",
+		"projects": [
+			{
+				"id": "storico",
+				"title": "Storico",
+				"year": "2026",
+				"shortDescription": "LLM-powered tool that turns natural language user stories into structured Kanban tasks.",
+				"longDescription": "**Storico** is an LLM-powered tool that automates decomposing natural language user stories into structured Kanban tasks. A hexagonal FastAPI backend validates each story against the user story format (As a(n) … I want … so that …), extracts its actor, action and benefit, and generates editable, versioned tasks with local Ollama models or a cloud provider. The Astro and React frontend turns those tasks into a Kanban board you can restructure, and any selection can be exported as CSV, JSON or Markdown, or sent straight to a Trello board. It is my Master's thesis project at the Technological University of the Mixteca (UTM) in Oaxaca, Mexico.",
+				"website": "https://storico.vercel.app/",
+				"sourceCode": "https://github.com/alvaldes/storico",
+				"video": "https://youtu.be/VLvg0Lpxmng",
+				"channel": "https://www.youtube.com/@storico-app",
+				"videoPoster": "/images/storico/videoPoster.webp",
+				"platform": "Web",
+				"active": 1,
+				"stack": "Python, FastAPI, Astro, React, PostgreSQL, Ollama",
+				"thumbCard": "/images/storico/thumbCard.webp",
+				"thumbFirst": "/images/storico/thumbFirst.webp",
+				"thumbMockup": "/images/storico/thumbMockup.webp"
+			},
+			{
+				"id": "flowmodoro",
+				"title": "Flowmodoro",
+				"year": "2026",
+				"shortDescription": "Focus timer that counts up while you work and turns your flow time into a proportional break.",
+				"longDescription": "**Flowmodoro** is a focus timer that drops the rigid Pomodoro intervals: it counts **up** while you work and, when you decide to stop, calculates a proportional break — around 20% of the session by default, adjustable from 8% to 50%. The Expo and React Native Android app installs from a direct download, keeps every session on the device, and on the Pro plan adds cloud sync, deeper statistics and the automation extras, backed by Supabase and Stripe. Alarms, notifications and an optional auto-focus cycle after each break complete the flow.",
+				"website": "https://flowmodoro-app.vercel.app/",
+				"video": "/videos/flowmodoro/brag.mp4",
+				"videoPoster": "/images/flowmodoro/videoPoster.webp",
+				"platform": "Android, Web",
+				"active": 1,
+				"stack": "Expo, React Native, TypeScript, Supabase, Stripe",
+				"thumbCard": "/images/flowmodoro/thumbCard.webp",
+				"thumbFirst": "/images/flowmodoro/thumbFirst.webp",
+				"thumbMockup": "/images/flowmodoro/thumbMockup.webp"
+			},
+			{
+				"id": "localllm-dataforge",
+				"title": "LocalLLM-DataForge",
+				"year": "2026",
+				"shortDescription": "A simplified Distilabel-inspired pipeline for synthetic dataset creation using pandas DataFrames and local Ollama models.",
+				"longDescription": "**LocalLLM-DataForge** is a data pipeline architecture for decomposing user stories into development tasks using local LLMs with Ollama. Inspired by Distilabel, it organizes processing following the natural data flow: Input → LLM Processing → Validation/Repair → Output. Features native pandas DataFrame support, step-based processing architecture, automatic caching, parallel batch processing, LLM-as-a-judge validation, dual generator comparison, and JSON repair for robust LLM output handling.",
+				"sourceCode": "https://github.com/alvaldes/localllm-dataforge",
+				"platform": "Python/CLI",
+				"active": 1,
+				"stack": "Python, Pandas, Ollama, Pytest",
+				"thumbCard": "/images/localllm-dataforge/thumbCard.webp",
+				"thumbFirst": "/images/localllm-dataforge/thumbFirst.webp",
+				"thumbMockup": "/images/localllm-dataforge/thumbMockup.webp"
+			},
+			{
+				"id": "csv2trello",
+				"title": "csv2trello",
+				"year": "2026",
+				"shortDescription": "Interactive TUI and CLI tool that converts CSV into Trello boards.",
+				"longDescription": "Interactive TUI and CLI tool that converts CSV files containing user stories and tasks into Trello boards automatically.",
+				"sourceCode": "https://github.com/alvaldes/csv2trello",
+				"platform": "Terminal",
+				"active": 1,
+				"stack": "Python, Textual, Trello API",
+				"thumbCard": "/images/csv2trello/thumbCard.webp",
+				"thumbFirst": "/images/csv2trello/thumbFirst.webp",
+				"thumbMockup": "/images/csv2trello/thumbMockup.webp"
+			},
+			{
+				"id": "web-tools",
+				"title": "ωεβ Τσφδ",
+				"year": "2024",
+				"shortDescription": "A comprehensive collection of web resources and tools",
+				"longDescription": "Web Tools is an innovative web project designed to streamline access to a curated collection of web tools and resources, powered by Astro and integrated with the Notion API as its database. This platform aims to serve developers, designers, entrepreneurs, and anyone looking to enhance their online presence with efficient and user-friendly digital tools.",
+				"website": "https://web-tools.vercel.app/",
+				"sourceCode": "https://github.com/alvaldes/web-tools",
+				"platform": "Web",
+				"active": 1,
+				"stack": "Astro, TailwindCSS, Notion API",
+				"thumbCard": "/images/web-tools/thumbCard.webp",
+				"thumbFirst": "/images/web-tools/thumbFirst.webp",
+				"thumbMockup": "/images/web-tools/thumbMockup.webp"
+			},
+			{
+				"id": "search-intranet",
+				"title": "search-intranet",
+				"year": "2022",
+				"shortDescription": "A search engine to CUJAE 's Intranet",
+				"longDescription": "At the José Antonio Echeverría University (CUJAE) in Havana, Cuba, there is a search engine for the Intranet. This engine is not only efficient in searching and locating relevant information, but it also interacts with a Lightweight Directory Access Protocol (LDAP). In the case of CUJAE, this allows the search engine to access directory information, such as user details and network structure, to provide more accurate and personalized search results. It’s worth noting that this search engine is only available on the internal network of the university campus.",
+				"website": "university campus network",
+				"sourceCode": "https://github.com/alvaldes/search-intranet",
+				"platform": "Web",
+				"active": 1,
+				"stack": "React.JS, TailwindCSS",
+				"thumbCard": "/images/search-intranet/thumbCard.webp",
+				"thumbFirst": "/images/search-intranet/thumbFirst.webp",
+				"thumbMockup": "/images/search-intranet/thumbMockup.webp"
+			},
+			{
+				"id": "aterm",
+				"title": "aterm",
+				"year": "2022",
+				"shortDescription": "A interactive portfolio web terminal.",
+				"longDescription": "**aterm** is a static website or portfolio, that looks like a terminal. But it’s much better if someone that visits the web page, can actually type some commands and get the output like in a real styled terminal. You can call it Fake Terminal because it will not give you what a real shell-like SSH gives you.",
+				"website": "https://aterm.netlify.app/",
+				"sourceCode": "https://github.com/alvaldes/aterm",
+				"platform": "Web",
+				"active": 1,
+				"stack": "HTML, CSS, JavaScript",
+				"thumbCard": "/images/aterm/thumbCard.webp",
+				"thumbFirst": "/images/aterm/thumbFirst.webp",
+				"thumbMockup": "/images/aterm/thumbMockup.webp"
+			},
+			{
+				"id": "trivial",
+				"title": "Trivial",
+				"year": "2021",
+				"shortDescription": "A game where players are asked questions on different topics and have to get as many answers as possible right.",
+				"longDescription": "**Trivial** is a type of game in which players are asked questions about different topics and they have to get as many correct answers as possible. Besides having the benefit of improving and expanding your knowledge, either general or in more specific areas, this style of game is designed so that the contestants have fun playing, and its main objective is to create discussion and healthy debate among participants. In fact it is not mandatory that Trivia winners have to get a prize and almost everyone is ok with that as their main objective is to have fun and learn at the same time. Trivia questions and answers can be adapted to any audience and can be used in schools and universities to assist in language skills development and to test knowledge and skills levels.",
+				"website": "https://trivial.alvaldes.vercel.app",
+				"sourceCode": "https://github.com/alvaldes/Trivial",
+				"platform": "Web",
+				"active": 1,
+				"stack": "JavaScript, NodeJS, ReactJS, NextJS, Chackra-UI",
+				"thumbCard": "/images/trivial/thumbCard.webp",
+				"thumbFirst": "/images/trivial/thumbFirst.webp",
+				"thumbMockup": "/images/trivial/thumbMockup.webp"
+			}
+		]
+	},
+	"footer": {
+		"contact_me": "Contact Me 🧑‍💻",
+		"to": "to:",
+		"mail": "alvaldes.dev@gmail.com",
+		"subject": "Subject:",
+		"subject_text": "Portfolio Inquiry: Let's Connect!",
+		"message": "Message",
+		"message_text": "Enter your message",
+		"send": "Send",
+		"error": "You need to specify the message before sending.",
+		"copy1": "Thanks to",
+		"copy2": "for the inspiration.",
+		"buyMeACoffee": "Buy me a coffee!"
+	},
+	"site": {
+		"title": "Angel L. Valdés",
+		"description": "Software engineer with +3 years of web development expertise"
+	},
+	"copy-right": "All Rights Reserved."
 }

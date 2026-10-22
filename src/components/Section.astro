@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"section"> & {
+	// Seconds before the fade-up animation starts.
+	delay?: number;
+};
+
+const { delay = 0, class: className, ...props } = Astro.props;
+---
+
+<section class:list={["animate-fade-up", className]} style={`animation-delay: ${delay}s`} {...props}>
+	<slot />
+</section>
