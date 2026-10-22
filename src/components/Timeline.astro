@@ -160,6 +160,8 @@ const ICON_PATHS: Record<string, string> = {
 		.timeline-item:nth-child(odd),
 		.timeline-item:nth-child(even) {
 			padding-left: 37px;
+			/* Scale around the dot's center so it stays on the line during grow-in. */
+			transform-origin: 16px 26px;
 		}
 
 		.timeline-dot {
