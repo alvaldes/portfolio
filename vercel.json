@@ -6,6 +6,8 @@
   "outputDirectory": "dist",
   "redirects": [
     { "source": "/es", "destination": "/", "permanent": true },
+    { "source": "/es/", "destination": "/", "permanent": true },
+    { "source": "/es/:path*/", "destination": "/:path*/", "permanent": true },
     { "source": "/es/:path*", "destination": "/:path*", "permanent": true }
   ]
 }
