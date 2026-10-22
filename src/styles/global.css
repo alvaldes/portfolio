@@ -71,6 +71,7 @@
 	--animate-flip-up: flip-up 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 	--animate-flip-down: flip-down 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
 	--animate-fade-up: fade-up 0.8s ease-out both;
+	--animate-nudge-x: nudge-x 1.6s ease-in-out infinite;
 
 	@keyframes flip-up {
 		0% {
@@ -87,6 +88,17 @@
 		}
 		100% {
 			transform: rotateX(0);
+		}
+	}
+
+	/* Pulls the eye toward a call to action without moving its layout. */
+	@keyframes nudge-x {
+		0%,
+		100% {
+			transform: translateX(0);
+		}
+		50% {
+			transform: translateX(3px);
 		}
 	}
 

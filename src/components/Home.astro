@@ -70,14 +70,27 @@ const { home } = getDictionary(lang);
 		<div class="flex justify-center">
 			<a
 				href={getLocalizedPathname("/works", lang)}
-				class="flex items-center gap-2 rounded-xl bg-primary px-8 py-3 text-lg font-bold text-primary-foreground hover:opacity-90"
+				class="group flex items-center gap-2 rounded-xl bg-primary px-8 py-3 text-lg font-bold text-primary-foreground hover:opacity-90"
 			>
-				Portfolio
-				<svg class="size-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+				{home.cta}
+				<svg
+					class="size-4 transition-[translate] duration-300 group-hover:translate-x-1"
+					viewBox="0 0 16 16"
+					fill="currentColor"
+					aria-hidden="true"
+				>
+					<!-- Each chevron nudges on its own, the second one later, so they read as steps. -->
 					<path
+						class="animate-nudge-x"
 						fill-rule="evenodd"
 						clip-rule="evenodd"
-						d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Zm-8.25-3.25 3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z"
+						d="M4.53 4.345l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06Z"
+					></path>
+					<path
+						class="animate-nudge-x [animation-delay:300ms]"
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M12.78 7.595a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06l2.72-2.72-2.72-2.72a.75.75 0 0 1 1.06-1.06l3.25 3.25Z"
 					></path>
 				</svg>
 			</a>
