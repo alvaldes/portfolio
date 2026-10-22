@@ -21,7 +21,7 @@ const isActive = getLocalizedPathname(Astro.url.pathname, lang) === localizedHre
 	href={localizedHref}
 	aria-current={isActive ? "page" : undefined}
 	class:list={[
-		"text-zinc-800 hover:underline dark:text-blue-50",
+		"text-foreground hover:underline",
 		{ "flex items-center": icon },
 		// Same as portfolio-next: the link to the current page is not shown.
 		{ hidden: isActive },
