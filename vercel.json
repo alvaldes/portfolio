@@ -5,6 +5,16 @@
   "buildCommand": "bun run build",
   "outputDirectory": "dist",
   "redirects": [
+    {
+      "source": "/",
+      "destination": "/en/",
+      "permanent": false,
+      "has": [{ "type": "header", "key": "accept-language" }],
+      "missing": [
+        { "type": "header", "key": "accept-language", "value": { "pre": "es" } },
+        { "type": "cookie", "key": "lang" }
+      ]
+    },
     { "source": "/es", "destination": "/", "permanent": true },
     { "source": "/es/", "destination": "/", "permanent": true },
     { "source": "/es/:path*/", "destination": "/:path*/", "permanent": true },
