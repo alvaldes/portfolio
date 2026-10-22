@@ -45,15 +45,18 @@ const { home } = getDictionary(lang);
 				<Socials withEmail cvUrl={home.cv_url} />
 			</div>
 			<div class="grid-portrait flex shrink-0 justify-center">
-				<Blob aria-hidden="true" class="absolute -z-0 size-36 text-primary md:size-60" />
-				<Image
-					src={portrait}
-					alt={home.name}
-					widths={[112, 160, 224, 320]}
-					sizes="(min-width: 768px) 160px, 112px"
-					loading="eager"
-					class="z-10 mt-4 ml-0 size-28 rounded-full border-2 border-primary md:mt-9 md:size-40"
-				/>
+				<!-- The blob box is 1.5x the photo so the shape shows the same margin at every size. -->
+				<div class="relative mx-3 mt-4 size-28 sm:mx-0 sm:size-32 md:mt-9 md:size-40">
+					<Blob aria-hidden="true" class="absolute -top-1/4 -left-1/4 size-[150%] text-primary" />
+					<Image
+						src={portrait}
+						alt={home.name}
+						widths={[112, 128, 160, 224, 256, 320]}
+						sizes="(min-width: 768px) 160px, (min-width: 640px) 128px, 112px"
+						loading="eager"
+						class="relative size-full rounded-full border-2 border-primary"
+					/>
+				</div>
 			</div>
 		</div>
 	</Section>

@@ -159,8 +159,11 @@ html {
 		"portrait info info"
 		"portrait info info"
 		"socials socials socials";
+	/* Size the portrait column to the photo so the text never squeezes it. */
+	grid-template-columns: auto 1fr 1fr;
 	grid-template-rows: repeat(3, 1fr);
-	column-gap: 3px;
+	/* Clear the blob that spills around the photo. */
+	column-gap: 1rem;
 }
 
 .grid-info {
@@ -180,6 +183,8 @@ html {
 		grid-template-areas:
 			"info info portrait"
 			"socials socials portrait";
+		grid-template-columns: none;
+		column-gap: 3px;
 		grid-template-rows: repeat(2, 1fr);
 		row-gap: 8px;
 	}
