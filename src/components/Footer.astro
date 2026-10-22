@@ -1,0 +1,54 @@
+---
+import { getDictionary, getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
+import BuyMeACoffee from "./BuyMeACoffee.astro";
+import ContactForm from "./ContactForm.astro";
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkItem from "./LinkItem.astro";
+import Logo from "./Logo.astro";
+import Socials from "./Socials.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { home } = getDictionary(lang);
+
+const isHome = getLocalizedPathname(Astro.url.pathname, lang) === getLocalizedPathname("/", lang);
+const columnClass = "flex justify-center gap-4 pl-4 text-xs sm:flex-col sm:justify-start sm:gap-0 sm:pl-0 sm:text-base";
+---
+
+<footer class="mx-auto w-full lg:max-w-[75%]">
+	<hr class="border-foreground/15" />
+	<div class="flex flex-col-reverse py-8 sm:flex-row">
+		<div class="flex flex-col pb-4 sm:w-1/2 sm:pb-0">
+			<div class={columnClass}>
+				<div class="mt-1 mb-0 hidden sm:mb-3 sm:flex"><Logo noText /></div>
+				<LinkItem label={t("nav.home")} href="/" icon="home" />
+				<LinkItem label={t("nav.works")} href="/works" icon="briefcase" />
+				<a
+					href="https://github.com/alvaldes/portfolio"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center text-zinc-800 hover:underline dark:text-blue-50"
+				>
+					<GithubIcon class="size-4" />
+					<span class="ml-1">{t("nav.source")}</span>
+				</a>
+			</div>
+			<Socials cvUrl={home.cv_url} />
+			<div class:list={[columnClass, isHome ? "mt-6 sm:mt-4" : "mt-3 sm:mt-3"]}>
+				<BuyMeACoffee />
+			</div>
+		</div>
+		<ContactForm />
+	</div>
+
+	<p class="mb-2 flex flex-wrap justify-center">
+		{t("footer.copy1")}
+		<a href="https://www.craftz.dog/" target="_blank" rel="noopener noreferrer" class="mx-1 font-medium text-secondary hover:underline">
+			Takuya
+		</a>
+		{t("footer.copy2")}
+	</p>
+	<p class="text-center text-sm text-foreground/80">
+		&copy; {new Date().getFullYear()} Angel Valdés. {t("copy-right")}
+	</p>
+</footer>

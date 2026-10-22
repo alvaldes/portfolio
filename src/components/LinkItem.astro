@@ -1,13 +1,16 @@
 ---
 import { getLangFromUrl, getLocalizedPathname } from "../i18n/utils";
+import SolidIcon from "./icons/SolidIcon.astro";
+import type { SolidIconName } from "./icons/paths";
 
 interface Props {
 	label: string;
 	// Path without locale prefix, e.g. "/" or "/works".
 	href: string;
+	icon?: SolidIconName;
 }
 
-const { label, href } = Astro.props;
+const { label, href, icon } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const localizedHref = getLocalizedPathname(href, lang);
@@ -19,9 +22,11 @@ const isActive = getLocalizedPathname(Astro.url.pathname, lang) === localizedHre
 	aria-current={isActive ? "page" : undefined}
 	class:list={[
 		"text-zinc-800 hover:underline dark:text-blue-50",
+		{ "flex items-center": icon },
 		// Same as portfolio-next: the link to the current page is not shown.
 		{ hidden: isActive },
 	]}
 >
-	{label}
+	{icon && <SolidIcon name={icon} class="size-4" />}
+	{icon ? <span class="ml-1">{label}</span> : label}
 </a>

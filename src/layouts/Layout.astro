@@ -1,9 +1,10 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import GoToTop from "../components/GoToTop.astro";
 import Navbar from "../components/Navbar.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import "../styles/global.css";
-// import CommentForm from '../commentForm.js'
 
 interface Props {
 	title?: string;
@@ -36,13 +37,9 @@ const { title = t("site.title"), description = t("site.description") } = Astro.p
 
 		<main class="mx-auto mt-20 w-full lg:max-w-[75%]">
 			<slot />
+			<GoToTop />
 		</main>
 
-		<footer class="mx-auto pt-1 text-center">
-			<!-- <CommentForm id="contact" /> -->
-			<span class="text-foreground/80">
-				&copy; {new Date().getFullYear()} Angel Valdés. {t("copy-right")}
-			</span>
-		</footer>
+		<Footer />
 	</body>
 </html>

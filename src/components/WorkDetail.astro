@@ -5,7 +5,7 @@ import { youTubeVideoId, type Project } from "../lib/projects";
 import ExternalLink from "./ExternalLink.astro";
 import GithubIcon from "./icons/GithubIcon.astro";
 import OutlineIcon from "./icons/OutlineIcon.astro";
-import { YOUTUBE_ICON } from "./icons/paths";
+import SolidIcon from "./icons/SolidIcon.astro";
 import LiteYouTube from "./LiteYouTube.astro";
 import Section from "./Section.astro";
 import Stacks from "./Stacks.astro";
@@ -76,9 +76,7 @@ const imageClass = "h-auto w-full object-cover transition-transform duration-500
 				<div class="mb-4 flex flex-wrap items-center justify-between gap-2">
 					<span class="flex items-center font-bold">
 						{videoId ? (
-							<svg class="mr-2 size-5 text-red-600" viewBox={YOUTUBE_ICON.viewBox} fill="currentColor" aria-hidden="true">
-								<path d={YOUTUBE_ICON.d} />
-							</svg>
+							<SolidIcon name="youtube" class="mr-2 size-5 text-red-600" />
 						) : (
 							<OutlineIcon name="film" class="mr-2 size-5" />
 						)}
