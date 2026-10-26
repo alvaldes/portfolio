@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { marked } from "marked";
+import { render } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { getProjectImage, youTubeVideoId, type Project } from "../lib/projects";
 import ExternalLink from "./ExternalLink.astro";
@@ -19,12 +19,10 @@ const { project } = Astro.props;
 
 const t = useTranslations(getLangFromUrl(Astro.url));
 
-// Rendered at build time; the descriptions are our own dictionary content.
-const descriptionHtml = await marked.parse(project.longDescription);
+const { Content: Description } = await render(project.description);
 const stackList = project.stack.split(",");
 const videoId = project.video ? youTubeVideoId(project.video) : null;
 const videoPoster = project.videoPoster ? getProjectImage(project.id, project.videoPoster).src : undefined;
-const websiteIsUrl = project.website?.startsWith("http") ?? false;
 const imageClass = "h-auto w-full object-cover transition-transform duration-500 hover:scale-105";
 // Full-width images: the content column is 75% of the viewport from lg up.
 const fullWidth = { widths: [480, 768, 1024, 1536], sizes: "(min-width: 1024px) 75vw, 100vw" };
@@ -43,19 +41,25 @@ const fullWidth = { widths: [480, 768, 1024, 1536], sizes: "(min-width: 1024px) 
 
 	<h1 class="mt-4 text-2xl font-bold">{project.title}</h1>
 	<hr class="border-foreground/15" />
-	<div class="my-3 text-pretty" set:html={descriptionHtml} />
+	<div class="my-3 text-pretty">
+		<Description />
+	</div>
 
 	<div class="flex flex-col gap-2">
 		{
-			project.website && (
+			(project.website || project.websiteNote) && (
 				<p class="flex flex-wrap">
 					<span class="mr-2 flex items-center font-bold">
 						<OutlineIcon name="globeAlt" class="mr-1 size-[18px]" />
 						{t("works.website")}:
 					</span>
-					<ExternalLink href={project.website} disabled={!websiteIsUrl}>
-						{websiteIsUrl ? project.website.substring(8) : project.website}
-					</ExternalLink>
+					{project.website ? (
+						<ExternalLink href={project.website}>{project.website.substring(8)}</ExternalLink>
+					) : (
+						<ExternalLink href="" disabled>
+							{project.websiteNote}
+						</ExternalLink>
+					)}
 				</p>
 			)
 		}

@@ -6,7 +6,7 @@ import WorkCard from "./WorkCard.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const projects = getProjects(lang);
+const projects = await getProjects(lang);
 ---
 
 <Section delay={0.2} id="works" class="w-full">

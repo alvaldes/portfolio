@@ -1,0 +1,5 @@
+---
+shortDescription: "Un juego donde los jugadores responden preguntas sobre diferentes temas y tratan de acertar la mayor cantidad posible."
+---
+
+**Trivial** es un tipo de juego en el cual los participantes responden preguntas sobre diversos temas con el objetivo de obtener la mayor cantidad de respuestas correctas posible. Además de mejorar y ampliar el conocimiento, ya sea de manera general o en áreas más específicas, este estilo de juego está diseñado para que los concursantes se diviertan mientras participan. Su principal objetivo es fomentar la discusión y el debate saludable entre los participantes. De hecho, no es obligatorio que los ganadores de la Trivia reciban un premio y casi todos están de acuerdo con eso, ya que el principal objetivo es disfrutar y aprender al mismo tiempo. Las preguntas y respuestas de la Trivia se pueden adaptar a cualquier audiencia y pueden utilizarse en escuelas y universidades para ayudar en el desarrollo de habilidades lingüísticas y evaluar niveles de conocimiento y habilidades.
