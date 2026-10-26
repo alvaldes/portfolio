@@ -42,10 +42,9 @@ Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localho
 
 | Tool | Role |
 | :--- | :--- |
-| [Astro 7](https://astro.build/) | Static site generation, native i18n routing, image optimization (`astro:assets`) |
+| [Astro 7](https://astro.build/) | Static site generation, native i18n routing, content collections, Markdown, image optimization (`astro:assets`) |
 | [Tailwind CSS 4](https://tailwindcss.com/) | Styling through the Vite plugin; theme tokens live in `src/styles/global.css` |
 | [React 19](https://react.dev/) + [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) | Only for the 3D planet and stars island, loaded with `client:visible` |
-| [marked](https://marked.js.org/) | Renders project descriptions (Markdown) at build time |
 | [lite-youtube](https://github.com/justinribeiro/lite-youtube) | Click-to-load YouTube player on project pages |
 
 ## ✨ Features
@@ -88,15 +87,19 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 ├── public/                  # Served as-is: favicon, fonts, 3D model, flags, video posters
 ├── src/
 │   ├── assets/              # Images optimized at build time by <Image>
-│   │   └── projects/<id>/   # thumbCard, thumbFirst, thumbMockup per project
+│   │   └── projects/<id>/   # thumbCard, thumbFirst, thumbMockup (and videoPoster) per project
 │   ├── components/          # Astro components (Navbar, Footer, Home, Work*, ...)
 │   │   ├── icons/           # SVG icon paths and icon components
 │   │   └── islands/         # React components that run in the browser (3D canvas)
+│   ├── content/
+│   │   ├── projects.json    # Data every language shares for each project
+│   │   └── works/<id>/      # es.md, en.md: short description and long description
+│   ├── content.config.ts    # Content collection schemas
 │   ├── i18n/
-│   │   ├── locales/         # es.json, en.json: all copy and the projects list
+│   │   ├── locales/         # es.json, en.json: all interface copy
 │   │   └── utils.ts         # t(), getDictionary(), localized paths
 │   ├── layouts/Layout.astro # Page shell: head, backdrop, navbar, footer
-│   ├── lib/projects.ts      # Project type, image lookup, YouTube id parsing
+│   ├── lib/projects.ts      # Projects in a language, image lookup, YouTube id parsing
 │   ├── pages/               # Routes: Spanish at the root, English under en/
 │   └── styles/global.css    # Tailwind entry, theme palette, fonts, animations
 └── astro.config.mjs         # Site URL, i18n locales, React and Tailwind setup
@@ -104,13 +107,13 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 
 ## ➕ Adding a project
 
-1. Add an entry to `works.projects` in **both** `src/i18n/locales/es.json` and `src/i18n/locales/en.json`, with the same `id`.
-2. Put `thumbCard.webp`, `thumbFirst.webp` and `thumbMockup.webp` in `src/assets/projects/<id>/`.
-3. Reference them in the dictionary as `/images/<id>/thumbCard.webp` (and so on). The build fails if a referenced image is missing.
-4. Optional: `video` (YouTube URL or a file in `public/videos/`) and `videoPoster` (a 16:9 image in `public/images/<id>/`).
+1. Add an entry to `src/content/projects.json` with a new `id` and the next `order` (the position on the Works page). The images are file names, such as `"thumbCard": "thumbCard.webp"`.
+2. Put `thumbCard.webp`, `thumbFirst.webp` and `thumbMockup.webp` in `src/assets/projects/<id>/`. The build fails if a referenced image is missing.
+3. Write `src/content/works/<id>/es.md` and `src/content/works/<id>/en.md`: `shortDescription` in the frontmatter, the long description as the Markdown body. A project without a public website can set `websiteNote` (for example, "university campus network") instead of `website`.
+4. Optional: `video` (YouTube URL or a file in `public/videos/`), `channel` and `videoPoster` (a 16:9 image in `src/assets/projects/<id>/`).
 5. Run `bun run build`: a page is generated at `/works/<id>/` and `/en/works/<id>/`.
 
-> The build fails if the two dictionaries list different projects, list them in a different order, or disagree on a shared field (year, links, stack, images). Only `shortDescription`, `longDescription` and a non-URL `website` are translated.
+> The build fails if a project is missing a language file, a language file has no project, or two projects share the same `order`.
 >
 > The type of translation keys is derived from `es.json` only, so `astro check` does not catch a key missing from `en.json`. Keep both files in sync.
 
