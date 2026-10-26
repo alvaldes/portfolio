@@ -5,8 +5,8 @@ import { useTranslations } from "../../i18n/utils";
 import Layout from "../../layouts/Layout.astro";
 import { getProjects, type Project } from "../../lib/projects";
 
-export const getStaticPaths = (() =>
-	getProjects("es").map((project) => ({ params: { id: project.id }, props: { project } }))) satisfies GetStaticPaths;
+export const getStaticPaths = (async () =>
+	(await getProjects("es")).map((project) => ({ params: { id: project.id }, props: { project } }))) satisfies GetStaticPaths;
 
 const { project } = Astro.props as { project: Project };
 const t = useTranslations("es");

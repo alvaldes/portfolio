@@ -1,5 +1,6 @@
 import type { ImageMetadata } from "astro";
-import { getDictionary, LANGUAGES, type UiType } from "../i18n/utils";
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { UiType } from "../i18n/utils";
 
 // Project images live in src/assets/projects/<id>/ so Astro can process them at build time.
 const PROJECT_IMAGES = import.meta.glob<{ default: ImageMetadata }>("/src/assets/projects/**/*.webp", {
@@ -7,7 +8,7 @@ const PROJECT_IMAGES = import.meta.glob<{ default: ImageMetadata }>("/src/assets
 });
 
 /**
- * Resolves a file name from the dictionaries, such as "thumbCard.webp", to the
+ * Resolves a file name from src/content/projects.json, such as "thumbCard.webp", to the
  * imported asset in the project's folder. Fails the build when the file is
  * missing, instead of shipping a broken image.
  */
@@ -20,78 +21,50 @@ export function getProjectImage(projectId: string, fileName: string): ImageMetad
 	return image.default;
 }
 
-export interface Project {
+export type Project = CollectionEntry<"projects">["data"] & {
 	id: string;
-	title: string;
-	year: string;
-	tag?: string;
-	stack: string;
 	shortDescription: string;
-	longDescription: string;
-	website?: string;
-	sourceCode?: string;
-	video?: string;
-	channel?: string;
-	videoPoster?: string;
-	platform: string;
-	active: number;
-	thumbCard: string;
-	thumbFirst: string;
-	thumbMockup: string;
-}
-
-// The only fields that are written per language; every other field is shared data.
-const TRANSLATED_FIELDS = new Set<string>(["shortDescription", "longDescription"]);
-
-let localesChecked = false;
+	websiteNote?: string;
+	// The long description, rendered with `render()` from astro:content.
+	description: CollectionEntry<"works">;
+};
 
 /**
- * Fails the build when the locales disagree on the projects: same ids in the
- * same order, and identical shared fields (year, links, stack, images). A
- * website that is not a URL is a description, so it may be translated.
+ * Joins the shared data of every project with its text in the given language.
+ * Fails the build when a project has no Markdown file for that language, or a
+ * Markdown file has no project, instead of shipping a page without content.
  */
-function assertProjectsMatchAcrossLocales(): void {
-	const [base, ...others] = (Object.keys(LANGUAGES) as UiType[]).map((lang) => ({
-		lang,
-		projects: getDictionary(lang).works.projects as Project[],
-	}));
-	if (!base) return;
+export async function getProjects(lang: UiType): Promise<Project[]> {
+	const [projects, works] = await Promise.all([getCollection("projects"), getCollection("works")]);
+	const texts = new Map(works.map((work) => [work.id, work]));
 
-	for (const other of others) {
-		const baseIds = base.projects.map((project) => project.id).join(", ");
-		const otherIds = other.projects.map((project) => project.id).join(", ");
-		if (baseIds !== otherIds) {
+	for (const work of works) {
+		const [projectId] = work.id.split("/");
+		if (!projects.some((project) => project.id === projectId)) {
 			throw new Error(
-				`Projects differ between "${base.lang}" (${baseIds}) and "${other.lang}" (${otherIds}): keep the same ids in the same order.`,
+				`"src/content/works/${work.id}.md" has no project with the id "${projectId}" in src/content/projects.json.`,
 			);
 		}
+	}
 
-		base.projects.forEach((project, index) => {
-			const counterpart = other.projects[index] as Project;
-			const fields = new Set([...Object.keys(project), ...Object.keys(counterpart)]) as Set<keyof Project>;
-			for (const field of fields) {
-				if (TRANSLATED_FIELDS.has(field)) continue;
-				if (field === "website" && !project.website?.startsWith("http")) continue;
-				if (project[field] !== counterpart[field]) {
-					throw new Error(
-						`Project "${project.id}" has a different "${field}" in "${base.lang}" (${String(project[field])}) and "${other.lang}" (${String(counterpart[field])}).`,
-					);
-				}
+	const orders = new Set(projects.map((project) => project.data.order));
+	if (orders.size !== projects.length) {
+		throw new Error('Two projects share the same "order" in src/content/projects.json.');
+	}
+
+	return projects
+		.toSorted((a, b) => a.data.order - b.data.order)
+		.map(({ id, data }) => {
+			const description = texts.get(`${id}/${lang}`);
+			if (!description) {
+				throw new Error(`Project "${id}" has no text in "${lang}": add src/content/works/${id}/${lang}.md.`);
 			}
+			return { ...data, id, ...description.data, description };
 		});
-	}
-}
-
-export function getProjects(lang: UiType): Project[] {
-	if (!localesChecked) {
-		assertProjectsMatchAcrossLocales();
-		localesChecked = true;
-	}
-	return getDictionary(lang).works.projects as Project[];
 }
 
 /**
- * Reads the 11-character video id out of the YouTube URLs the dictionaries
+ * Reads the 11-character video id out of the YouTube URLs the projects
  * store: watch links, short links, embeds, shorts and live links. Only a
  * YouTube host carrying a well-formed id resolves, so an unrelated link or a
  * mistyped id renders no player instead of a wrong one.
