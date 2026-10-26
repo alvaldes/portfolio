@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import { getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
+import { formatPostDate, type Post } from "../lib/blog";
+
+interface Props {
+	post: Post;
+	// The newest post: larger image, its first tag, title and description.
+	featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const href = getLocalizedPathname(`/blog/${post.slug}`, lang);
+const [tag] = post.data.tags;
+---
+
+<article class="group">
+	<a href={href} class="flex flex-col gap-3">
+		<div class="overflow-hidden rounded-xl ring-1 ring-foreground/10">
+			<Image
+				src={post.data.cover}
+				alt={post.data.coverAlt}
+				widths={featured ? [480, 768, 1024, 1536] : [320, 480, 640]}
+				sizes={featured ? "(min-width: 1024px) 40vw, 100vw" : "(min-width: 1024px) 20vw, 100vw"}
+				loading={featured ? "eager" : "lazy"}
+				fetchpriority={featured ? "high" : undefined}
+				class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
+			/>
+		</div>
+
+		{featured && tag && <span class="mt-1 text-xs font-medium tracking-wider text-secondary uppercase">{tag}</span>}
+
+		{
+			featured ? (
+				<h2 class="text-3xl font-bold text-balance group-hover:underline sm:text-4xl">{post.data.title}</h2>
+			) : (
+				<h2 class="text-lg leading-snug font-bold text-balance group-hover:underline">{post.data.title}</h2>
+			)
+		}
+
+		{featured && <p class="font-light text-pretty text-foreground/80">{post.data.description}</p>}
+
+		<p class="text-xs text-foreground/60">
+			<time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate, lang)}</time>
+			<span aria-hidden="true"> · </span>
+			{post.readingMinutes} {t("blog.readingTime")}
+		</p>
+	</a>
+</article>

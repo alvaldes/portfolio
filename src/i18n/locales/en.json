@@ -2,6 +2,7 @@
 	"nav": {
 		"home": "Home",
 		"works": "Works",
+		"blog": "Blog",
 		"contact": "Contact me",
 		"source": "Source Code",
 		"menu": "Menu",
@@ -58,6 +59,14 @@
 		"video": "Video",
 		"channel": "YouTube channel",
 		"play": "Play"
+	},
+	"blog": {
+		"title": "Blog",
+		"description": "Articles about the tools I use, how I build my projects, and their launches.",
+		"empty": "No articles have been published yet.",
+		"back": "Back to the blog",
+		"readingTime": "min read",
+		"updated": "Updated"
 	},
 	"footer": {
 		"contact_me": "Contact Me 🧑‍💻",

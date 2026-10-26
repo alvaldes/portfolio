@@ -2,6 +2,7 @@
 	"nav": {
 		"home": "Inicio",
 		"works": "Trabajos",
+		"blog": "Blog",
 		"contact": "Contáctame",
 		"source": "Código",
 		"menu": "Menú",
@@ -58,6 +59,14 @@
 		"video": "Video",
 		"channel": "Canal de YouTube",
 		"play": "Reproducir"
+	},
+	"blog": {
+		"title": "Blog",
+		"description": "Artículos sobre las herramientas que uso, cómo construyo mis proyectos y sus lanzamientos.",
+		"empty": "Todavía no hay artículos publicados.",
+		"back": "Volver al blog",
+		"readingTime": "min de lectura",
+		"updated": "Actualizado el"
 	},
 	"footer": {
 		"contact_me": "Escribeme 🧑‍💻",

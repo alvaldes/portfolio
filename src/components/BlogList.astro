@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getPosts } from "../lib/blog";
+import PostCard from "./PostCard.astro";
+import Section from "./Section.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const [featured, ...rest] = await getPosts(lang);
+
+// The newest post sits in the middle; the next ones fill the left column and
+// the oldest the right one. The markup stays newest first, which is the order
+// on small screens and for keyboards and screen readers; only the grid moves
+// the columns around the featured post on large screens.
+const half = Math.ceil(rest.length / 2);
+const [left, right] = [rest.slice(0, half), rest.slice(half)];
+---
+
+<Section delay={0.2} id="blog" class="w-full">
+	<h1 class="mb-2 text-2xl font-bold">{t("blog.title")}</h1>
+	<hr class="border-foreground/15" />
+
+	{
+		featured ? (
+			<div
+				class:list={[
+					"my-6 flex flex-col gap-6 lg:grid lg:gap-0",
+					{
+						"lg:grid-cols-[1fr_2fr_1fr]": right.length > 0,
+						"lg:grid-cols-[1fr_2fr]": left.length > 0 && right.length === 0,
+					},
+				]}
+			>
+				<div
+					class:list={[
+						"border-b border-foreground/15 pb-6 lg:border-b-0 lg:pb-0",
+						{ "lg:col-start-2 lg:row-start-1 lg:pl-6": left.length > 0, "lg:pr-6": right.length > 0 },
+					]}
+				>
+					<PostCard post={featured} featured />
+				</div>
+				{left.length > 0 && (
+					<div class="flex flex-col gap-6 lg:col-start-1 lg:row-start-1 lg:border-r lg:border-foreground/15 lg:pr-6">
+						{left.map((post) => (
+							<div class="border-b border-foreground/15 pb-6 last:border-b-0 last:pb-0">
+								<PostCard post={post} />
+							</div>
+						))}
+					</div>
+				)}
+				{right.length > 0 && (
+					<div class="flex flex-col gap-6 border-t border-foreground/15 pt-6 lg:col-start-3 lg:row-start-1 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
+						{right.map((post) => (
+							<div class="border-b border-foreground/15 pb-6 last:border-b-0 last:pb-0">
+								<PostCard post={post} />
+							</div>
+						))}
+					</div>
+				)}
+			</div>
+		) : (
+			<p class="my-6 text-foreground/70">{t("blog.empty")}</p>
+		)
+	}
+</Section>

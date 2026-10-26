@@ -35,4 +35,21 @@ const works = defineCollection({
 	}),
 });
 
-export const collections = { projects, works };
+// One folder per post, src/content/blog/<slug>/: a Markdown file per language next to its images.
+const blog = defineCollection({
+	loader: glob({ pattern: "*/*.md", base: "src/content/blog" }),
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.coerce.date(),
+			updatedDate: z.coerce.date().optional(),
+			cover: image(),
+			coverAlt: z.string(),
+			tags: z.array(z.string()).default([]),
+			// Drafts render in `astro dev` only.
+			draft: z.boolean().default(false),
+		}),
+});
+
+export const collections = { projects, works, blog };

@@ -32,6 +32,7 @@ const linkClass = "text-foreground hover:underline";
 				<div class="absolute end-0 mt-2 flex min-w-40 flex-col gap-3 rounded-xl border border-foreground/10 bg-background p-4 shadow-lg">
 					<LinkItem label={t("nav.home")} href="/" />
 					<LinkItem label={t("nav.works")} href="/works" />
+					<LinkItem label={t("nav.blog")} href="/blog" />
 					<a href="#contact-me" class={linkClass}>{t("nav.contact")}</a>
 					<a href={SOURCE_URL} target="_blank" rel="noopener noreferrer" class:list={[linkClass, "flex items-center"]}>
 						<GithubIcon class="size-4" />
@@ -45,6 +46,7 @@ const linkClass = "text-foreground hover:underline";
 			<div class="flex gap-8 p-4 md:p-0">
 				<LinkItem label={t("nav.home")} href="/" />
 				<LinkItem label={t("nav.works")} href="/works" />
+				<LinkItem label={t("nav.blog")} href="/blog" />
 				<a href="#contact-me" class={linkClass}>{t("nav.contact")}</a>
 				<a href={SOURCE_URL} target="_blank" rel="noopener noreferrer" class:list={[linkClass, "flex items-center"]}>
 					<GithubIcon class="size-4" />

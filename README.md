@@ -54,6 +54,7 @@ Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localho
 - 🎭 **3D banner:** Interactive Earth and stars, loaded only when the banner is visible.
 - 🖼️ **Optimized images:** Responsive `srcset` generated at build time.
 - 🔤 **Self-hosted fonts:** M PLUS Rounded 1c and Comfortaa, no requests to Google Fonts.
+- ✍️ **Blog:** Posts in Spanish and English written in Markdown, styled by the site theme (headings, lists, quotes, tables, code with light and dark highlighting, footnotes). Each post is its own canonical URL with its cover as the social preview, so copies on Medium or other sites can point back to it.
 - 📬 **Contact form:** Opens the visitor's mail client, with a plain `mailto:` form as the no-JavaScript fallback.
 
 ## ⚡ Compared with the Next.js version
@@ -78,6 +79,10 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 | `/en/works/`      | Projects listing (English) |
 | `/works/[id]/`    | Project detail (Spanish)   |
 | `/en/works/[id]/` | Project detail (English)   |
+| `/blog/`          | Posts listing (Spanish)    |
+| `/en/blog/`       | Posts listing (English)    |
+| `/blog/[slug]/`   | Post (Spanish)             |
+| `/en/blog/[slug]/` | Post (English)            |
 
 ## 📁 Project structure
 
@@ -92,6 +97,7 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 │   │   ├── icons/           # SVG icon paths and icon components
 │   │   └── islands/         # React components that run in the browser (3D canvas)
 │   ├── content/
+│   │   ├── blog/<slug>/     # es.md, en.md and the post's images
 │   │   ├── projects.json    # Data every language shares for each project
 │   │   └── works/<id>/      # es.md, en.md: short description and long description
 │   ├── content.config.ts    # Content collection schemas
@@ -99,9 +105,10 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 │   │   ├── locales/         # es.json, en.json: all interface copy
 │   │   └── utils.ts         # t(), getDictionary(), localized paths
 │   ├── layouts/Layout.astro # Page shell: head, backdrop, navbar, footer
+│   ├── lib/blog.ts          # Posts in a language, reading time, dates
 │   ├── lib/projects.ts      # Projects in a language, image lookup, YouTube id parsing
 │   ├── pages/               # Routes: Spanish at the root, English under en/
-│   └── styles/global.css    # Tailwind entry, theme palette, fonts, animations
+│   └── styles/global.css    # Tailwind entry, theme palette, fonts, animations, post styles
 └── astro.config.mjs         # Site URL, i18n locales, React and Tailwind setup
 ```
 
@@ -116,6 +123,31 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 > The build fails if a project is missing a language file, a language file has no project, or two projects share the same `order`.
 >
 > The type of translation keys is derived from `es.json` only, so `astro check` does not catch a key missing from `en.json`. Keep both files in sync.
+
+## ✍️ Writing a post
+
+1. Create `src/content/blog/<slug>/`. The folder name is the URL: `/blog/<slug>/` and `/en/blog/<slug>/`.
+2. Add the cover image to the folder and write `es.md` and `en.md` with this frontmatter:
+
+   ```yaml
+   ---
+   title: "How I set up my terminal"
+   description: "One or two sentences, shown on the listing and in link previews."
+   pubDate: 2026-11-02
+   cover: ./cover.webp
+   coverAlt: "What the cover shows"
+   tags: ["Tools"]
+   draft: true
+   ---
+   ```
+
+3. Write the post in Markdown below the frontmatter. Images next to the post work with relative paths, such as `![Alt text](./screenshot.webp)`.
+4. Run `bun run dev` and open the post: drafts show up in development only. `src/content/blog/markdown-style-guide/` is a draft with every supported element.
+5. Remove `draft: true` (in both files) to publish it. The newest post is featured on the listing.
+
+> The build fails if a post is missing a language, or its languages disagree on `pubDate`, `updatedDate` or `draft`. Set `updatedDate` when you revise a published post.
+>
+> When cross-posting to Medium, import the post from its URL (or set the canonical link to it) so search engines credit the portfolio.
 
 ## 🔑 License
 

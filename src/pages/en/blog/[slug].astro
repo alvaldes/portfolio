@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getImage } from "astro:assets";
+import PostDetail from "../../../components/PostDetail.astro";
+import { useTranslations } from "../../../i18n/utils";
+import Layout from "../../../layouts/Layout.astro";
+import { getPosts, type Post } from "../../../lib/blog";
+
+export const getStaticPaths = (async () =>
+	(await getPosts("en")).map((post) => ({ params: { slug: post.slug }, props: { post } }))) satisfies GetStaticPaths;
+
+const { post } = Astro.props as { post: Post };
+const t = useTranslations("en");
+// Social networks need a raster image at a fixed size: the 1200px wide cover.
+const socialImage = await getImage({ src: post.data.cover, width: 1200, format: "jpeg" });
+---
+
+<Layout title={`${post.data.title} | ${t("site.title")}`} description={post.data.description} image={socialImage.src} type="article">
+	<PostDetail post={post} />
+</Layout>
