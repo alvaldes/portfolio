@@ -55,6 +55,7 @@ Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localho
 - 🖼️ **Optimized images:** Responsive `srcset` generated at build time.
 - 🔤 **Self-hosted fonts:** M PLUS Rounded 1c and Comfortaa, no requests to Google Fonts.
 - ✍️ **Blog:** Posts in Spanish and English written in Markdown, styled by the site theme (headings, lists, quotes, tables, code with light and dark highlighting, footnotes). Each post is its own canonical URL with its cover as the social preview, so copies on Medium or other sites can point back to it.
+- 🔗 **Link previews:** Every page shares a 1200×630 card in its language (`public/og/`); posts share their cover instead.
 - 📬 **Contact form:** Opens the visitor's mail client, with a plain `mailto:` form as the no-JavaScript fallback.
 
 ## ⚡ Compared with the Next.js version
@@ -89,7 +90,7 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 ```text
 /
 ├── docs/                    # Images used by this README (not deployed)
-├── public/                  # Served as-is: favicon, fonts, 3D model, flags, video posters
+├── public/                  # Served as-is: favicon, fonts, 3D model, flags, social cards (og/)
 ├── src/
 │   ├── assets/              # Images optimized at build time by <Image>
 │   │   └── projects/<id>/   # thumbCard, thumbFirst, thumbMockup (and videoPoster) per project

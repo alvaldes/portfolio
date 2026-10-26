@@ -9,13 +9,8 @@ interface Props {
 	lang: UiType;
 }
 
-const {
-	lang,
-	title,
-	description,
-	image = "/blog-placeholder-1.jpg",
-	type = "website",
-} = Astro.props;
+// The default social card is 1200x630, one per language (public/og/).
+const { lang, title, description, image = `/og/default-${lang}.jpg`, type = "website" } = Astro.props;
 
 // Falls back to the request URL when `site` is not set in astro.config.mjs.
 const siteURL = Astro.site ?? Astro.url;
