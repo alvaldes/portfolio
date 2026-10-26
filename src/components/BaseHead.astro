@@ -5,15 +5,12 @@ interface Props {
 	title: string;
 	description: string;
 	image?: string;
+	type?: "website" | "article";
 	lang: UiType;
 }
 
-const {
-	lang,
-	title,
-	description,
-	image = "/blog-placeholder-1.jpg",
-} = Astro.props;
+// The default social card is 1200x630, one per language (public/og/).
+const { lang, title, description, image = `/og/default-${lang}.jpg`, type = "website" } = Astro.props;
 
 // Falls back to the request URL when `site` is not set in astro.config.mjs.
 const siteURL = Astro.site ?? Astro.url;
@@ -70,7 +67,7 @@ const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={type} />
 <meta property="og:locale" content={lang} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />

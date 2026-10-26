@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import { getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
+import { formatPostDate, type Post } from "../lib/blog";
+import Section from "./Section.astro";
+
+interface Props {
+	post: Post;
+}
+
+const { post } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, cover, coverAlt, tags } = post.data;
+---
+
+<Section delay={0.2} id={post.slug} class="mx-auto max-w-3xl">
+	<a
+		href={getLocalizedPathname("/blog", lang)}
+		class="group mb-6 inline-flex items-center gap-2 text-sm font-medium text-primary transition-all duration-300 hover:gap-3"
+	>
+		<svg
+			class="size-4"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<line x1="19" y1="12" x2="5" y2="12"></line>
+			<polyline points="12 19 5 12 12 5"></polyline>
+		</svg>
+		{t("blog.back")}
+	</a>
+
+	<header class="mb-8 flex flex-col gap-4">
+		{
+			tags.length > 0 && (
+				<ul class="flex flex-wrap gap-x-4 gap-y-1 text-xs font-medium tracking-wider text-secondary uppercase">
+					{tags.map((tag) => (
+						<li>{tag}</li>
+					))}
+				</ul>
+			)
+		}
+		<h1 class="text-3xl font-bold text-balance sm:text-4xl">{title}</h1>
+		<p class="text-lg font-light text-pretty text-foreground/80">{description}</p>
+		<p class="text-sm text-foreground/60">
+			<time datetime={pubDate.toISOString()}>{formatPostDate(pubDate, lang)}</time>
+			<span aria-hidden="true"> · </span>
+			{post.readingMinutes} {t("blog.readingTime")}
+			{
+				updatedDate && (
+					<>
+						<span aria-hidden="true"> · </span>
+						{t("blog.updated")} <time datetime={updatedDate.toISOString()}>{formatPostDate(updatedDate, lang)}</time>
+					</>
+				)
+			}
+		</p>
+		<Image
+			src={cover}
+			alt={coverAlt}
+			widths={[480, 768, 1024, 1536]}
+			sizes="(min-width: 768px) 768px, 100vw"
+			loading="eager"
+			fetchpriority="high"
+			class="mt-2 aspect-video w-full rounded-xl object-cover ring-1 ring-foreground/10"
+		/>
+	</header>
+
+	<div class="post-content">
+		<Content />
+	</div>
+</Section>

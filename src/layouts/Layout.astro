@@ -9,19 +9,22 @@ import "../styles/global.css";
 interface Props {
 	title?: string;
 	description?: string;
+	// Social preview image, as a path or URL; BaseHead has the default.
+	image?: string;
+	type?: "website" | "article";
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { title = t("site.title"), description = t("site.description") } = Astro.props;
+const { title = t("site.title"), description = t("site.description"), image, type } = Astro.props;
 
 ---
 
 <!doctype html>
 <html lang={lang}>
 	<head>
-		<BaseHead lang={lang} title={title} description={description} />
+		<BaseHead lang={lang} title={title} description={description} image={image} type={type} />
 	</head>
 	<body class="container mx-auto bg-background px-4 pb-8 font-mplus text-foreground">
 		<!-- Grid backdrop with a soft glow, as in portfolio-next. -->

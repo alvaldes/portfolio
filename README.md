@@ -42,10 +42,9 @@ Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localho
 
 | Tool | Role |
 | :--- | :--- |
-| [Astro 7](https://astro.build/) | Static site generation, native i18n routing, image optimization (`astro:assets`) |
+| [Astro 7](https://astro.build/) | Static site generation, native i18n routing, content collections, Markdown, image optimization (`astro:assets`) |
 | [Tailwind CSS 4](https://tailwindcss.com/) | Styling through the Vite plugin; theme tokens live in `src/styles/global.css` |
 | [React 19](https://react.dev/) + [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) | Only for the 3D planet and stars island, loaded with `client:visible` |
-| [marked](https://marked.js.org/) | Renders project descriptions (Markdown) at build time |
 | [lite-youtube](https://github.com/justinribeiro/lite-youtube) | Click-to-load YouTube player on project pages |
 
 ## ✨ Features
@@ -55,6 +54,8 @@ Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localho
 - 🎭 **3D banner:** Interactive Earth and stars, loaded only when the banner is visible.
 - 🖼️ **Optimized images:** Responsive `srcset` generated at build time.
 - 🔤 **Self-hosted fonts:** M PLUS Rounded 1c and Comfortaa, no requests to Google Fonts.
+- ✍️ **Blog:** Posts in Spanish and English written in Markdown, styled by the site theme (headings, lists, quotes, tables, code with light and dark highlighting, footnotes). Each post is its own canonical URL with its cover as the social preview, so copies on Medium or other sites can point back to it.
+- 🔗 **Link previews:** Every page shares a 1200×630 card in its language (`public/og/`); posts share their cover instead.
 - 📬 **Contact form:** Opens the visitor's mail client, with a plain `mailto:` form as the no-JavaScript fallback.
 
 ## ⚡ Compared with the Next.js version
@@ -79,40 +80,75 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 | `/en/works/`      | Projects listing (English) |
 | `/works/[id]/`    | Project detail (Spanish)   |
 | `/en/works/[id]/` | Project detail (English)   |
+| `/blog/`          | Posts listing (Spanish)    |
+| `/en/blog/`       | Posts listing (English)    |
+| `/blog/[slug]/`   | Post (Spanish)             |
+| `/en/blog/[slug]/` | Post (English)            |
 
 ## 📁 Project structure
 
 ```text
 /
 ├── docs/                    # Images used by this README (not deployed)
-├── public/                  # Served as-is: favicon, fonts, 3D model, flags, video posters
+├── public/                  # Served as-is: favicon, fonts, 3D model, flags, social cards (og/)
 ├── src/
 │   ├── assets/              # Images optimized at build time by <Image>
-│   │   └── projects/<id>/   # thumbCard, thumbFirst, thumbMockup per project
+│   │   └── projects/<id>/   # thumbCard, thumbFirst, thumbMockup (and videoPoster) per project
 │   ├── components/          # Astro components (Navbar, Footer, Home, Work*, ...)
 │   │   ├── icons/           # SVG icon paths and icon components
 │   │   └── islands/         # React components that run in the browser (3D canvas)
+│   ├── content/
+│   │   ├── blog/<slug>/     # es.md, en.md and the post's images
+│   │   ├── projects.json    # Data every language shares for each project
+│   │   └── works/<id>/      # es.md, en.md: short description and long description
+│   ├── content.config.ts    # Content collection schemas
 │   ├── i18n/
-│   │   ├── locales/         # es.json, en.json: all copy and the projects list
+│   │   ├── locales/         # es.json, en.json: all interface copy
 │   │   └── utils.ts         # t(), getDictionary(), localized paths
 │   ├── layouts/Layout.astro # Page shell: head, backdrop, navbar, footer
-│   ├── lib/projects.ts      # Project type, image lookup, YouTube id parsing
+│   ├── lib/blog.ts          # Posts in a language, reading time, dates
+│   ├── lib/projects.ts      # Projects in a language, image lookup, YouTube id parsing
 │   ├── pages/               # Routes: Spanish at the root, English under en/
-│   └── styles/global.css    # Tailwind entry, theme palette, fonts, animations
+│   └── styles/global.css    # Tailwind entry, theme palette, fonts, animations, post styles
 └── astro.config.mjs         # Site URL, i18n locales, React and Tailwind setup
 ```
 
 ## ➕ Adding a project
 
-1. Add an entry to `works.projects` in **both** `src/i18n/locales/es.json` and `src/i18n/locales/en.json`, with the same `id`.
-2. Put `thumbCard.webp`, `thumbFirst.webp` and `thumbMockup.webp` in `src/assets/projects/<id>/`.
-3. Reference them in the dictionary as `/images/<id>/thumbCard.webp` (and so on). The build fails if a referenced image is missing.
-4. Optional: `video` (YouTube URL or a file in `public/videos/`) and `videoPoster` (a 16:9 image in `public/images/<id>/`).
+1. Add an entry to `src/content/projects.json` with a new `id` and the next `order` (the position on the Works page). The images are file names, such as `"thumbCard": "thumbCard.webp"`.
+2. Put `thumbCard.webp`, `thumbFirst.webp` and `thumbMockup.webp` in `src/assets/projects/<id>/`. The build fails if a referenced image is missing.
+3. Write `src/content/works/<id>/es.md` and `src/content/works/<id>/en.md`: `shortDescription` in the frontmatter, the long description as the Markdown body. A project without a public website can set `websiteNote` (for example, "university campus network") instead of `website`.
+4. Optional: `video` (YouTube URL or a file in `public/videos/`), `channel` and `videoPoster` (a 16:9 image in `src/assets/projects/<id>/`).
 5. Run `bun run build`: a page is generated at `/works/<id>/` and `/en/works/<id>/`.
 
-> The build fails if the two dictionaries list different projects, list them in a different order, or disagree on a shared field (year, links, stack, images). Only `shortDescription`, `longDescription` and a non-URL `website` are translated.
+> The build fails if a project is missing a language file, a language file has no project, or two projects share the same `order`.
 >
 > The type of translation keys is derived from `es.json` only, so `astro check` does not catch a key missing from `en.json`. Keep both files in sync.
+
+## ✍️ Writing a post
+
+1. Create `src/content/blog/<slug>/`. The folder name is the URL: `/blog/<slug>/` and `/en/blog/<slug>/`.
+2. Add the cover image to the folder and write `es.md` and `en.md` with this frontmatter:
+
+   ```yaml
+   ---
+   title: "How I set up my terminal"
+   description: "One or two sentences, shown on the listing and in link previews."
+   pubDate: 2026-11-02
+   cover: ./cover.webp
+   coverAlt: "What the cover shows"
+   tags: ["Tools"]
+   draft: true
+   ---
+   ```
+
+3. Write the post in Markdown below the frontmatter. Images next to the post work with relative paths, such as `![Alt text](./screenshot.webp)`.
+4. Run `bun run dev` and open the post: drafts show up in development only. `src/content/blog/markdown-style-guide/` is a draft with every supported element.
+5. Remove `draft: true` (in both files) to publish it. The newest post is featured on the listing.
+
+> The build fails if a post is missing a language, or its languages disagree on `pubDate`, `updatedDate` or `draft`. Set `updatedDate` when you revise a published post.
+>
+> When cross-posting to Medium, import the post from its URL (or set the canonical link to it) so search engines credit the portfolio.
 
 ## 🔑 License
 

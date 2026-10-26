@@ -189,3 +189,144 @@ html {
 		row-gap: 8px;
 	}
 }
+
+/*
+ * Blog posts: the Markdown renders plain HTML elements, and this maps each one
+ * to the site design. Scoped to .post-content so nothing else is affected.
+ */
+.post-content {
+	@apply text-pretty leading-relaxed;
+
+	& > :first-child {
+		@apply mt-0;
+	}
+
+	& :is(h2, h3, h4) {
+		@apply scroll-mt-24 font-bold text-balance;
+	}
+
+	& h2 {
+		@apply mt-12 mb-4 border-b border-foreground/15 pb-2 text-2xl;
+	}
+
+	& h3 {
+		@apply mt-10 mb-3 text-xl;
+	}
+
+	& h4 {
+		@apply mt-8 mb-2 text-lg;
+	}
+
+	& p {
+		@apply my-5;
+	}
+
+	& a {
+		@apply text-secondary underline decoration-secondary/40 underline-offset-4 transition-colors hover:decoration-secondary;
+	}
+
+	& strong {
+		@apply font-bold;
+	}
+
+	& del {
+		@apply text-foreground/60;
+	}
+
+	& :is(ul, ol) {
+		@apply my-5 ps-6;
+	}
+
+	& ul {
+		@apply list-disc;
+	}
+
+	& ol {
+		@apply list-decimal;
+	}
+
+	& li {
+		@apply my-2 ps-1 marker:text-secondary;
+	}
+
+	& ol > li {
+		@apply marker:font-bold;
+	}
+
+	& li > :is(ul, ol) {
+		@apply my-2;
+	}
+
+	/* GitHub task lists: the checkbox replaces the bullet. */
+	& .contains-task-list {
+		@apply list-none ps-0;
+	}
+
+	& .task-list-item input {
+		@apply me-2 size-4 translate-y-0.5 accent-primary;
+	}
+
+	& blockquote {
+		@apply my-6 rounded-e-xl border-s-4 border-primary bg-primary/5 px-5 py-1 text-foreground/80 italic;
+	}
+
+	& :not(pre) > code {
+		@apply rounded-md bg-foreground/10 px-1.5 py-0.5 font-mono text-[0.875em];
+	}
+
+	& pre {
+		@apply my-6 overflow-x-auto rounded-xl p-4 font-mono text-sm leading-normal ring-1 ring-foreground/10;
+	}
+
+	& kbd {
+		@apply rounded-md border border-foreground/20 bg-foreground/5 px-1.5 py-0.5 font-mono text-[0.85em] shadow-[0_1px_0] shadow-foreground/20;
+	}
+
+	& hr {
+		@apply my-12 border-foreground/15;
+	}
+
+	& img {
+		@apply mx-auto my-6 h-auto rounded-xl ring-1 ring-foreground/10;
+	}
+
+	/* Wide tables scroll on their own instead of the page. */
+	& table {
+		@apply my-6 block w-full overflow-x-auto text-sm;
+	}
+
+	& th {
+		@apply border-b-2 border-foreground/20 px-3 py-2 text-start font-bold;
+	}
+
+	& td {
+		@apply border-b border-foreground/10 px-3 py-2;
+	}
+
+	& .footnotes {
+		@apply mt-12 border-t border-foreground/15 pt-4 text-sm text-foreground/70;
+	}
+
+	/* The footnotes heading is for screen readers only; this HTML is not scanned by Tailwind. */
+	& .sr-only {
+		@apply sr-only;
+	}
+}
+
+/*
+ * Code blocks: Shiki writes both theme colors as variables (see astro.config.mjs);
+ * the site theme picks one, and the block background follows the site palette.
+ */
+.astro-code,
+.astro-code span {
+	color: var(--shiki-light);
+}
+
+.dark .astro-code,
+.dark .astro-code span {
+	color: var(--shiki-dark);
+}
+
+.astro-code {
+	background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+}
