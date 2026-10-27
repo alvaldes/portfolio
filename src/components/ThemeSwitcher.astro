@@ -4,39 +4,99 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
+<!-- Cycles light → dark → system; the icon shows the current preference (sun, moon or monitor). -->
 <button
 	type="button"
 	data-theme-toggle
+	data-label={t("nav.toggle-theme")}
+	data-label-light={t("nav.theme-light")}
+	data-label-dark={t("nav.theme-dark")}
+	data-label-system={t("nav.theme-system")}
 	aria-label={t("nav.toggle-theme")}
-	class="size-8 rounded-lg bg-toggle p-1.5 text-toggle-foreground"
+	title={t("nav.toggle-theme")}
+	class="size-8 rounded-lg bg-foreground/10 p-1.5 text-toggle hover:bg-foreground/15"
 >
-	<svg class="dark:hidden" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-		<path
-			fill-rule="evenodd"
-			clip-rule="evenodd"
-			d="M14.438 10.148c.19-.425-.321-.787-.748-.601A5.5 5.5 0 0 1 6.453 2.31c.186-.427-.176-.938-.6-.748a6.501 6.501 0 1 0 8.585 8.586Z"
-		></path>
-	</svg>
 	<!-- Filled so the disc has body; the rays are open lines, so they stay strokes only. -->
-	<svg class="hidden dark:block" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" aria-hidden="true">
+	<svg class="theme-icon theme-icon-light" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" aria-hidden="true">
 		<path
 			stroke-linecap="round"
 			stroke-linejoin="round"
 			d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
 		></path>
 	</svg>
+	<svg class="theme-icon theme-icon-dark" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+		<path
+			fill-rule="evenodd"
+			clip-rule="evenodd"
+			d="M14.438 10.148c.19-.425-.321-.787-.748-.601A5.5 5.5 0 0 1 6.453 2.31c.186-.427-.176-.938-.6-.748a6.501 6.501 0 1 0 8.585 8.586Z"
+		></path>
+	</svg>
+	<svg class="theme-icon theme-icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+		<path
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+		></path>
+	</svg>
 </button>
+
+<style>
+	/* The system icon is the fallback until BaseHead sets the saved preference. */
+	.theme-icon {
+		display: none;
+	}
+	.theme-icon-system,
+	:global(html[data-theme-preference="light"]) .theme-icon-light,
+	:global(html[data-theme-preference="dark"]) .theme-icon-dark {
+		display: block;
+	}
+	:global(html[data-theme-preference="light"]) .theme-icon-system,
+	:global(html[data-theme-preference="dark"]) .theme-icon-system {
+		display: none;
+	}
+</style>
 
 <script>
 	// The initial theme is applied by the inline script in BaseHead to avoid a flash.
-	for (const button of document.querySelectorAll("[data-theme-toggle]")) {
+	type Preference = "light" | "dark" | "system";
+
+	const NEXT: Record<Preference, Preference> = { light: "dark", dark: "system", system: "light" };
+	const root = document.documentElement;
+	const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+	const buttons = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
+
+	function currentPreference(): Preference {
+		const preference = root.dataset.themePreference;
+		return preference === "light" || preference === "dark" ? preference : "system";
+	}
+
+	function apply(preference: Preference) {
+		root.dataset.themePreference = preference;
+		root.classList.toggle("dark", preference === "dark" || (preference === "system" && systemDark.matches));
+		for (const button of buttons) {
+			const label = `${button.dataset.label}: ${button.dataset[`label${preference[0].toUpperCase()}${preference.slice(1)}`]}`;
+			button.setAttribute("aria-label", label);
+			button.title = label;
+		}
+	}
+
+	apply(currentPreference());
+
+	for (const button of buttons) {
 		button.addEventListener("click", () => {
-			const isDark = document.documentElement.classList.toggle("dark");
+			const preference = NEXT[currentPreference()];
+			apply(preference);
 			try {
-				localStorage.setItem("theme", isDark ? "dark" : "light");
+				if (preference === "system") localStorage.removeItem("theme");
+				else localStorage.setItem("theme", preference);
 			} catch {
 				// Storage can be unavailable (private mode); the toggle still works for this page.
 			}
 		});
 	}
+
+	// Follow OS theme changes live while the preference is system.
+	systemDark.addEventListener("change", () => {
+		if (currentPreference() === "system") apply("system");
+	});
 </script>

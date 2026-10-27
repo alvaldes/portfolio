@@ -7,6 +7,9 @@
 		"source": "Código",
 		"menu": "Menú",
 		"toggle-theme": "Cambiar tema",
+		"theme-light": "Claro",
+		"theme-dark": "Oscuro",
+		"theme-system": "Sistema",
 		"switch-language": "Read in English"
 	},
 	"home": {

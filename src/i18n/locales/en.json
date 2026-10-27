@@ -7,6 +7,9 @@
 		"source": "Source Code",
 		"menu": "Menu",
 		"toggle-theme": "Toggle theme",
+		"theme-light": "Light",
+		"theme-dark": "Dark",
+		"theme-system": "System",
 		"switch-language": "Leer en español"
 	},
 	"home": {
