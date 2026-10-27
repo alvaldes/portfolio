@@ -50,7 +50,7 @@ Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localho
 ## ✨ Features
 
 - 🌍 **i18n:** Spanish at `/`, English under `/en/`, with `hreflang` alternates and a language switcher. On Vercel, `/` sends visitors whose browser does not prefer Spanish to `/en/`, unless they picked a language with the switcher (remembered in a `lang` cookie). Requests without `Accept-Language`, such as crawlers, stay on `/`. Legacy `/es/...` URLs redirect permanently to the unprefixed routes. All rules live in `vercel.json`.
-- 🎨 **Themes:** Dark and light mode, saved per visitor, applied before the first paint (no flash).
+- 🎨 **Themes:** Light, dark and system mode, cycled from one button. The choice is saved per visitor and applied before the first paint (no flash); system follows OS changes live.
 - 🎭 **3D banner:** Interactive Earth and stars, loaded only when the banner is visible.
 - 🖼️ **Optimized images:** Responsive `srcset` generated at build time.
 - 🔤 **Self-hosted fonts:** M PLUS Rounded 1c and Comfortaa, no requests to Google Fonts.
