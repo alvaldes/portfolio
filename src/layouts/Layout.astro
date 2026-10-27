@@ -1,4 +1,5 @@
 ---
+import Analytics from "@vercel/analytics/astro";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import GoToTop from "../components/GoToTop.astro";
@@ -25,6 +26,7 @@ const { title = t("site.title"), description = t("site.description"), image, typ
 <html lang={lang}>
 	<head>
 		<BaseHead lang={lang} title={title} description={description} image={image} type={type} />
+		<Analytics />
 	</head>
 	<body class="container mx-auto bg-background px-4 pb-8 font-mplus text-foreground">
 		<!-- Grid backdrop with a soft glow, as in portfolio-next. -->
