@@ -23,7 +23,8 @@ const { home } = getDictionary(lang);
 				<InteractionHint />
 			</div>
 			<div class="absolute inset-0 -z-10 h-auto w-full">
-				<StarsCanvas client:visible />
+				<!-- client:only: its canvas has nothing to server-render, and the server never loads three.js. -->
+				<StarsCanvas client:only="react" />
 			</div>
 		</div>
 
