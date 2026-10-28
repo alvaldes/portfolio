@@ -69,7 +69,9 @@
 		"empty": "Todavía no hay artículos publicados.",
 		"back": "Volver al blog",
 		"readingTime": "min de lectura",
-		"updated": "Actualizado el"
+		"updated": "Actualizado el",
+		"copy": "Copiar",
+		"copied": "Copiado"
 	},
 	"footer": {
 		"contact_me": "Escribeme 🧑‍💻",

@@ -74,7 +74,58 @@ const { title, description, pubDate, updatedDate, cover, coverAlt, tags } = post
 		/>
 	</header>
 
-	<div class="post-content">
+	<div class="post-content" data-copy-label={t("blog.copy")} data-copied-label={t("blog.copied")}>
 		<Content />
 	</div>
 </Section>
+
+<script>
+	// The Markdown renders plain <pre> blocks; each one gets a copy button here, since copying needs JS anyway.
+	const ICON_ATTRS = `viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"`;
+	const COPY_ICON = `<svg class="code-copy-icon" ${ICON_ATTRS}><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+	const COPIED_ICON = `<svg class="code-copied-icon" ${ICON_ATTRS}><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+
+	for (const content of document.querySelectorAll<HTMLElement>(".post-content")) {
+		const { copyLabel = "Copy", copiedLabel = "Copied" } = content.dataset;
+
+		for (const pre of content.querySelectorAll("pre")) {
+			// The wrapper holds the button so it stays put while a long line scrolls the block.
+			const wrapper = document.createElement("div");
+			wrapper.className = "code-block";
+			pre.replaceWith(wrapper);
+			wrapper.append(pre);
+
+			const button = document.createElement("button");
+			button.type = "button";
+			button.className = "code-copy";
+			button.innerHTML = `${COPY_ICON}${COPIED_ICON}`;
+			// Icon-only button: the label is for screen readers, the status announces the copy.
+			const status = document.createElement("span");
+			status.className = "sr-only";
+			status.setAttribute("role", "status");
+			wrapper.append(button, status);
+
+			const setCopied = (copied: boolean) => {
+				const label = copied ? copiedLabel : copyLabel;
+				button.dataset.copied = String(copied);
+				button.setAttribute("aria-label", label);
+				button.title = label;
+				status.textContent = copied ? copiedLabel : "";
+			};
+			setCopied(false);
+
+			let reset: number | undefined;
+			button.addEventListener("click", async () => {
+				try {
+					await navigator.clipboard.writeText(pre.textContent?.trimEnd() ?? "");
+				} catch {
+					// Clipboard access can be denied; leave the icon as is rather than claim a copy.
+					return;
+				}
+				setCopied(true);
+				window.clearTimeout(reset);
+				reset = window.setTimeout(() => setCopied(false), 2000);
+			});
+		}
+	}
+</script>

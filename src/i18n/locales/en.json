@@ -69,7 +69,9 @@
 		"empty": "No articles have been published yet.",
 		"back": "Back to the blog",
 		"readingTime": "min read",
-		"updated": "Updated"
+		"updated": "Updated",
+		"copy": "Copy",
+		"copied": "Copied"
 	},
 	"footer": {
 		"contact_me": "Contact Me 🧑‍💻",

@@ -275,6 +275,33 @@ html {
 		@apply my-6 overflow-x-auto rounded-xl p-4 font-mono text-sm leading-normal ring-1 ring-foreground/10;
 	}
 
+	/* Copy button added to each code block by PostDetail's script. */
+	& .code-block {
+		@apply relative;
+
+		& pre {
+			@apply pr-14;
+		}
+	}
+
+	/* 32px button centered on the first code line: 16px padding + half of a 20px line - half the button. */
+	& .code-copy {
+		@apply absolute top-2.5 right-2.5 grid size-8 place-items-center rounded-md text-foreground/60 transition-colors hover:bg-foreground/10 hover:text-foreground focus-visible:outline-2 focus-visible:outline-primary;
+
+		& svg {
+			@apply size-4;
+		}
+
+		& .code-copied-icon,
+		&[data-copied="true"] .code-copy-icon {
+			@apply hidden;
+		}
+
+		&[data-copied="true"] .code-copied-icon {
+			@apply block text-primary;
+		}
+	}
+
 	& kbd {
 		@apply rounded-md border border-foreground/20 bg-foreground/5 px-1.5 py-0.5 font-mono text-[0.85em] shadow-[0_1px_0] shadow-foreground/20;
 	}
