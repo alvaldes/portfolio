@@ -58,9 +58,6 @@ Una skill son instrucciones, así que ¿cómo se prueba? En dos capas.
 **Los scripts tienen tests.** Insertar una línea en orden alfabético en cuatro READMEs, agregar una entrada a un JSON de 15.000 líneas sin reformatearlo, preparar un artículo para republicarlo: eso es determinista, así que son scripts de Python con 25 tests unitarios. Después corrí cada script con los datos reales de JUMP y comparé el resultado con lo que había publicado a mano. Coincidieron byte por byte.
 
 **Las skills tienen evals.** Claude Code corre casos de evaluación con `claude plugin eval`: un prompt, un espacio de trabajo vacío y criterios que revisan si la skill se activó, si se escribió un archivo y, con un modelo como juez, si la respuesta hizo lo correcto. Un caso pide agregar una app a la lista cerrada y solo pasa si el agente no abre ningún pull request y ofrece otra lista.
-
-La primera corrida no pasó. Fallaron dos casos: Bash no estaba habilitado en los casos, así que el verificador de borradores nunca corrió, y uno de mis criterios de evaluación era ambiguo. Las dos fallas estaban en cómo armé las pruebas, no en las skills. El agente dijo claramente que no pudo correr el verificador, y no fingió que lo había hecho. Después de corregir las dos, pasan los 3 casos y los 10 criterios, en menos de un minuto y por unos 50 centavos de dólar.
-
 ## Pruébalas
 
 En Claude Code:

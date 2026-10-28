@@ -58,9 +58,6 @@ A skill is instructions, so how do you test it? In two layers.
 **The scripts have tests.** Inserting a line in alphabetical order into four READMEs, appending an entry to a 15,000-line JSON file without reformatting it, preparing an article for cross-posting: those are deterministic, so they're Python scripts with 25 unit tests. Then I ran each script on JUMP's real inputs and compared the output with what I had published by hand. They matched byte for byte.
 
 **The skills have evals.** Claude Code runs eval cases with `claude plugin eval`: a prompt, an empty workspace, and graders that check whether the skill fired, whether a file was written, and, with a model as judge, whether the answer did the right thing. One case asks to add an app to the closed list and passes only if the agent opens no pull request and offers another list.
-
-The first run didn't pass. Two cases failed: Bash wasn't enabled for the cases, so the draft checker never ran, and one of my grading rubrics was ambiguous. Both were mistakes in the test setup, not in the skills. The agent said plainly that it couldn't run the checker, and it didn't pretend it had. After fixing both, all 3 cases and 10 graders pass, in under a minute, for about half a dollar.
-
 ## Try them
 
 In Claude Code:
