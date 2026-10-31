@@ -1,0 +1,5 @@
+---
+shortDescription: "Skills for AI coding agents that launch a new tool everywhere it belongs, and stop before every public action."
+---
+
+**launch-skills** turns what I learned launching JUMP on more than a dozen channels in three days into six open-source skills for AI coding agents like Claude Code. They gather a launch kit from your project and generate every image size the sites ask for, republish your blog post on Dev.to, Hashnode and Medium with the canonical link back to your site, add the tool to curated GitHub lists, fill directory and newsletter forms, draft posts for r/macapps, Show HN, Product Hunt and social networks, and keep a tracker of every channel. Each one knows the rules of its sites, from account gates and cooldowns to image sizes, and every skill stops before the last click: it fills the form, saves the draft or prepares the pull request, shows you what's in it and asks. The deterministic steps are Python scripts with unit tests, and the skills have evals run with `claude plugin eval`.

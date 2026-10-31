@@ -1,0 +1,5 @@
+---
+shortDescription: "Skills para agentes de IA que lanzan una herramienta nueva en todos los sitios donde corresponde, y se detienen antes de cada acción pública."
+---
+
+**launch-skills** convierte lo que aprendí al lanzar JUMP en más de una docena de canales en tres días en seis skills de código abierto para agentes de IA como Claude Code. Arman un kit de lanzamiento a partir de tu proyecto y generan cada tamaño de imagen que piden los sitios, republican tu artículo en Dev.to, Hashnode y Medium con el enlace canónico a tu sitio, agregan la herramienta a listas curadas de GitHub, completan formularios de directorios y newsletters, redactan posts para r/macapps, Show HN, Product Hunt y redes sociales, y llevan un registro de cada canal. Cada una conoce las reglas de sus sitios, desde los requisitos de cuenta y los tiempos de espera hasta los tamaños de imagen, y todas se detienen antes del último clic: completan el formulario, guardan el borrador o preparan el pull request, te muestran lo que contiene y te preguntan. Los pasos deterministas son scripts de Python con tests unitarios, y las skills tienen evals que se corren con `claude plugin eval`.

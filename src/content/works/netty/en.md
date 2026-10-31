@@ -1,0 +1,5 @@
+---
+shortDescription: "A macOS menu bar app that tells you at a glance whether you're really online, how good the connection is and how fast it is."
+---
+
+**Netty** is a macOS menu bar app whose icon is a dot that changes color with your connection: green when the internet answers and the connection is good, yellow when latency, jitter or packet loss cross a threshold, and red when it's offline. It checks for real internet, not just a network, through Apple's captive portal check with Google's as a fallback, so a Wi-Fi without internet or a hotel login page counts as offline. Quality comes from timing a TCP handshake to 1.1.1.1 and 8.8.8.8 every 10 seconds, and the speed test uses macOS's built-in `networkQuality`. The popover shows latency, jitter, loss, the last speed test and your network, and you get a notification when the connection drops and when it comes back. Almost everything can be changed, from the rules for each color to the sections of the popover and the icon itself. Nothing leaves your Mac: no analytics and no telemetry. The status rules live in a Swift package tested without opening the app.

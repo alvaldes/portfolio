@@ -14,8 +14,22 @@
 		"thumbMockup": "thumbMockup.webp"
 	},
 	{
-		"id": "storico",
+		"id": "netty",
 		"order": 2,
+		"title": "Netty",
+		"year": "2026",
+		"website": "https://alvaldes.github.io/netty/",
+		"sourceCode": "https://github.com/alvaldes/netty",
+		"platform": "macOS",
+		"active": 1,
+		"stack": "Swift, SwiftUI, AppKit, Network, CoreWLAN",
+		"thumbCard": "thumbCard.webp",
+		"thumbFirst": "thumbFirst.webp",
+		"thumbMockup": "thumbMockup.webp"
+	},
+	{
+		"id": "storico",
+		"order": 3,
 		"title": "Storico",
 		"year": "2026",
 		"website": "https://storico.vercel.app/",
@@ -31,8 +45,21 @@
 		"thumbMockup": "thumbMockup.webp"
 	},
 	{
+		"id": "launch-skills",
+		"order": 4,
+		"title": "launch-skills",
+		"year": "2026",
+		"sourceCode": "https://github.com/alvaldes/launch-skills",
+		"platform": "AI agents",
+		"active": 1,
+		"stack": "Claude Code, Agent Skills, Python",
+		"thumbCard": "thumbCard.webp",
+		"thumbFirst": "thumbFirst.webp",
+		"thumbMockup": "thumbMockup.webp"
+	},
+	{
 		"id": "flowmodoro",
-		"order": 3,
+		"order": 5,
 		"title": "Flowmodoro",
 		"year": "2026",
 		"website": "https://flowmodoro-app.vercel.app/",
@@ -47,7 +74,7 @@
 	},
 	{
 		"id": "localllm-dataforge",
-		"order": 4,
+		"order": 6,
 		"title": "LocalLLM-DataForge",
 		"year": "2026",
 		"sourceCode": "https://github.com/alvaldes/localllm-dataforge",
@@ -60,7 +87,7 @@
 	},
 	{
 		"id": "csv2trello",
-		"order": 5,
+		"order": 7,
 		"title": "csv2trello",
 		"year": "2026",
 		"sourceCode": "https://github.com/alvaldes/csv2trello",
@@ -73,7 +100,7 @@
 	},
 	{
 		"id": "web-tools",
-		"order": 6,
+		"order": 8,
 		"title": "ωεβ Τσφδ",
 		"year": "2024",
 		"website": "https://web-tools.vercel.app/",
@@ -87,7 +114,7 @@
 	},
 	{
 		"id": "search-intranet",
-		"order": 7,
+		"order": 9,
 		"title": "search-intranet",
 		"year": "2022",
 		"sourceCode": "https://github.com/alvaldes/search-intranet",
@@ -100,7 +127,7 @@
 	},
 	{
 		"id": "aterm",
-		"order": 8,
+		"order": 10,
 		"title": "aterm",
 		"year": "2022",
 		"website": "https://aterm.netlify.app/",
@@ -114,7 +141,7 @@
 	},
 	{
 		"id": "trivial",
-		"order": 9,
+		"order": 11,
 		"title": "Trivial",
 		"year": "2021",
 		"website": "https://trivial.alvaldes.vercel.app",
