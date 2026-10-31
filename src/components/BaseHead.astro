@@ -1,5 +1,6 @@
 ---
-import { LANGUAGES, getLocalizedPathname, type UiType } from "../i18n/utils";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { LANGUAGES, getDictionary, getLocalizedPathname, type UiType } from "../i18n/utils";
 
 interface Props {
 	title: string;
@@ -15,6 +16,8 @@ const { lang, title, description, image = `/og/default-${lang}.jpg`, type = "web
 // Falls back to the request URL when `site` is not set in astro.config.mjs.
 const siteURL = Astro.site ?? Astro.url;
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
+// Names the blog feed the same way src/lib/rss.ts titles it.
+const feed = getDictionary(lang);
 
 const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
 	href: new URL(getLocalizedPathname(Astro.url.pathname, hreflang), siteURL),
@@ -63,6 +66,9 @@ const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
 		<link rel="alternate" href={href} hreflang={hreflang} />
 	))
 }
+
+<!-- Blog feed in the page language (src/pages/rss.xml.ts and src/pages/en/rss.xml.ts). -->
+<link rel="alternate" type="application/rss+xml" title={`${feed.site.title} · ${feed.blog.title}`} href={new URL(`${getRelativeLocaleUrl(lang)}rss.xml`, siteURL)} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
