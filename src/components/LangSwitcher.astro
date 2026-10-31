@@ -6,7 +6,8 @@ const t = useTranslations(lang);
 
 // Two languages only: the switcher always points to the one not being shown.
 const targetLang = lang === DEFAULT_LANG ? "en" : DEFAULT_LANG;
-const href = getLocalizedPathname(Astro.url.pathname, targetLang);
+// On the 404 the URL is the missing page, which does not exist in the other language either.
+const href = getLocalizedPathname(Astro.response.status === 404 ? "/" : Astro.url.pathname, targetLang);
 ---
 
 <a

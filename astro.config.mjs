@@ -1,10 +1,13 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.alvaldes.dev',
+  // Static by default; the adapter only serves pages that opt out of prerendering (the 404).
+  adapter: vercel(),
   integrations: [react()],
   markdown: {
     shikiConfig: {

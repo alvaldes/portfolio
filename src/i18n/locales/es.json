@@ -88,6 +88,13 @@
 		"copy2": "por su inspiración.",
 		"buyMeACoffee": "¡Apóyame con un café!"
 	},
+	"notFound": {
+		"title": "Página no encontrada",
+		"heading": "Esta página se salió de órbita",
+		"description": "La ruta que buscas no existe o cambió de lugar. Vuelve a tierra firme desde aquí.",
+		"home": "Volver al inicio",
+		"works": "Ver mis trabajos"
+	},
 	"site": {
 		"title": "Angel L. Valdés",
 		"description": "Ingeniero de software en México. Desarrollador independiente e investigador en IA, con enfoque en frontend, UX/UI y productos con LLMs."

@@ -28,3 +28,7 @@ pnpm-debug.log*
 .codex/
 .codegraph/
 .vscode/
+
+# Vercel link, build output and pulled env
+.vercel/
+.env*

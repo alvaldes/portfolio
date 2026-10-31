@@ -1,7 +1,81 @@
 ---
+import Section from "../components/Section.astro";
+import StarsCanvas from "../components/islands/StarsCanvas";
 import Layout from "../layouts/Layout.astro";
+import { getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
+
+// Rendered on demand so the page sees the requested URL and answers in its language.
+export const prerender = false;
+
+Astro.response.status = 404;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout title="404 | Not Found">
-	<img src="/images/404.svg" alt="404" class="mx-auto mt-10 w-full max-w-md" />
+<Layout title={`404 | ${t("notFound.title")}`} description={t("notFound.description")}>
+	<Section delay={0.2} class="relative flex min-h-[60vh] flex-col items-center justify-center gap-6 py-12 text-center">
+		<!-- Same starfield as the home banner: the lost page is adrift in that space. -->
+		<div class="absolute inset-0 -z-10" aria-hidden="true">
+			<StarsCanvas client:only="react" />
+		</div>
+
+		<p
+			class="flex items-center gap-3 font-comfortaa text-8xl font-bold text-primary sm:gap-5 sm:text-9xl"
+			aria-label="404"
+		>
+			<span aria-hidden="true">4</span>
+			<!-- The zero is a planet with a satellite that lost its route. -->
+			<span class="planet relative inline-block size-[0.8em]" aria-hidden="true">
+				<span class="absolute inset-0 rounded-full border-[0.09em] border-primary bg-primary/10"></span>
+				<span class="absolute inset-[-28%] -rotate-12 rounded-[50%] border-2 border-dashed border-secondary/60"></span>
+				<span class="orbit absolute inset-[-28%]">
+					<span class="absolute top-1/2 -left-[0.06em] size-[0.12em] -translate-y-1/2 rounded-full bg-secondary shadow-md shadow-secondary/50"></span>
+				</span>
+			</span>
+			<span aria-hidden="true">4</span>
+		</p>
+
+		<div class="flex max-w-md flex-col gap-2">
+			<h1 class="text-2xl font-bold md:text-3xl">{t("notFound.heading")}</h1>
+			<p class="text-foreground/80">{t("notFound.description")}</p>
+		</div>
+
+		<div class="mt-2 flex flex-wrap items-center justify-center gap-3">
+			<a
+				href={getLocalizedPathname("/", lang)}
+				class="rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground hover:opacity-90"
+			>
+				{t("notFound.home")}
+			</a>
+			<a
+				href={getLocalizedPathname("/works", lang)}
+				class="rounded-xl border-2 border-primary px-6 py-3 font-bold text-primary hover:bg-primary/10"
+			>
+				{t("notFound.works")}
+			</a>
+		</div>
+	</Section>
 </Layout>
+
+<style>
+	.orbit {
+		animation: orbit 9s linear infinite;
+	}
+
+	.planet {
+		animation: drift 6s ease-in-out infinite;
+	}
+
+	@keyframes orbit {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes drift {
+		50% {
+			transform: translateY(-0.06em) rotate(-4deg);
+		}
+	}
+</style>

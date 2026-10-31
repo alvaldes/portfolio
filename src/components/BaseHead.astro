@@ -16,6 +16,8 @@ const { lang, title, description, image = `/og/default-${lang}.jpg`, type = "web
 // Falls back to the request URL when `site` is not set in astro.config.mjs.
 const siteURL = Astro.site ?? Astro.url;
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
+// The 404 renders at the URL that was not found: that URL has no canonical or translations.
+const isNotFound = Astro.response.status === 404;
 // Names the blog feed the same way src/lib/rss.ts titles it.
 const feed = getDictionary(lang);
 
@@ -57,14 +59,20 @@ const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
 	crossorigin
 />
 
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
-
-<!-- Alternate URLs -->
 {
-	alternateLinks.map(({ href, hreflang }) => (
-		<link rel="alternate" href={href} hreflang={hreflang} />
-	))
+	isNotFound ? (
+		<meta name="robots" content="noindex" />
+	) : (
+		<>
+			<!-- Canonical URL -->
+			<link rel="canonical" href={canonicalURL} />
+
+			<!-- Alternate URLs -->
+			{alternateLinks.map(({ href, hreflang }) => (
+				<link rel="alternate" href={href} hreflang={hreflang} />
+			))}
+		</>
+	)
 }
 
 <!-- Blog feed in the page language (src/pages/rss.xml.ts and src/pages/en/rss.xml.ts). -->

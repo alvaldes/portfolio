@@ -17,6 +17,7 @@
     "@astrojs/check": "^0.9.12",
     "@astrojs/react": "^7.1.1",
     "@astrojs/rss": "^4.0.19",
+    "@astrojs/vercel": "^11.0.17",
     "@justinribeiro/lite-youtube": "^1.9.0",
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
@@ -27,6 +28,7 @@
     "maath": "^0.10.8",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "three": "^0.186.1",
     "typescript": "^6.0.3"

@@ -88,6 +88,13 @@
 		"copy2": "for the inspiration.",
 		"buyMeACoffee": "Buy me a coffee!"
 	},
+	"notFound": {
+		"title": "Page not found",
+		"heading": "This page drifted out of orbit",
+		"description": "The route you are looking for does not exist or has moved. Head back to solid ground from here.",
+		"home": "Back to home",
+		"works": "See my works"
+	},
 	"site": {
 		"title": "Angel L. Valdés",
 		"description": "Software engineer based in Mexico. Indie developer and AI researcher focused on frontend, UX/UI and LLM-powered products."
