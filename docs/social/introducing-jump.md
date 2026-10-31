@@ -5,8 +5,6 @@ Promotion copy for the post "JUMP: el teclado también fuera del navegador" / "J
 - Spanish post: https://www.alvaldes.dev/blog/introducing-jump/
 - English post: https://www.alvaldes.dev/en/blog/introducing-jump/
 
-> Before posting: `astro.config.mjs` still sets `site` to `https://alvaldes.vercel.app`, which redirects (307) to `www.alvaldes.dev`. Until that changes, the post's `canonical`, `og:url`, `hreflang` and `og:image` point at the old domain.
-
 ## Where JUMP is published
 
 Status as of 2026-10-28.
