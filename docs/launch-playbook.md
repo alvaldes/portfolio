@@ -37,7 +37,7 @@ Prepare once per tool and reuse everywhere.
 
 Two warnings learned the hard way:
 
-- **The blog's canonical URL must be the final domain.** The portfolio still sets `site: 'https://alvaldes.vercel.app'`, which redirects to `www.alvaldes.dev`; cross-posts were pointed at `www.alvaldes.dev` by hand.
+- **The blog's canonical URL must be the final domain.** `astro.config.mjs` sets `site: 'https://www.alvaldes.dev'`; a `site` that redirects (the old `alvaldes.vercel.app`) makes the post's canonical disagree with its cross-posts.
 - **Write in the human's voice.** r/macapps, r/opensource and awesome-macOS remove or ban text that reads as AI-written (em dashes are a known trigger). Drafts are a starting point; the human rewrites them.
 
 ## Channels
