@@ -1,0 +1,72 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #launch-still {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    #launch-still img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    .launch-bar {
+      position: absolute;
+      height: 28px;
+      background: rgba(52, 199, 89, 0.45);
+      border-radius: 3px;
+    }
+    #launch-pop {
+      position: absolute;
+      left: 765px;
+      top: 420px;
+      width: 390px;
+      height: 240px;
+      background-image: url("assets/landing-hero.png");
+      background-position: -1060px -255px;
+      border-radius: 6px;
+    }
+    #launch-ring {
+      position: absolute;
+      left: 516px;
+      top: 339px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 4px solid #34c759;
+    }
+  </style>
+  <div data-hf-id="hf-tzuw" id="root" data-composition-id="launch" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-6v6x" id="launch-still">
+      <img data-hf-id="hf-510n" id="launch-post" src="assets/launch-post.png" alt="">
+      <div data-hf-id="hf-hrgl" id="launch-bar-1" class="launch-bar" style="left: 1023px; top: 212px; width: 297px"></div>
+      <div data-hf-id="hf-avd4" id="launch-bar-2" class="launch-bar" style="left: 576px; top: 240px; width: 102px"></div>
+    </div>
+    <div data-hf-id="hf-yyri" id="launch-pop"></div>
+    <div data-hf-id="hf-mi3f" id="launch-ring"></div>
+  </div>
+  <script>
+gsap.set("#launch-ring", { x: 7, y: 1 });
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#launch-still", { x: 0, y: 0, scale: 1, opacity: 1 },
+      { x: -655, y: -60, scale: 1.7, transformOrigin: "0px 0px", duration: 0.8, ease: "power2.inOut" }, 0.1);
+    tl.fromTo("#launch-bar-1", { scaleX: 0 }, { scaleX: 1, transformOrigin: "0% 50%", duration: 0.4, ease: "power2.inOut" }, 1.0);
+    tl.fromTo("#launch-bar-2", { scaleX: 0 }, { scaleX: 1, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out" }, 1.4);
+    tl.to("#launch-still", { x: 1500, y: 260, scale: 0.12, opacity: 0, duration: 0.8, ease: "power2.inOut" }, 3.2);
+    tl.fromTo("#launch-pop", { scale: 0.4, opacity: 0 }, { scale: 3, opacity: 1, duration: 0.8, ease: "power3.out" }, 3.4);
+    tl.fromTo("#launch-ring", { scale: 1, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.01 }, 4.5);
+    tl.to("#launch-ring", { scale: 2.4, opacity: 0, duration: 0.9, ease: "power2.out" }, 4.52);
+    window.__timelines["launch"] = tl;
+  </script>
+</template>

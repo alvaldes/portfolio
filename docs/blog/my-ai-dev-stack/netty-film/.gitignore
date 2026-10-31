@@ -1,0 +1,7 @@
+# Renders are rebuilt from the sources; the blog copy lives in public/blog/my-ai-dev-stack/.
+renders/
+
+# Studio and CLI caches.
+.thumbnails/
+.waveform-cache/
+.hyperframes/

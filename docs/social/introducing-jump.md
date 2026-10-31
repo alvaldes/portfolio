@@ -7,6 +7,31 @@ Promotion copy for the post "JUMP: el teclado también fuera del navegador" / "J
 
 > Before posting: `astro.config.mjs` still sets `site` to `https://alvaldes.vercel.app`, which redirects (307) to `www.alvaldes.dev`. Until that changes, the post's `canonical`, `og:url`, `hreflang` and `og:image` point at the old domain.
 
+## Where JUMP is published
+
+Status as of 2026-10-28.
+
+| Channel | Status | Link or note |
+|---|---|---|
+| LinkedIn (Spanish) | Published 2026-10-26 | Carousel post, link in the first comment. See [LinkedIn](#linkedin-spanish-published-2026-10-26). |
+| X (@alvaldes_) | Published 2026-10-26 | https://x.com/alvaldes_/status/2114797885824905610. The ad copy with the carousel, linking to the English post. Tags @homerow_app. |
+| Threads (@alvaldes_) | Published 2026-10-27 | https://www.threads.com/@alvaldes_/post/De-BSniFP6S. Links to the Spanish post; no slide images attached. |
+| Medium | Published 2026-10-26 | https://medium.com/@alvaldes/jump-keyboard-first-even-outside-the-browser-angel-l-vald%C3%A9s-39999c2184dd. Canonical points at the blog. The title picked up " \| Angel L. Valdés" from the page title; edit it out. |
+| Dev.to | Published 2026-10-28 | https://dev.to/alvaldesdev/jump-keyboard-first-even-outside-the-browser-22km (canonical to the blog) |
+| Hashnode | Published 2026-10-28 | https://alvaldes.hashnode.dev/jump-keyboard-first-even-outside-the-browser (canonical to the blog) |
+| r/macapps | Published 2026-10-28 | Comment in "The App Pile – October 2026": https://www.reddit.com/r/macapps/comments/1wuoav5/comment/19rsiox8wnw69/. Rule 3: no JUMP promotion there until 2026-11-27. |
+| Product Hunt | Scheduled for 2026-10-29 | Launches at 12:01 a.m. Pacific. |
+| Indie Hackers | Product page live | https://www.indiehackers.com/product/jump-2. Posting needs an established account. |
+| AlternativeTo | Submitted, free queue | Listed as an alternative to Homerow, Shortcat, Neru, Vimac, VimMotion and Wooshy. |
+| awesome-mac | PR open | https://github.com/jaywcjlove/awesome-mac/pull/3995 |
+| open-source-mac-os-apps | PR open | https://github.com/serhii-londar/open-source-mac-os-apps/pull/1837 |
+| AppAddict | Submitted for review | Review form, 2026-10-28. Replies go to alvaldes.dev@gmail.com. |
+| iOS Dev Weekly | Link suggested | The English blog post, 2026-10-28. |
+| GitHub | Topics added | macos, keyboard-navigation, accessibility, swift, menubar-app, vim, productivity, open-source |
+| Hacker News | Blocked | Show HN is limited for new accounts (`/showlim`). Title and text are ready. |
+| r/opensource | Not posted | Rules ban AI-written posts and heavy self-promotion; write it by hand once the account has history. |
+| awesome-macOS (iCHAIT) | Closed | Closed to public submissions since 2026-10-27 (issue #1338). |
+
 Scores come from the local `li-human` heuristics (not GPTZero or any commercial detector). Its VOICE check counts English contractions and pronouns, so Spanish text always scores low there.
 
 ## Carousel (every network)

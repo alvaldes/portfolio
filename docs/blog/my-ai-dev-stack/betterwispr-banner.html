@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1424px; height: 400px; overflow: hidden; }
+    body {
+      background: #f1efeb;
+      color: #141416;
+      font-family: "Geist", system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      padding-bottom: 56px;
+    }
+    .logo { width: 176px; height: 176px; flex: none; }
+    .name { font-weight: 600; font-size: 104px; letter-spacing: -0.03em; line-height: 1; }
+    .tagline { margin-top: 14px; font-weight: 400; font-size: 36px; letter-spacing: -0.02em; color: rgba(20, 20, 22, 0.6); }
+    /* The dictation pill BetterWispr shows while recording, rebuilt at 1.8x from a screenshot of the app. */
+    .pill {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) scale(0.6);
+      transform-origin: 50% 100%;
+      width: 389px;
+      height: 95px;
+      border-radius: 48px;
+      background: linear-gradient(#4b4b4b, #3d3d3d);
+      box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.08), 0 10px 30px rgba(20, 20, 22, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+    .pill .btn { width: 65px; height: 65px; border-radius: 50%; display: grid; place-items: center; }
+    .pill .cancel { background: #707070; }
+    .pill .ok { background: #ffffff; }
+    .pill .wave { display: flex; align-items: center; gap: 10px; }
+    .pill .wave i { display: block; width: 6px; border-radius: 3px; background: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <!-- Logo as published on betterwispr.com. -->
+  <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+    <rect x="0.5" y="0.5" width="99" height="99" rx="22.5" fill="#f1efeb" stroke="#14141619"></rect>
+    <path d="M27.7 37.7C27.5 54.7 32.4 63 38.4 63C45.4 63 51 52.3 50 45.4M72.3 37.7C72.5 54.7 67.6 63 61.6 63C54.6 63 49 52.3 50 45.4" fill="none" stroke="#141416" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+  <div>
+    <div class="name">BetterWispr</div>
+    <div class="tagline">Speak it messy. Send it clean.</div>
+  </div>
+  <div class="pill" aria-hidden="true">
+    <div class="btn cancel">
+      <svg viewBox="0 0 24 24" width="32" height="32"><path d="M5 5L19 19M19 5L5 19" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
+    <div class="wave">
+      <i style="height: 34px; background: #6a6a6a"></i>
+      <i style="height: 40px; background: #b0b0b0"></i>
+      <i style="height: 40px"></i>
+      <i style="height: 34px"></i>
+      <i style="height: 31px"></i>
+      <i style="height: 34px"></i>
+      <i style="height: 34px"></i>
+      <i style="height: 38px"></i>
+      <i style="height: 34px"></i>
+    </div>
+    <div class="btn ok">
+      <svg viewBox="0 0 24 24" width="40" height="40"><path d="M5 12.5L10 17.5L19.5 7" fill="none" stroke="#141416" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+</body>
+</html>

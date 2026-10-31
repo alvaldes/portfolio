@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 760px; overflow: hidden; }
+  body {
+    background: #0e0f12; color: #e6e7ec; position: relative;
+    font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .glow { position: absolute; border-radius: 50%; filter: blur(110px); }
+  .g1 { width: 520px; height: 380px; left: 300px; top: 160px; background: #34c759; opacity: .13; }
+  .g2 { width: 480px; height: 380px; right: 40px; top: 60px; background: #7c4dff; opacity: .24; }
+  .g3 { width: 460px; height: 300px; left: 520px; bottom: -80px; background: #ff2d87; opacity: .16; }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, #000 35%, transparent 80%);
+  }
+  img.ic { width: 34px; height: 34px; border-radius: 8px; flex: none; }
+  .tile { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; flex: none; background: #181a1f; border: 1px solid rgba(255,255,255,.1); }
+  .label { font: 600 11px -apple-system, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #8b8d97; }
+  .name { font: 600 17px -apple-system, sans-serif; color: #fff; }
+  .sub { font: 400 13px -apple-system, sans-serif; color: #9a9ca6; margin-top: 2px; }
+
+  .box { position: absolute; border-radius: 18px; border: 1px solid rgba(255,255,255,.1); background: rgba(22,23,28,.85); }
+  .row { display: flex; align-items: center; gap: 12px; }
+
+  /* You */
+  .you { left: 40px; top: 320px; width: 200px; padding: 22px; text-align: center; }
+  .you .avatar { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 12px; background: linear-gradient(135deg, #34c759, #0a84ff); display: grid; place-items: center; font: 700 26px -apple-system, sans-serif; color: #fff; }
+
+  /* Ghostty > herdr > agents */
+  .ghostty { left: 310px; top: 120px; width: 560px; height: 580px; padding: 18px 20px; border-color: rgba(120,140,255,.35); }
+  .herdr { position: absolute; left: 20px; right: 20px; top: 70px; bottom: 20px; border-radius: 14px; border: 1px dashed rgba(255,255,255,.18); padding: 16px; }
+  .agents { position: absolute; left: 16px; right: 16px; top: 64px; display: flex; flex-direction: column; gap: 12px; }
+  .agent { border-radius: 12px; background: #1b1c22; border: 1px solid rgba(255,255,255,.08); padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+  .agent .br { font: 500 14px "SF Mono", Menlo, monospace; color: #fff; }
+  .agent .st { margin-left: auto; font: 600 11px -apple-system, sans-serif; letter-spacing: .05em; padding: 4px 9px; border-radius: 99px; }
+  .w { color: #34c759; background: rgba(52,199,89,.12); }
+  .n { color: #ffcc00; background: rgba(255,204,0,.12); }
+  .dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+  .dg { background: #34c759; box-shadow: 0 0 12px rgba(52,199,89,.7); }
+  .dy { background: #ffcc00; box-shadow: 0 0 12px rgba(255,204,0,.7); }
+  .brain { position: absolute; left: 16px; right: 16px; bottom: 16px; border-radius: 12px; padding: 12px 14px; background: rgba(255,45,135,.07); border: 1px solid rgba(255,45,135,.25); }
+
+  /* Tools on the right */
+  .tools { position: absolute; left: 940px; top: 120px; width: 220px; display: flex; flex-direction: column; gap: 14px; }
+  .tool { padding: 0 16px; position: static; height: 96px; display: flex; align-items: center; }
+  .extra { left: 40px; top: 590px; width: 220px; padding: 14px 16px; border-style: dashed; }
+
+  svg.wires { position: absolute; inset: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+  <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+  <div class="grid-bg"></div>
+
+  <svg class="wires" width="1200" height="760">
+    <defs>
+      <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#6d707b"/></marker>
+    </defs>
+    <g stroke="#6d707b" stroke-width="1.6" fill="none">
+      <path d="M240 400 L306 400" marker-end="url(#a)"/>
+      <path d="M140 586 L140 494" stroke-dasharray="5 5" marker-end="url(#a)"/>
+      <path d="M870 170 L936 170" marker-end="url(#a)"/>
+      <path d="M870 280 L936 280" marker-end="url(#a)"/>
+      <path d="M870 390 L936 390" marker-end="url(#a)"/>
+      <path d="M870 500 L936 500" marker-end="url(#a)"/>
+    </g>
+  </svg>
+
+  <div class="box you">
+    <div class="avatar"><svg viewBox="0 0 24 24" width="30" height="30" fill="#fff"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 21c.8-4.4 4.2-7 8.5-7s7.7 2.6 8.5 7z"/></svg></div>
+    <div class="name" data-i18n="you"></div>
+    <div class="sub" data-i18n="you-sub"></div>
+    <div class="row" style="justify-content:center; margin-top:14px; gap:8px">
+      <img class="ic" src="icons/betterwispr.png" style="width:26px;height:26px;border-radius:6px">
+      <span class="sub" style="margin:0">BetterWispr</span>
+    </div>
+  </div>
+
+  <div class="box extra">
+    <div class="label" data-i18n="extra"></div>
+    <div class="row" style="margin-top:10px; gap:8px">
+      <img class="ic" src="icons/tailscale.png" style="width:26px;height:26px;border-radius:6px">
+      <span class="sub" style="margin:0">Tailscale + Moshi</span>
+    </div>
+  </div>
+
+  <div class="box ghostty">
+    <div class="row"><img class="ic" src="icons/ghostty.png"><div><div class="name">Ghostty</div><div class="sub" data-i18n="ghostty"></div></div></div>
+    <div class="herdr">
+      <div class="row"><img class="ic" src="icons/herdr.png" style="width:30px;height:30px"><div><div class="name" style="font-size:15px">herdr</div><div class="sub" data-i18n="herdr"></div></div></div>
+      <div class="agents">
+        <div class="agent"><div class="dot dg"></div><div><div class="br">feat/monitor</div><div class="sub" data-i18n="wt"></div></div><span class="st w" data-i18n="working"></span></div>
+        <div class="agent"><div class="dot dg"></div><div><div class="br">feat/speed-test</div><div class="sub" data-i18n="wt"></div></div><span class="st w" data-i18n="working"></span></div>
+        <div class="agent"><div class="dot dy"></div><div><div class="br">site/landing</div><div class="sub" data-i18n="wt"></div></div><span class="st n" data-i18n="needs"></span></div>
+        <div class="agent"><div class="dot dg"></div><div><div class="br">launch</div><div class="sub" data-i18n="wt"></div></div><span class="st w" data-i18n="working"></span></div>
+      </div>
+      <div class="brain row">
+        <div class="tile" style="background:#111"><img src="icons/gentleman.png" style="width:34px;height:34px;border-radius:8px"></div>
+        <div><div class="name" style="font-size:15px">Gentle AI · Gentle Shell</div><div class="sub" data-i18n="gentle"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tools">
+    <div class="box tool"><div class="row"><div class="tile" style="background:#111"><img src="icons/gentleman.png" style="width:34px;height:34px;border-radius:8px"></div><div><div class="name">Engram</div><div class="sub" data-i18n="engram"></div></div></div></div>
+    <div class="box tool"><div class="row"><img class="ic" src="icons/egolite.png"><div><div class="name">ego-browser</div><div class="sub" data-i18n="ego"></div></div></div></div>
+    <div class="box tool"><div class="row"><img class="ic" src="icons/obsidian.png"><div><div class="name">Obsidian</div><div class="sub" data-i18n="obsidian"></div></div></div></div>
+    <div class="box tool"><div class="row"><div class="tile"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div><div><div class="name">Git + GitHub</div><div class="sub" data-i18n="git"></div></div></div></div>
+  </div>
+
+  <script>
+    const T = {
+      es: {
+        you: "Tú", "you-sub": "Project manager", extra: "Extra · teléfono",
+        ghostty: "La terminal donde vive todo", herdr: "Un workspace por proyecto",
+        wt: "su propio worktree", working: "TRABAJANDO", needs: "TE NECESITA",
+        gentle: "Cómo trabaja cada agente", engram: "Memoria entre sesiones y proyectos",
+        ego: "Ojos y manos en la web", obsidian: "Segundo cerebro compartido", git: "Ramas, merge y publicación",
+      },
+      en: {
+        you: "You", "you-sub": "Project manager", extra: "Extra · phone",
+        ghostty: "The terminal where it all lives", herdr: "One workspace per project",
+        wt: "its own worktree", working: "WORKING", needs: "NEEDS YOU",
+        gentle: "How every agent works", engram: "Memory across sessions and projects",
+        ego: "Eyes and hands on the web", obsidian: "A shared second brain", git: "Branches, merges, and publishing",
+      },
+    };
+    const lang = new URLSearchParams(location.search).get("lang") || "es";
+    document.documentElement.lang = lang;
+    for (const el of document.querySelectorAll("[data-i18n]")) el.textContent = T[lang][el.dataset.i18n];
+  </script>
+</body>
+</html>

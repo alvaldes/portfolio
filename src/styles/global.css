@@ -310,7 +310,8 @@ html {
 		@apply my-12 border-foreground/15;
 	}
 
-	& img {
+	& img,
+	& video {
 		@apply mx-auto my-6 h-auto rounded-xl ring-1 ring-foreground/10;
 	}
 

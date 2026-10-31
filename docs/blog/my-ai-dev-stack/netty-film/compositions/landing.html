@@ -1,0 +1,80 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+    }
+    #landing-still {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    #landing-still img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    #landing-bar {
+      position: absolute;
+      left: 424px;
+      top: 416px;
+      width: 255px;
+      height: 26px;
+      background: rgba(52, 199, 89, 0.45);
+      border-radius: 3px;
+    }
+    #landing-video {
+      position: absolute;
+      left: 0;
+      top: -60px;
+      width: 1920px;
+      height: 1200px;
+      object-fit: cover;
+    }
+    #landing-card {
+      position: absolute;
+      left: 96px;
+      bottom: 96px;
+      padding: 32px 44px;
+      border-radius: 14px;
+      background: #16181c;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      color: #f2f3f5;
+      font-weight: 900;
+      font-size: 64px;
+      letter-spacing: -0.02em;
+    }
+    #landing-card em {
+      font-style: normal;
+      color: #34c759;
+    }
+  </style>
+  <div data-hf-id="hf-9soe" id="root" data-composition-id="landing" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-asom" id="landing-still-clip" class="clip" data-start="0" data-duration="2.4" data-track-index="1">
+      <div data-hf-id="hf-e9z3" id="landing-still">
+        <img data-hf-id="hf-0o6h" id="landing-hero" src="assets/landing-hero.png" alt="" />
+        <div data-hf-id="hf-zjl6" id="landing-bar"></div>
+      </div>
+    </div>
+    <video data-hf-id="hf-pxt1" id="landing-video" class="clip" data-start="2.2" data-duration="6.8" data-media-start="0.3"
+      data-track-index="2" muted playsinline src="assets/ego-landing.mp4"></video>
+    <div data-hf-id="hf-ns7o" id="landing-card-clip" class="clip" data-start="2.8" data-duration="6" data-track-index="3">
+      <div data-hf-id="hf-07i9" id="landing-card">The agent <em data-hf-id="hf-q5uh">checks its own work</em></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#landing-still", { x: 0, y: 0, scale: 1 },
+      { x: -309, y: -324, scale: 1.9, transformOrigin: "0px 0px", duration: 0.8, ease: "power2.inOut" }, 0.1);
+    tl.fromTo("#landing-bar", { scaleX: 0 }, { scaleX: 1, transformOrigin: "0% 50%", duration: 0.4, ease: "power2.inOut" }, 1.0);
+    tl.fromTo("#landing-card", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.8);
+    tl.to("#landing-card", { opacity: 0, duration: 0.4, ease: "power2.in" }, 8.3);
+    window.__timelines["landing"] = tl;
+  </script>
+</template>
