@@ -25,7 +25,10 @@ const t = useTranslations(lang);
 	</nav>
 </aside>
 
-<!-- Narrow screens: the same index, collapsed above the article. -->
+<!--
+	Narrow screens: the same index, collapsed above the article.
+	It hides at the same 1360px breakpoint where the aside appears; change both together.
+-->
 <details class="group mb-8 rounded-xl px-4 py-3 ring-1 ring-foreground/10 min-[1360px]:hidden" data-toc-dropdown>
 	<summary class="flex cursor-pointer list-none items-center justify-between text-xs font-medium tracking-wider text-secondary uppercase">
 		{t("blog.toc")}
@@ -54,6 +57,8 @@ const t = useTranslations(lang);
 	const headings = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => el !== null);
 	const navbar = document.querySelector("[data-site-navbar]");
 	// Room below the navbar for a heading to count as reached once a link scrolls it into place.
+	// Clicked headings stop at their scroll margin (scroll-mt-24 on .post-content headings in global.css);
+	// keep this value above that margin minus the navbar height, or clicked headings will not turn active.
 	const BELOW_NAVBAR = 80;
 
 	const update = () => {

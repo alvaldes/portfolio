@@ -4,24 +4,24 @@ import { describe, it } from "node:test";
 import { activeHeadingId, MIN_TOC_SECTIONS, tocSections } from "../src/lib/toc.ts";
 
 const heading = (depth, slug) => ({ depth, slug, text: slug });
+// `count` sections, each followed by a ### subsection that must never count toward the minimum.
+const post = (count) =>
+	Array.from({ length: count }, (_, i) => [heading(2, `s${i}`), heading(3, `s${i}-sub`)]).flat();
 
 describe("tocSections", () => {
-	it("returns the ## headings of a post with enough sections", () => {
-		const headings = [heading(2, "a"), heading(3, "a-1"), heading(2, "b"), heading(2, "c")];
+	it("returns the ## headings of a post with exactly the minimum number of sections", () => {
 		assert.deepEqual(
-			tocSections(headings).map((h) => h.slug),
-			["a", "b", "c"],
+			tocSections(post(MIN_TOC_SECTIONS)).map((h) => h.slug),
+			Array.from({ length: MIN_TOC_SECTIONS }, (_, i) => `s${i}`),
 		);
 	});
 
-	it("returns nothing for a post below the minimum, so it gets no index", () => {
-		const headings = [heading(2, "a"), heading(3, "a-1"), heading(3, "a-2"), heading(2, "b")];
-		assert.equal(MIN_TOC_SECTIONS, 3);
-		assert.deepEqual(tocSections(headings), []);
+	it("returns nothing for a post one section below the minimum, so it gets no index", () => {
+		assert.deepEqual(tocSections(post(MIN_TOC_SECTIONS - 1)), []);
 	});
 
 	it("counts only ## headings toward the minimum", () => {
-		const headings = [heading(2, "a"), heading(3, "a-1"), heading(3, "a-2"), heading(3, "a-3")];
+		const headings = [heading(2, "a"), ...Array.from({ length: MIN_TOC_SECTIONS }, (_, i) => heading(3, `a-${i}`))];
 		assert.deepEqual(tocSections(headings), []);
 	});
 });
