@@ -71,7 +71,8 @@
 		"readingTime": "min read",
 		"updated": "Updated",
 		"copy": "Copy",
-		"copied": "Copied"
+		"copied": "Copied",
+		"toc": "On this page"
 	},
 	"footer": {
 		"contact_me": "Contact Me 🧑‍💻",

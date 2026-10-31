@@ -4,6 +4,7 @@ import { render } from "astro:content";
 import { getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
 import { formatPostDate, type Post } from "../lib/blog";
 import Section from "./Section.astro";
+import TableOfContents from "./TableOfContents.astro";
 
 interface Props {
 	post: Post;
@@ -13,11 +14,13 @@ const { post } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+// Long posts get an index of their sections; a short one reads fine without it.
+const sections = headings.filter((heading) => heading.depth === 2);
 const { title, description, pubDate, updatedDate, cover, coverAlt, tags } = post.data;
 ---
 
-<Section delay={0.2} id={post.slug} class="mx-auto max-w-3xl">
+<Section delay={0.2} id={post.slug} class="relative mx-auto max-w-3xl">
 	<a
 		href={getLocalizedPathname("/blog", lang)}
 		class="group mb-6 inline-flex items-center gap-2 text-sm font-medium text-primary transition-all duration-300 hover:gap-3"
@@ -73,6 +76,8 @@ const { title, description, pubDate, updatedDate, cover, coverAlt, tags } = post
 			class="mt-2 aspect-video w-full rounded-xl object-cover ring-1 ring-foreground/10"
 		/>
 	</header>
+
+	{sections.length >= 3 && <TableOfContents headings={sections} />}
 
 	<div class="post-content" data-copy-label={t("blog.copy")} data-copied-label={t("blog.copied")}>
 		<Content />
