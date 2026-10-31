@@ -1,0 +1,121 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+      color: #f2f3f5;
+    }
+    #commits-day {
+      position: absolute;
+      left: 140px;
+      top: 300px;
+      font-weight: 900;
+      font-size: 140px;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    #commits-clock {
+      position: absolute;
+      left: 144px;
+      top: 480px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 72px;
+      color: #34c759;
+    }
+    #commits-count {
+      position: absolute;
+      left: 144px;
+      top: 600px;
+      font-weight: 700;
+      font-size: 48px;
+      color: #9a9ca6;
+    }
+    #commits-window {
+      position: absolute;
+      left: 820px;
+      top: 0;
+      width: 1040px;
+      height: 1080px;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(transparent 0, #000 160px, #000 920px, transparent 1080px);
+      mask-image: linear-gradient(transparent 0, #000 160px, #000 920px, transparent 1080px);
+    }
+    #commits-list {
+      position: absolute;
+      left: 0;
+      top: 420px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 30px;
+      line-height: 56px;
+      white-space: nowrap;
+    }
+    .commits-time {
+      color: #34c759;
+      margin-right: 28px;
+    }
+  </style>
+  <div data-hf-id="hf-tx8n" id="root" data-composition-id="commits" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-u7z9" id="commits-day">Oct 27</div>
+    <div data-hf-id="hf-27pm" id="commits-clock">12:25</div>
+    <div data-hf-id="hf-wo4f" id="commits-count"><span data-hf-id="hf-4nqs" id="commits-n">1</span> commits</div>
+    <div data-hf-id="hf-4vtr" id="commits-window" data-layout-allow-overflow>
+      <div data-hf-id="hf-das6" id="commits-list">
+      <div data-hf-id="hf-ssld" class="commits-row"><span data-hf-id="hf-p8gp" class="commits-time">12:25</span><span data-hf-id="hf-52wg">chore: scaffold the Netty menu bar app and the NettyKit package</span></div>
+      <div data-hf-id="hf-968l" class="commits-row"><span data-hf-id="hf-7sod" class="commits-time">12:25</span><span data-hf-id="hf-vd3k">feat: turn probe samples into a connection status with adjustable rules</span></div>
+      <div data-hf-id="hf-ad5o" class="commits-row"><span data-hf-id="hf-ot7f" class="commits-time">12:30</span><span data-hf-id="hf-zppg">feat: probe for real internet access and track the status in the menu bar</span></div>
+      <div data-hf-id="hf-9yun" class="commits-row"><span data-hf-id="hf-oewe" class="commits-time">12:33</span><span data-hf-id="hf-sos9">fix: tolerate one lost probe per minute before turning yellow</span></div>
+      <div data-hf-id="hf-b5rq" class="commits-row"><span data-hf-id="hf-mtoa" class="commits-time">12:37</span><span data-hf-id="hf-uso4">feat: measure connection capacity with networkQuality on demand and on a schedule</span></div>
+      <div data-hf-id="hf-argp" class="commits-row"><span data-hf-id="hf-pz69" class="commits-time">12:47</span><span data-hf-id="hf-9t2w">feat: show the Wi-Fi name with Location access and detect an active VPN</span></div>
+      <div data-hf-id="hf-byds" class="commits-row"><span data-hf-id="hf-p3pg" class="commits-time">13:03</span><span data-hf-id="hf-azvt">feat: show status, quality, speed and network in the Pulse popover</span></div>
+      <div data-hf-id="hf-bk2r" class="commits-row"><span data-hf-id="hf-qoxk" class="commits-time">13:07</span><span data-hf-id="hf-rqnb">feat: notify when the connection drops and when it comes back</span></div>
+      <div data-hf-id="hf-6e3e" class="commits-row"><span data-hf-id="hf-nxqm" class="commits-time">13:16</span><span data-hf-id="hf-cg0y">feat: probe when the popover opens instead of offering a re-check button</span></div>
+      <div data-hf-id="hf-5zsd" class="commits-row"><span data-hf-id="hf-k1c9" class="commits-time">13:26</span><span data-hf-id="hf-iacx">feat: draw a configurable menu bar icon in color or monochrome, with custom images</span></div>
+      <div data-hf-id="hf-y2db" class="commits-row"><span data-hf-id="hf-1sk3" class="commits-time">13:33</span><span data-hf-id="hf-e7bs">feat: add Settings for rules, checks, speed test, notifications, icon and login</span></div>
+      <div data-hf-id="hf-ygoc" class="commits-row"><span data-hf-id="hf-0ln0" class="commits-time">13:36</span><span data-hf-id="hf-a2ru">feat: welcome new users and ask for each permission with its reason</span></div>
+      <div data-hf-id="hf-x9r9" class="commits-row"><span data-hf-id="hf-07bz" class="commits-time">13:37</span><span data-hf-id="hf-2s2g">docs: add the README and the release script</span></div>
+      <div data-hf-id="hf-xo2a" class="commits-row"><span data-hf-id="hf-y44l" class="commits-time">13:44</span><span data-hf-id="hf-i53k">fix: give popover buttons the cards&#x27; wash so they sit on the material</span></div>
+      <div data-hf-id="hf-znlf" class="commits-row"><span data-hf-id="hf-wx7i" class="commits-time">13:49</span><span data-hf-id="hf-ruup">feat: open Settings on About and explain each connection rule in plain words</span></div>
+      <div data-hf-id="hf-01wg" class="commits-row"><span data-hf-id="hf-r3ie" class="commits-time">14:00</span><span data-hf-id="hf-4u8w">feat: let the left and right clicks on the menu bar icon do what the user picks</span></div>
+      <div data-hf-id="hf-yuzd" class="commits-row"><span data-hf-id="hf-r2k5" class="commits-time">14:12</span><span data-hf-id="hf-591k">feat: let users show, hide and reorder the popover sections with a live preview</span></div>
+      <div data-hf-id="hf-z9ae" class="commits-row"><span data-hf-id="hf-w7s3" class="commits-time">14:47</span><span data-hf-id="hf-w6fz">feat: show the local and public IP, with the public one from 1.1.1.1 only on demand</span></div>
+      <div data-hf-id="hf-uvx3" class="commits-row"><span data-hf-id="hf-obyt" class="commits-time">15:11</span><span data-hf-id="hf-z289">feat: let users switch off single parts of each popover section</span></div>
+      <div data-hf-id="hf-va84" class="commits-row"><span data-hf-id="hf-nyf7" class="commits-time">15:44</span><span data-hf-id="hf-e0qv">feat: fold About into General, the first Settings pane</span></div>
+      <div data-hf-id="hf-xwsk" class="commits-row"><span data-hf-id="hf-nk46" class="commits-time">15:47</span><span data-hf-id="hf-my6b">fix: keep the icon preview beside its controls instead of above them</span></div>
+      <div data-hf-id="hf-xihj" class="commits-row"><span data-hf-id="hf-ksx8" class="commits-time">15:56</span><span data-hf-id="hf-yh90">feat: use only the chosen circle SF Symbols in black and white, shown with their drawing</span></div>
+      <div data-hf-id="hf-x46i" class="commits-row"><span data-hf-id="hf-eng4" class="commits-time">16:08</span><span data-hf-id="hf-ax0a">feat: offer eight circle SF Symbols in both icon modes, picked from a drawn grid</span></div>
+      <div data-hf-id="hf-wpvh" class="commits-row"><span data-hf-id="hf-kzeb" class="commits-time">16:16</span><span data-hf-id="hf-uf4s">feat: check the connection at once on every click, confirming a change without waiting</span></div>
+      <div data-hf-id="hf-zi0o" class="commits-row"><span data-hf-id="hf-hrzu" class="commits-time">16:24</span><span data-hf-id="hf-lu22">feat: style the welcome window like the popover, with no title bar</span></div>
+      <div data-hf-id="hf-z3pn" class="commits-row"><span data-hf-id="hf-m5d5" class="commits-time">16:29</span><span data-hf-id="hf-5p35">feat: give Netty its app icon, a green dot on graphite made in Icon Composer</span></div>
+      <div data-hf-id="hf-ypem" class="commits-row"><span data-hf-id="hf-zfjf" class="commits-time">16:41</span><span data-hf-id="hf-5cb3">feat: add the landing page for GitHub Pages, with a live connection check, and release 1.0.0</span></div>
+      <div data-hf-id="hf-yb3l" class="commits-row"><span data-hf-id="hf-sw03" class="commits-time">17:02</span><span data-hf-id="hf-e1vt">fix: keep the first request out of the landing demo&#x27;s jitter</span></div>
+      <div data-hf-id="hf-138s" class="commits-row"><span data-hf-id="hf-oxw2" class="commits-time">17:16</span><span data-hf-id="hf-0f3f">fix: center the landing menu&#x27;s links on the Download button&#x27;s line</span></div>
+      <div data-hf-id="hf-0oxr" class="commits-row"><span data-hf-id="hf-sgqt" class="commits-time">17:31</span><span data-hf-id="hf-8ktk">feat: tint the landing&#x27;s background with soft color fields that follow the demo&#x27;s status</span></div>
+      <div data-hf-id="hf-yogd" class="commits-row"><span data-hf-id="hf-uukz" class="commits-time">17:37</span><span data-hf-id="hf-0wqr">feat: show the landing&#x27;s popover screenshots on glass, translucent as in the app</span></div>
+      <div data-hf-id="hf-z2re" class="commits-row"><span data-hf-id="hf-ffat" class="commits-time">17:48</span><span data-hf-id="hf-iiwb">fix: give the landing menu its glass back, a light fill with a stronger blur</span></div>
+      <div data-hf-id="hf-zh2f" class="commits-row"><span data-hf-id="hf-co3v" class="commits-time">17:55</span><span data-hf-id="hf-e85p">fix: capture the status item weakly when redrawing its icon</span></div>
+      <div data-hf-id="hf-zvdg" class="commits-row"><span data-hf-id="hf-aebq" class="commits-time">20:18</span><span data-hf-id="hf-uiii">docs: add Homebrew install to README and landing</span></div>
+      <div data-hf-id="hf-09oh" class="commits-row"><span data-hf-id="hf-7n4s" class="commits-time">20:23</span><span data-hf-id="hf-9e3i">feat(landing): add a copy button to the Homebrew command</span></div>
+      <div data-hf-id="hf-0nzi" class="commits-row"><span data-hf-id="hf-8u1v" class="commits-time">20:26</span><span data-hf-id="hf-lb3e">feat(release): update the Homebrew cask on upload</span></div>
+      <div data-hf-id="hf-12aj" class="commits-row"><span data-hf-id="hf-jcud" class="commits-time">20:33</span><span data-hf-id="hf-zduf">feat(landing): show the Homebrew command beside the download buttons</span></div>
+      <div data-hf-id="hf-1glk" class="commits-row"><span data-hf-id="hf-yi5c" class="commits-time">22:58</span><span data-hf-id="hf-ic0j">docs: link the step-by-step install guide</span></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const times = ["12:25","12:25","12:30","12:33","12:37","12:47","13:03","13:07","13:16","13:26","13:33","13:36","13:37","13:44","13:49","14:00","14:12","14:47","15:11","15:44","15:47","15:56","16:08","16:16","16:24","16:29","16:41","17:02","17:16","17:31","17:37","17:48","17:55","20:18","20:23","20:26","20:33","22:58"];
+    const rowH = 56;
+    const tl = gsap.timeline({ paused: true });
+    const state = { i: 0 };
+    tl.fromTo("#commits-day, #commits-clock, #commits-count", { opacity: 0, x: -30 },
+      { opacity: 1, x: 0, duration: 0.6, ease: "power3.out", stagger: 0.1 }, 0);
+    tl.fromTo("#commits-list", { y: 0 }, { y: -(times.length - 1) * rowH, duration: 5.4, ease: "power1.inOut" }, 0.4);
+    tl.fromTo(state, { i: 0 }, { i: times.length - 1, duration: 5.4, ease: "power1.inOut",
+      onUpdate: () => {
+        const k = Math.round(state.i);
+        document.getElementById("commits-clock").textContent = times[k];
+        document.getElementById("commits-n").textContent = String(k + 1);
+      } }, 0.4);
+    window.__timelines["commits"] = tl;
+  </script>
+</template>

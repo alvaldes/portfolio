@@ -1,0 +1,38 @@
+12:25  chore: scaffold the Netty menu bar app and the NettyKit package
+12:25  feat: turn probe samples into a connection status with adjustable rules
+12:30  feat: probe for real internet access and track the status in the menu bar
+12:33  fix: tolerate one lost probe per minute before turning yellow
+12:37  feat: measure connection capacity with networkQuality on demand and on a schedule
+12:47  feat: show the Wi-Fi name with Location access and detect an active VPN
+13:03  feat: show status, quality, speed and network in the Pulse popover
+13:07  feat: notify when the connection drops and when it comes back
+13:16  feat: probe when the popover opens instead of offering a re-check button
+13:26  feat: draw a configurable menu bar icon in color or monochrome, with custom images
+13:33  feat: add Settings for rules, checks, speed test, notifications, icon and login
+13:36  feat: welcome new users and ask for each permission with its reason
+13:37  docs: add the README and the release script
+13:44  fix: give popover buttons the cards' wash so they sit on the material
+13:49  feat: open Settings on About and explain each connection rule in plain words
+14:00  feat: let the left and right clicks on the menu bar icon do what the user picks
+14:12  feat: let users show, hide and reorder the popover sections with a live preview
+14:47  feat: show the local and public IP, with the public one from 1.1.1.1 only on demand
+15:11  feat: let users switch off single parts of each popover section
+15:44  feat: fold About into General, the first Settings pane
+15:47  fix: keep the icon preview beside its controls instead of above them
+15:56  feat: use only the chosen circle SF Symbols in black and white, shown with their drawing
+16:08  feat: offer eight circle SF Symbols in both icon modes, picked from a drawn grid
+16:16  feat: check the connection at once on every click, confirming a change without waiting
+16:24  feat: style the welcome window like the popover, with no title bar
+16:29  feat: give Netty its app icon, a green dot on graphite made in Icon Composer
+16:41  feat: add the landing page for GitHub Pages, with a live connection check, and release 1.0.0
+17:02  fix: keep the first request out of the landing demo's jitter
+17:16  fix: center the landing menu's links on the Download button's line
+17:31  feat: tint the landing's background with soft color fields that follow the demo's status
+17:37  feat: show the landing's popover screenshots on glass, translucent as in the app
+17:48  fix: give the landing menu its glass back, a light fill with a stronger blur
+17:55  fix: capture the status item weakly when redrawing its icon
+20:18  docs: add Homebrew install to README and landing
+20:23  feat(landing): add a copy button to the Homebrew command
+20:26  feat(release): update the Homebrew cask on upload
+20:33  feat(landing): show the Homebrew command beside the download buttons
+22:58  docs: link the step-by-step install guide

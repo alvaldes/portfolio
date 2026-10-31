@@ -1,0 +1,67 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+      color: #f2f3f5;
+    }
+    #endcard-lockup {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+    }
+    #endcard-icon {
+      width: 420px;
+      height: 420px;
+    }
+    #endcard-word {
+      font-weight: 900;
+      font-size: 220px;
+      letter-spacing: -0.03em;
+    }
+    #endcard-meta {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 740px;
+      text-align: center;
+    }
+    #endcard-dates {
+      font-weight: 700;
+      font-size: 56px;
+      color: #9a9ca6;
+    }
+    #endcard-url {
+      margin-top: 18px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 40px;
+      color: #34c759;
+    }
+  </style>
+  <div data-hf-id="hf-32ii" id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-s6wl" id="endcard-lockup">
+      <img data-hf-id="hf-f7s0" id="endcard-icon" src="assets/netty-icon.png" alt="Netty" />
+      <div data-hf-id="hf-o4ap" id="endcard-word">Netty</div>
+    </div>
+    <div data-hf-id="hf-ehzs" id="endcard-meta">
+      <div data-hf-id="hf-35ui" id="endcard-dates">Oct 27 → Oct 30</div>
+      <div data-hf-id="hf-bz4o" id="endcard-url">alvaldes.github.io/netty</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#endcard-icon", { scale: 0.1, opacity: 0, rotate: -12 },
+      { scale: 1, opacity: 1, rotate: 0, duration: 0.7, ease: "back.out(1.6)" }, 0.1);
+    tl.fromTo("#endcard-word", { clipPath: "inset(0 100% 0 0)" },
+      { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power2.inOut" }, 0.7);
+    tl.fromTo("#endcard-dates", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.2);
+    tl.fromTo("#endcard-url", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.4);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

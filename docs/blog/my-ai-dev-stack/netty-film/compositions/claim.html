@@ -1,0 +1,34 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 168px;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: #f2f3f5;
+    }
+    #claim-lines {
+      position: absolute;
+      left: 200px;
+      top: 330px;
+    }
+    #claim-2 {
+      color: #34c759;
+    }
+  </style>
+  <div data-hf-id="hf-dc55" id="root" data-composition-id="claim" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-ucv9" id="claim-lines">
+      <div data-hf-id="hf-0121" id="claim-1">I direct.</div>
+      <div data-hf-id="hf-rqbq" id="claim-2">They build.</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#claim-1", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+    tl.fromTo("#claim-2", { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.4);
+    window.__timelines["claim"] = tl;
+  </script>
+</template>

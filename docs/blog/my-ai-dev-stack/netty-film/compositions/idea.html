@@ -1,0 +1,92 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #1e2026;
+      font-family: "JetBrains Mono", monospace;
+      color: #f2f3f5;
+    }
+    #idea-tabs {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding: 0 64px;
+      background: #17191e;
+      border-bottom: 1px solid #2c2f37;
+    }
+    #idea-tab {
+      font-size: 32px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: #262932;
+    }
+    #idea-meta {
+      margin-left: auto;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #9a9ca6;
+    }
+    #idea-body {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 150px;
+      bottom: 0;
+      padding: 0 120px 0 64px;
+      font-size: 44px;
+      line-height: 76px;
+    }
+    .idea-line {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 28px;
+    }
+    .idea-num {
+      color: #7d808c;
+      text-align: right;
+    }
+    .idea-dim {
+      color: #9a9ca6;
+    }
+    #idea-hl {
+      background-image: linear-gradient(rgba(52, 199, 89, 0.38), rgba(52, 199, 89, 0.38));
+      background-repeat: no-repeat;
+      background-size: 0% 100%;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      color: #ffffff;
+    }
+  </style>
+  <div data-hf-id="hf-saic" id="root" data-composition-id="idea" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-w15t" id="idea-tabs">
+      <div data-hf-id="hf-j2cs" id="idea-tab">idea.md</div>
+      <div data-hf-id="hf-3flu" id="idea-meta">netty · Oct 27, 12:25</div>
+    </div>
+    <div data-hf-id="hf-jqd5" id="idea-body">
+      <div data-hf-id="hf-bag8" class="idea-line"><span data-hf-id="hf-z18m" class="idea-num">1</span><span data-hf-id="hf-8ncr"><span data-hf-id="hf-a9su" class="idea-dim">#</span> Netty</span></div>
+      <div data-hf-id="hf-665c" class="idea-line"><span data-hf-id="hf-zfjn" class="idea-num">2</span><span data-hf-id="hf-uckh"></span></div>
+      <div data-hf-id="hf-4z89" class="idea-line">
+        <span data-hf-id="hf-ztuo" class="idea-num">3</span>
+        <span data-hf-id="hf-njxg">A native, lightweight macOS menu bar app that <span data-hf-id="hf-p3m3" id="idea-hl">tells you at a glance whether you are really on the internet</span>, how good the connection is, and how fast it is.</span>
+      </div>
+      <div data-hf-id="hf-5dja" class="idea-line"><span data-hf-id="hf-x1ph" class="idea-num">4</span><span data-hf-id="hf-l73p"></span></div>
+      <div data-hf-id="hf-46m7" class="idea-line"><span data-hf-id="hf-xg0i" class="idea-num">5</span><span data-hf-id="hf-cbfp"><span data-hf-id="hf-qma3" class="idea-dim">- **License:**</span> GPL-3.0 (free and open source).</span></div>
+      <div data-hf-id="hf-4kx8" class="idea-line"><span data-hf-id="hf-xubj" class="idea-num">6</span><span data-hf-id="hf-pfa7"><span data-hf-id="hf-nabo" class="idea-dim">- **Status:**</span> design draft — nothing implemented yet.</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#idea-body", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0);
+    tl.fromTo("#idea-hl", { backgroundSize: "0% 100%" }, { backgroundSize: "100% 100%", duration: 0.8, ease: "power2.inOut" }, 1.3);
+    tl.to(".idea-line:not(:nth-child(3)), #idea-tabs", { opacity: 0.25, duration: 0.4, ease: "power2.inOut" }, 2.6);
+    tl.to("#idea-body", { scale: 1.12, transformOrigin: "40% 30%", duration: 1.2, ease: "power2.inOut" }, 2.6);
+    window.__timelines["idea"] = tl;
+  </script>
+</template>

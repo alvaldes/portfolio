@@ -1,0 +1,77 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+    }
+    #agents-video {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+    }
+    #agents-chip {
+      position: absolute;
+      left: 360px;
+      top: 300px;
+      max-width: 1100px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 44px;
+      line-height: 64px;
+      color: #ffffff;
+      background: rgba(52, 199, 89, 0.38);
+      padding: 8px 20px;
+      border-radius: 8px;
+    }
+    .agents-dot {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #34c759;
+    }
+    #agents-card {
+      position: absolute;
+      right: 96px;
+      bottom: 96px;
+      padding: 36px 48px;
+      border-radius: 14px;
+      background: #16181c;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      color: #f2f3f5;
+      font-weight: 900;
+      font-size: 72px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    #agents-card em {
+      font-style: normal;
+      color: #34c759;
+    }
+  </style>
+  <div data-hf-id="hf-yprd" id="root" data-composition-id="agents" data-width="1920" data-height="1080">
+    <video data-hf-id="hf-8p9v" id="agents-video" class="clip" data-start="0" data-duration="6" data-media-start="2" data-playback-rate="2.5" data-track-index="1" muted playsinline src="assets/herdr.mp4"></video>
+    <div data-hf-id="hf-xncx" id="agents-chip">tells you at a glance whether you are really on the internet</div>
+    <div data-hf-id="hf-4ahd" id="agents-dot-1" class="agents-dot" style="left: 44px; top: 91px"></div>
+    <div data-hf-id="hf-auuf" id="agents-dot-2" class="agents-dot" style="left: 109px; top: 155px"></div>
+    <div data-hf-id="hf-hlwv" id="agents-dot-3" class="agents-dot" style="left: 109px; top: 187px"></div>
+    <div data-hf-id="hf-b299" id="agents-card">One idea.<br data-hf-id="hf-x5px"><em data-hf-id="hf-3byp">Three agents.</em></div>
+  </div>
+  <script>
+gsap.set("#agents-dot-1", { x: -17.532, y: 0.844 });
+gsap.set("#agents-dot-2", { x: -19.039, y: 0 });
+gsap.set("#agents-dot-3", { x: -19.208, y: 0 });
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#agents-chip", { opacity: 1, x: 0, y: 0, scale: 1 },
+      { x: -560, y: -230, scale: 0.08, opacity: 0, transformOrigin: "0% 0%", duration: 0.7, ease: "power2.inOut" }, 0.15);
+    tl.fromTo(".agents-dot", { scale: 0, opacity: 1 },
+      { scale: 1, duration: 0.3, ease: "power3.out", stagger: 0.1 }, 0.75);
+    tl.to(".agents-dot", { opacity: 0, duration: 0.3, ease: "power2.in" }, 1.6);
+    tl.fromTo("#agents-card", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.3);
+    tl.to("#agents-card", { opacity: 0, duration: 0.4, ease: "power2.in" }, 5.4);
+    window.__timelines["agents"] = tl;
+  </script>
+</template>
