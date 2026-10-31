@@ -1,6 +1,7 @@
 ---
 import type { MarkdownHeading } from "astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import TableOfContentsList from "./TableOfContentsList.astro";
 
 interface Props {
 	headings: MarkdownHeading[];
@@ -10,30 +11,22 @@ const { headings } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const linkClass =
-	"-ms-px block border-s-2 border-transparent py-1.5 ps-4 text-sm leading-snug text-foreground/60 transition-colors duration-200 hover:text-foreground data-active:border-primary data-active:text-primary";
 ---
 
-<!-- Wide screens: a sticky index in the free space beside the article, so the text stays centered. -->
-<aside class="absolute inset-y-0 start-full ms-12 hidden w-56 xl:block" aria-label={t("blog.toc")}>
+<!--
+	Wide screens: a sticky index in the free space beside the article, so the text stays centered.
+	It needs 272px beside the 768px column (ms-12 + w-56) plus a gutter, so it starts at 1360px.
+-->
+<aside class="absolute inset-y-0 start-full ms-12 hidden w-56 min-[1360px]:block" aria-label={t("blog.toc")}>
+	<!-- top-28 keeps the index clear of the fixed navbar. -->
 	<nav class="sticky top-28">
 		<p class="mb-3 text-xs font-medium tracking-wider text-secondary uppercase">{t("blog.toc")}</p>
-		<ol class="border-s border-foreground/10">
-			{
-				headings.map((heading) => (
-					<li>
-						<a href={`#${heading.slug}`} class={linkClass} data-toc-link={heading.slug}>
-							{heading.text}
-						</a>
-					</li>
-				))
-			}
-		</ol>
+		<TableOfContentsList headings={headings} />
 	</nav>
 </aside>
 
 <!-- Narrow screens: the same index, collapsed above the article. -->
-<details class="group mb-8 rounded-xl px-4 py-3 ring-1 ring-foreground/10 xl:hidden">
+<details class="group mb-8 rounded-xl px-4 py-3 ring-1 ring-foreground/10 min-[1360px]:hidden" data-toc-dropdown>
 	<summary class="flex cursor-pointer list-none items-center justify-between text-xs font-medium tracking-wider text-secondary uppercase">
 		{t("blog.toc")}
 		<svg
@@ -49,32 +42,28 @@ const linkClass =
 			<polyline points="6 9 12 15 18 9"></polyline>
 		</svg>
 	</summary>
-	<ol class="mt-3 border-s border-foreground/10">
-		{
-			headings.map((heading) => (
-				<li>
-					<a href={`#${heading.slug}`} class={linkClass} data-toc-link={heading.slug}>
-						{heading.text}
-					</a>
-				</li>
-			))
-		}
-	</ol>
+	<TableOfContentsList headings={headings} class="mt-3" />
 </details>
 
 <script>
-	// Marks the section being read: the last heading that has reached the top part of the screen.
+	import { activeHeadingId } from "../lib/toc";
+
 	const links = [...document.querySelectorAll<HTMLAnchorElement>("[data-toc-link]")];
+	// Both layouts render the same links, so each heading id appears twice.
 	const ids = [...new Set(links.map((link) => link.dataset.tocLink!))];
 	const headings = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => el !== null);
+	const navbar = document.querySelector("[data-site-navbar]");
+	// Room below the navbar for a heading to count as reached once a link scrolls it into place.
+	const BELOW_NAVBAR = 80;
 
 	const update = () => {
-		// The top 35% of the screen, and never less than the area under the fixed navbar.
-		const threshold = Math.max(200, window.innerHeight * 0.35);
-		let current: string | undefined;
-		for (const heading of headings) {
-			if (heading.getBoundingClientRect().top <= threshold) current = heading.id;
-		}
+		// The top 35% of the screen, and never less than the area just under the fixed navbar.
+		const navbarBottom = navbar?.getBoundingClientRect().bottom ?? 0;
+		const threshold = Math.max(navbarBottom + BELOW_NAVBAR, window.innerHeight * 0.35);
+		const current = activeHeadingId(
+			headings.map((heading) => ({ id: heading.id, top: heading.getBoundingClientRect().top })),
+			threshold,
+		);
 		for (const link of links) {
 			const active = link.dataset.tocLink === current;
 			link.toggleAttribute("data-active", active);
@@ -95,10 +84,9 @@ const linkClass =
 	}
 
 	// Picking a section on a small screen closes the dropdown, so the text is not covered.
-	for (const details of document.querySelectorAll("details")) {
-		if (!details.querySelector("[data-toc-link]")) continue;
-		details.addEventListener("click", (event) => {
-			if ((event.target as Element).closest("[data-toc-link]")) details.open = false;
+	for (const dropdown of document.querySelectorAll<HTMLDetailsElement>("[data-toc-dropdown]")) {
+		dropdown.addEventListener("click", (event) => {
+			if ((event.target as Element).closest("[data-toc-link]")) dropdown.open = false;
 		});
 	}
 </script>
