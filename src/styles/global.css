@@ -312,7 +312,7 @@ html {
 
 	& img,
 	& video {
-		@apply mx-auto my-6 h-auto rounded-xl ring-1 ring-foreground/10;
+		@apply mx-auto my-6 block h-auto rounded-xl ring-1 ring-foreground/10;
 	}
 
 	/* Wide tables scroll on their own instead of the page. */

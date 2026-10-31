@@ -1,0 +1,26 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+	headings: MarkdownHeading[];
+	class?: string;
+}
+
+const { headings, class: className } = Astro.props;
+---
+
+<ol class:list={["border-s border-foreground/10", className]}>
+	{
+		headings.map((heading) => (
+			<li>
+				<a
+					href={`#${heading.slug}`}
+					class="-ms-px block border-s-2 border-transparent py-1.5 ps-4 text-sm leading-snug text-foreground/60 transition-colors duration-200 hover:text-foreground data-active:border-primary data-active:text-primary"
+					data-toc-link={heading.slug}
+				>
+					{heading.text}
+				</a>
+			</li>
+		))
+	}
+</ol>
