@@ -85,8 +85,9 @@ const labelClass = "text-xs text-foreground/70";
 				setError(errorMessage);
 				return;
 			}
+			// The message is kept: a mailto link fails silently when no mail
+			// client is set up, and clearing it would lose what was written.
 			window.location.href = `mailto:${mail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-			textarea.value = "";
 		});
 	}
 </script>
