@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { LANGUAGES, getDictionary, getLocalizedPathname, type UiType } from "../i18n/utils";
+import { DEFAULT_LANG, LANGUAGES, getDictionary, getLocalizedPathname, type UiType } from "../i18n/utils";
 
 interface Props {
 	title: string;
@@ -88,6 +88,9 @@ const person = JSON.stringify({
 			{alternateLinks.map(({ href, hreflang }) => (
 				<link rel="alternate" href={href} hreflang={hreflang} />
 			))}
+			<!-- Language for visitors whose language is neither of the above. -->
+			<link rel="alternate" href={new URL(getLocalizedPathname(Astro.url.pathname, DEFAULT_LANG), siteURL)} hreflang="x-default" />
+
 		</>
 	)
 }
