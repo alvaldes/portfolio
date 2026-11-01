@@ -45,7 +45,8 @@ const labelClass = "text-xs text-foreground/70";
 	</div>
 	<input type="hidden" name="subject" value={subject} />
 
-	<label class:list={[fieldClass, "block has-[textarea[aria-invalid=true]]:bg-red-500/15"]}>
+	<!-- The textarea hides its own outline, so the whole field shows keyboard focus. -->
+	<label class:list={[fieldClass, "block has-[textarea[aria-invalid=true]]:bg-red-500/15 has-[textarea:focus-visible]:outline-2 has-[textarea:focus-visible]:outline-primary"]}>
 		<span class={labelClass}>{t("footer.message")} <span class="text-red-500">*</span></span>
 		<textarea
 			name="body"
