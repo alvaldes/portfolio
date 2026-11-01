@@ -16,9 +16,9 @@
 		"banner": "Hello, I'm a Software Engineer based in Mexico!",
 		"experience": "Since 2016",
 		"name": "Angel L. Valdés",
-		"description": "Indie Developer · AI Researcher",
+		"description": "Software Engineer · Angular, React & Spring Boot",
 		"bio": "Biography",
-		"resume": "Frontend-focused Full-Stack Developer passionate about UX/UI. I have been programming since 2016 and have nearly 3 years of professional experience building Angular, React and Spring Boot applications, including public transportation apps for the Basque Country (Spain). I am currently pursuing a Master's degree in Software Engineering, researching how LLMs can automate requirements engineering, and I integrate AI into products where it adds real value. Check out my latest work on ",
+		"resume": "I built and maintained Lurraldebus and LurTicket, public transportation apps for the Basque Country (Spain), with Angular and Spring Boot. I am a full-stack software engineer: frontend with a passion for UX/UI, backend and databases. I have been programming since 2016 and have nearly 3 years of professional experience with Angular, React and Spring Boot. I am currently pursuing a Master's degree in Software Engineering, researching how LLMs can automate requirements engineering, and I integrate AI into products where it adds real value. Check out my latest work on ",
 		"currentProject": {
 			"label": "storico",
 			"url": "/works/storico"
@@ -75,11 +75,12 @@
 		"toc": "On this page"
 	},
 	"footer": {
-		"contact_me": "Contact Me 🧑‍💻",
+		"contact_me": "Looking for a software engineer? Let's talk 🧑‍💻",
+		"response_time": "I reply within 48 hours.",
 		"to": "to:",
 		"mail": "alvaldes.dev@gmail.com",
 		"subject": "Subject:",
-		"subject_text": "Portfolio Inquiry: Let's Connect!",
+		"subject_text": "Job opportunity",
 		"message": "Message",
 		"message_text": "Enter your message",
 		"send": "Send",
@@ -97,7 +98,8 @@
 	},
 	"site": {
 		"title": "Angel L. Valdés",
-		"description": "Software engineer based in Mexico. Indie developer and AI researcher focused on frontend, UX/UI and LLM-powered products."
+		"description": "Full-stack software engineer based in Mexico: Angular, React and Spring Boot. I research how LLMs can automate requirements engineering.",
+		"jobTitle": "Software Engineer"
 	},
 	"copy-right": "All Rights Reserved."
 }

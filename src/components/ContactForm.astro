@@ -25,7 +25,10 @@ const labelClass = "text-xs text-foreground/70";
 	data-error={t("footer.error")}
 	class="mb-8 flex w-full flex-col gap-3 sm:mb-0"
 >
-	<h2 class="text-center text-xl font-medium sm:text-start">{t("footer.contact_me")}</h2>
+	<div class="flex flex-col gap-1 text-center sm:text-start">
+		<h2 class="text-xl font-medium">{t("footer.contact_me")}</h2>
+		<p class="text-sm text-foreground/70">{t("footer.response_time")}</p>
+	</div>
 
 	<div class="mb-2 flex w-full flex-wrap gap-4 sm:mb-0 xl:flex-nowrap">
 		<div class:list={[fieldClass, "opacity-60"]}>

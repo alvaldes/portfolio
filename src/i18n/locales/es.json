@@ -16,9 +16,9 @@
 		"banner": "¡Hola, soy ingeniero de software y vivo en México!",
 		"experience": "Desde 2016",
 		"name": "Angel L. Valdés",
-		"description": "Desarrollador Independiente · Investigador en IA",
+		"description": "Ingeniero de Software · Angular, React y Spring Boot",
 		"bio": "Biografía",
-		"resume": "Desarrollador Full-Stack con enfoque en frontend y pasión por el UX/UI. Programo desde 2016 y tengo casi 3 años de experiencia profesional construyendo aplicaciones con Angular, React y Spring Boot, incluidas apps de transporte público para el País Vasco (España). Actualmente curso una Maestría en Ingeniería de Software, donde investigo cómo los LLMs pueden automatizar la ingeniería de requisitos, e integro IA en productos cuando aporta valor real. Descubre mi trabajo más reciente en ",
+		"resume": "Desarrollé y mantuve Lurraldebus y LurTicket, apps de transporte público del País Vasco (España), con Angular y Spring Boot. Soy ingeniero de software full-stack: frontend con pasión por el UX/UI, backend y bases de datos. Programo desde 2016 y tengo casi 3 años de experiencia profesional con Angular, React y Spring Boot. Actualmente curso una Maestría en Ingeniería de Software, donde investigo cómo los LLMs pueden automatizar la ingeniería de requisitos, e integro IA en productos cuando aporta valor real. Descubre mi trabajo más reciente en ",
 		"currentProject": {
 			"label": "storico",
 			"url": "/works/storico"
@@ -75,11 +75,12 @@
 		"toc": "En este post"
 	},
 	"footer": {
-		"contact_me": "Escribeme 🧑‍💻",
+		"contact_me": "¿Buscas un ingeniero de software? Escríbeme 🧑‍💻",
+		"response_time": "Respondo en menos de 48 h.",
 		"to": "a:",
 		"mail": "alvaldes.dev@gmail.com",
 		"subject": "Asunto:",
-		"subject_text": "Consulta del portafolio: ¡Conectemos!",
+		"subject_text": "Oportunidad laboral",
 		"message": "Mensaje",
 		"message_text": "Ingresa el mensaje aquí",
 		"send": "Enviar",
@@ -97,7 +98,8 @@
 	},
 	"site": {
 		"title": "Angel L. Valdés",
-		"description": "Ingeniero de software en México. Desarrollador independiente e investigador en IA, con enfoque en frontend, UX/UI y productos con LLMs."
+		"description": "Ingeniero de software full-stack en México: Angular, React y Spring Boot. Investigo cómo los LLMs pueden automatizar la ingeniería de requisitos.",
+		"jobTitle": "Ingeniero de Software"
 	},
 	"copy-right": "Todos los Derechos Reservados."
 }
