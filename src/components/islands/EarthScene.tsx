@@ -2,7 +2,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useEffect } from "react";
 
-// Absolute path: a relative one breaks under the /en/ prefix.
+// Absolute path: a relative one breaks under the /es/ prefix.
 // Optimized with gltf-transform (meshopt + WebP); drei's useGLTF decodes meshopt out of the box.
 const MODEL_URL = "/images/planet/scene.glb";
 

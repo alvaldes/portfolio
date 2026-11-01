@@ -10,7 +10,7 @@ draft: false
 
 El 27 de octubre a las 12:25, Netty era un archivo `idea.md`. A las 22:58 del mismo día, la app y su landing ya existían, con 38 commits en el medio. El 30 ya estaba lanzada.
 
-[Netty](/blog/introducing-netty/) es una app de barra de menú para macOS que te dice si estás conectado a internet de verdad. La idea no es original, ya existen apps parecidas. Lo interesante de esos cuatro días fue otra cosa: cómo la construí.
+[Netty](/es/blog/introducing-netty/) es una app de barra de menú para macOS que te dice si estás conectado a internet de verdad. La idea no es original, ya existen apps parecidas. Lo interesante de esos cuatro días fue otra cosa: cómo la construí.
 
 No escribí cada línea a mano. Tampoco le pedí a una IA "hazme una app" y me fui a tomar un café. Trabajé como un project manager con un equipo de desarrollo. Cada agente era un developer independiente que escribía código y lo probaba; yo revisaba y decidía qué seguía.
 
@@ -84,7 +84,7 @@ Las tres herramientas son de [Gentleman Programming](https://github.com/Gentlema
     <source src="/blog/my-ai-dev-stack/banner-engram.mp4" type="video/mp4">
   </video>
 
-Engram fue clave en Netty. Antes había construido [JUMP](/blog/introducing-jump/), otra app de macOS. Al arrancar Netty, el agente buscó en la memoria de JUMP los errores que había cometido ahí y lo que había aprendido, y no volvió a caer en ellos. Una de esas lecciones: en JUMP, un build sin firmar perdía el permiso de Accesibilidad en cada actualización. No se limitó al contexto del proyecto actual: fue a buscar a otro proyecto de mi ecosistema.
+Engram fue clave en Netty. Antes había construido [JUMP](/es/blog/introducing-jump/), otra app de macOS. Al arrancar Netty, el agente buscó en la memoria de JUMP los errores que había cometido ahí y lo que había aprendido, y no volvió a caer en ellos. Una de esas lecciones: en JUMP, un build sin firmar perdía el permiso de Accesibilidad en cada actualización. No se limitó al contexto del proyecto actual: fue a buscar a otro proyecto de mi ecosistema.
 
 Gentle AI hace muchas más cosas de las que caben acá. Lo que importa es la idea: el agente no improvisa su forma de trabajar en cada sesión. Trabaja siempre igual y recuerda lo que ya aprendió.
 
@@ -136,7 +136,7 @@ Así se juntaron todas las piezas.
 
 **La página web.** En su propio worktree, otro agente fue construyendo la landing elemento por elemento, y la publicó en [GitHub Pages](https://alvaldes.github.io/netty/).
 
-**El lanzamiento.** Lo hice entero con [launch-skills](/blog/launch-skills/), mis skills de código abierto para lanzar proyectos, y ego-browser. El agente preparó el kit, generó las imágenes, completó los formularios de los directorios y redactó los posts para cada red. Antes de cada publicación se detenía y me mostraba qué iba a enviar. El último clic siempre fue mío.
+**El lanzamiento.** Lo hice entero con [launch-skills](/es/blog/launch-skills/), mis skills de código abierto para lanzar proyectos, y ego-browser. El agente preparó el kit, generó las imágenes, completó los formularios de los directorios y redactó los posts para cada red. Antes de cada publicación se detenía y me mostraba qué iba a enviar. El último clic siempre fue mío.
 
 ## Un extra: el equipo en el bolsillo
 

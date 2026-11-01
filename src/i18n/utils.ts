@@ -9,7 +9,7 @@ export const LANGUAGES = {
 
 export type UiType = keyof typeof LANGUAGES;
 
-export const DEFAULT_LANG: UiType = "es";
+export const DEFAULT_LANG: UiType = "en";
 
 const ui = { es, en };
 

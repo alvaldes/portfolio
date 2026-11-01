@@ -10,7 +10,7 @@ draft: false
 
 At 12:25 on October 27, Netty was an `idea.md` file. By 22:58 the same day, the app and its landing page existed, with 38 commits in between. By the 30th it had launched.
 
-[Netty](/en/blog/introducing-netty/) is a macOS menu bar app that tells you whether you're really online. The idea isn't original; similar apps already exist. What was interesting about those four days was something else: how I built it.
+[Netty](/blog/introducing-netty/) is a macOS menu bar app that tells you whether you're really online. The idea isn't original; similar apps already exist. What was interesting about those four days was something else: how I built it.
 
 I didn't write every line by hand. I also didn't ask an AI to "make me an app" and go grab a coffee. I worked like a project manager with a development team. Each agent was an independent developer that wrote code and tested it; I reviewed it and decided what came next.
 
@@ -84,7 +84,7 @@ All three tools come from [Gentleman Programming](https://github.com/Gentleman-P
     <source src="/blog/my-ai-dev-stack/banner-engram.mp4" type="video/mp4">
   </video>
 
-Engram was key on Netty. I had built [JUMP](/en/blog/introducing-jump/), another macOS app, before. When Netty started, the agent searched JUMP's memory for the mistakes it had made there and what it had learned, and didn't repeat them. One of those lessons: on JUMP, an unsigned build lost its Accessibility permission on every update. It didn't stop at the current project's context: it went looking in another one of my projects.
+Engram was key on Netty. I had built [JUMP](/blog/introducing-jump/), another macOS app, before. When Netty started, the agent searched JUMP's memory for the mistakes it had made there and what it had learned, and didn't repeat them. One of those lessons: on JUMP, an unsigned build lost its Accessibility permission on every update. It didn't stop at the current project's context: it went looking in another one of my projects.
 
 Gentle AI does a lot more than fits here. What matters is the idea: the agent doesn't improvise how it works in every session. It always works the same way, and it remembers what it already learned.
 
@@ -136,7 +136,7 @@ This is how all the pieces came together.
 
 **The website.** In its own worktree, another agent built the landing page element by element and published it on [GitHub Pages](https://alvaldes.github.io/netty/).
 
-**The launch.** I did all of it with [launch-skills](/en/blog/launch-skills/), my open-source skills for launching projects, and ego-browser. The agent prepared the kit, generated the images, filled in the directory forms, and drafted the posts for each network. Before each one went out, it stopped and showed me what it was about to send. The last click was always mine.
+**The launch.** I did all of it with [launch-skills](/blog/launch-skills/), my open-source skills for launching projects, and ego-browser. The agent prepared the kit, generated the images, filled in the directory forms, and drafted the posts for each network. Before each one went out, it stopped and showed me what it was about to send. The last click was always mine.
 
 ## An extra: the team in your pocket
 

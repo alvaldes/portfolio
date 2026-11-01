@@ -7,7 +7,7 @@ coverAlt: "El ícono de launch-skills, una flecha naranja hacia arriba y a la de
 tags: ["Open source", "Claude Code", "IA"]
 ---
 
-Construir [JUMP](/blog/introducing-jump/) me llevó semanas. Contarlo me llevó tres días, y esos días fueron puros formularios.
+Construir [JUMP](/es/blog/introducing-jump/) me llevó semanas. Contarlo me llevó tres días, y esos días fueron puros formularios.
 
 Product Hunt pide una galería de 1270×760. Dev.to, una portada de 1000×420; Hashnode, una de 1600×840. AlternativeTo pide el país del autor. MacUpdate, un PNG transparente de al menos 512 píxeles. r/macapps pide un post en un formato llamado PCP, y solo una vez cada 30 días. Cada sitio tenía sus reglas, y la mayoría las aprendí equivocándome.
 

@@ -1,11 +1,11 @@
 ---
-import { DEFAULT_LANG, getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
+import { LANGUAGES, getLangFromUrl, getLocalizedPathname, useTranslations, type UiType } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // Two languages only: the switcher always points to the one not being shown.
-const targetLang = lang === DEFAULT_LANG ? "en" : DEFAULT_LANG;
+const targetLang = (Object.keys(LANGUAGES) as UiType[]).find((language) => language !== lang)!;
 // On the 404 the URL is the missing page, which does not exist in the other language either.
 const href = getLocalizedPathname(Astro.response.status === 404 ? "/" : Astro.url.pathname, targetLang);
 ---
@@ -23,8 +23,8 @@ const href = getLocalizedPathname(Astro.response.status === 404 ? "/" : Astro.ur
 
 <script>
 	// Remembers an explicit language choice. vercel.json only sends "/" to the
-	// browser's language while this cookie is missing, so choosing Spanish from
-	// an English browser does not bounce back to /en/.
+	// browser's language while this cookie is missing, so choosing English from
+	// a Spanish browser does not bounce back to /es/.
 	for (const link of document.querySelectorAll<HTMLAnchorElement>("[data-lang-switch]")) {
 		link.addEventListener("click", () => {
 			document.cookie = `lang=${link.dataset.langSwitch}; path=/; max-age=31536000; samesite=lax`;

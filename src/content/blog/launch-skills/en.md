@@ -7,7 +7,7 @@ coverAlt: "The launch-skills icon, an orange arrow pointing up and right, next t
 tags: ["Open source", "Claude Code", "AI"]
 ---
 
-Building [JUMP](/en/blog/introducing-jump/) took weeks. Telling people about it took three days, and those days were all forms.
+Building [JUMP](/blog/introducing-jump/) took weeks. Telling people about it took three days, and those days were all forms.
 
 Product Hunt wants a 1270×760 gallery. Dev.to wants a 1000×420 cover, Hashnode a 1600×840 one. AlternativeTo wants the author's country. MacUpdate wants a transparent PNG of at least 512 pixels. r/macapps wants a post in a format called PCP, and only once every 30 days. Every site had its own rules, and I learned most of them by getting something wrong.
 

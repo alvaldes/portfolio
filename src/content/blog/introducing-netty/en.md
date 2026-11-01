@@ -31,7 +31,7 @@ Almost everything can be changed: the rules for yellow and red, which sections t
 
 ## Why I built my own
 
-There are good apps that do this, like [Netbar](https://netbar.xyz/) and [Netdot](https://netdot.app/), and [Online Check](https://sindresorhus.com/online-check) does the "real internet" part well. I used them as references. But I wanted one that was free, open source and designed with the same care as the rest of macOS. Netty ships under GPL-3.0, like [JUMP](/en/blog/introducing-jump/).
+There are good apps that do this, like [Netbar](https://netbar.xyz/) and [Netdot](https://netdot.app/), and [Online Check](https://sindresorhus.com/online-check) does the "real internet" part well. I used them as references. But I wanted one that was free, open source and designed with the same care as the rest of macOS. Netty ships under GPL-3.0, like [JUMP](/blog/introducing-jump/).
 
 ## How it works under the hood
 
@@ -66,6 +66,6 @@ Netty needs macOS 26 or later. Download it from [its website](https://alvaldes.g
 brew install --cask alvaldes/tap/netty
 ```
 
-> It isn't notarized by Apple yet, so macOS blocks it the first time. [This guide](/en/blog/open-unnotarized-mac-apps/) walks you through opening it.
+> It isn't notarized by Apple yet, so macOS blocks it the first time. [This guide](/blog/open-unnotarized-mac-apps/) walks you through opening it.
 
 If something breaks, or you have an idea to make it better, [open an issue](https://github.com/alvaldes/netty/issues) in the repository.

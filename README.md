@@ -27,7 +27,7 @@ bun install
 bun run dev
 ```
 
-Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localhost:4321/en/](http://localhost:4321/en/) (English).
+Open [http://localhost:4321](http://localhost:4321) (English) or [http://localhost:4321/es/](http://localhost:4321/es/) (Spanish).
 
 ## 🧞 Commands
 
@@ -49,7 +49,7 @@ Open [http://localhost:4321](http://localhost:4321) (Spanish) or [http://localho
 
 ## ✨ Features
 
-- 🌍 **i18n:** Spanish at `/`, English under `/en/`, with `hreflang` alternates and a language switcher. On Vercel, `/` sends visitors whose browser does not prefer Spanish to `/en/`, unless they picked a language with the switcher (remembered in a `lang` cookie). Requests without `Accept-Language`, such as crawlers, stay on `/`. Legacy `/es/...` URLs redirect permanently to the unprefixed routes. All rules live in `vercel.json`.
+- 🌍 **i18n:** English at `/`, Spanish under `/es/`, with `hreflang` alternates and a language switcher. On Vercel, `/` sends visitors whose browser prefers Spanish to `/es/`, unless they picked a language with the switcher (remembered in a `lang` cookie). Requests without `Accept-Language`, such as crawlers and link previews, stay on `/` in English. Legacy `/en/...` URLs redirect permanently to the unprefixed routes. All rules live in `vercel.json`.
 - 🎨 **Themes:** Light, dark and system mode, cycled from one button. The choice is saved per visitor and applied before the first paint (no flash); system follows OS changes live.
 - 🎭 **3D banner:** Interactive Earth and stars, loaded only when the banner is visible.
 - 🖼️ **Optimized images:** Responsive `srcset` generated at build time.
@@ -74,16 +74,16 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 
 | Route             | Description                |
 | :---------------- | :------------------------- |
-| `/`               | Home (Spanish)             |
-| `/en/`            | Home (English)             |
-| `/works/`         | Projects listing (Spanish) |
-| `/en/works/`      | Projects listing (English) |
-| `/works/[id]/`    | Project detail (Spanish)   |
-| `/en/works/[id]/` | Project detail (English)   |
-| `/blog/`          | Posts listing (Spanish)    |
-| `/en/blog/`       | Posts listing (English)    |
-| `/blog/[slug]/`   | Post (Spanish)             |
-| `/en/blog/[slug]/` | Post (English)            |
+| `/`               | Home (English)             |
+| `/es/`            | Home (Spanish)             |
+| `/works/`         | Projects listing (English) |
+| `/es/works/`      | Projects listing (Spanish) |
+| `/works/[id]/`    | Project detail (English)   |
+| `/es/works/[id]/` | Project detail (Spanish)   |
+| `/blog/`          | Posts listing (English)    |
+| `/es/blog/`       | Posts listing (Spanish)    |
+| `/blog/[slug]/`   | Post (English)             |
+| `/es/blog/[slug]/` | Post (Spanish)            |
 
 ## 📁 Project structure
 
@@ -108,7 +108,7 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 │   ├── layouts/Layout.astro # Page shell: head, backdrop, navbar, footer
 │   ├── lib/blog.ts          # Posts in a language, reading time, dates
 │   ├── lib/projects.ts      # Projects in a language, image lookup, YouTube id parsing
-│   ├── pages/               # Routes: Spanish at the root, English under en/
+│   ├── pages/               # Routes: English at the root, Spanish under es/
 │   └── styles/global.css    # Tailwind entry, theme palette, fonts, animations, post styles
 └── astro.config.mjs         # Site URL, i18n locales, React and Tailwind setup
 ```
@@ -119,7 +119,7 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 2. Put `thumbCard.webp`, `thumbFirst.webp` and `thumbMockup.webp` in `src/assets/projects/<id>/`. The build fails if a referenced image is missing.
 3. Write `src/content/works/<id>/es.md` and `src/content/works/<id>/en.md`: `shortDescription` in the frontmatter, the long description as the Markdown body. A project without a public website can set `websiteNote` (for example, "university campus network") instead of `website`.
 4. Optional: `video` (YouTube URL or a file in `public/videos/`), `channel` and `videoPoster` (a 16:9 image in `src/assets/projects/<id>/`).
-5. Run `bun run build`: a page is generated at `/works/<id>/` and `/en/works/<id>/`.
+5. Run `bun run build`: a page is generated at `/works/<id>/` and `/es/works/<id>/`.
 
 > The build fails if a project is missing a language file, a language file has no project, or two projects share the same `order`.
 >
@@ -127,7 +127,7 @@ The home page stays the heaviest because of the 3D model (~1.6 MB) and three.js.
 
 ## ✍️ Writing a post
 
-1. Create `src/content/blog/<slug>/`. The folder name is the URL: `/blog/<slug>/` and `/en/blog/<slug>/`.
+1. Create `src/content/blog/<slug>/`. The folder name is the URL: `/blog/<slug>/` and `/es/blog/<slug>/`.
 2. Add the cover image to the folder and write `es.md` and `en.md` with this frontmatter:
 
    ```yaml
