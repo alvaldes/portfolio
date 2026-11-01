@@ -2,8 +2,8 @@
 
 Promotion copy for the post "JUMP: el teclado también fuera del navegador" / "JUMP: keyboard-first, even outside the browser".
 
-- Spanish post: https://www.alvaldes.dev/blog/introducing-jump/
-- English post: https://www.alvaldes.dev/en/blog/introducing-jump/
+- Spanish post: https://www.alvaldes.dev/es/blog/introducing-jump/
+- English post: https://www.alvaldes.dev/blog/introducing-jump/
 
 ## Where JUMP is published
 
@@ -71,13 +71,13 @@ Son milisegundos. Pero se repiten todo el día, y cuando te obsesiona la product
 First comment (published):
 
 ```text
-Si quieres saber por qué lo construí? y las decisiones de ingeniería detrás: https://www.alvaldes.dev/blog/introducing-jump/
+Si quieres saber por qué lo construí? y las decisiones de ingeniería detrás: https://www.alvaldes.dev/es/blog/introducing-jump/
 ```
 
 Suggested edit for the comment, which is missing the opening "¿":
 
 ```text
-Si quieres saber por qué lo construí y las decisiones de ingeniería detrás: https://www.alvaldes.dev/blog/introducing-jump/
+Si quieres saber por qué lo construí y las decisiones de ingeniería detrás: https://www.alvaldes.dev/es/blog/introducing-jump/
 ```
 
 ## X (English)
@@ -86,7 +86,7 @@ Si quieres saber por qué lo construí y las decisiones de ingeniería detrás: 
 
 Carousel with the three slides (all 4:5, one ratio per carousel). X's current specs list 4:5 for image carousels with 2 to 6 cards, at 1440×1800 recommended; older guides still say 1:1 or 1.91:1 only, so confirm in the upload form.
 
-- Destination: https://www.alvaldes.dev/en/blog/introducing-jump/ (the portfolio, not the download page, so the visit lands on the portfolio; the post links to the download).
+- Destination: https://www.alvaldes.dev/blog/introducing-jump/ (the portfolio, not the download page, so the visit lands on the portfolio; the post links to the download).
 - Post copy: 266 characters, no link (the destination is on the cards). Human score 72.7 PASS.
 
 ```text
@@ -127,7 +127,7 @@ No Mac App Store, though: apps that use that API can't be sandboxed.
 
 ```text
 I wrote up why I built it, how the Accessibility API and the OCR fallback fit together, and the code signing bug that wiped the permission on every build:
-https://www.alvaldes.dev/en/blog/introducing-jump/
+https://www.alvaldes.dev/blog/introducing-jump/
 ```
 
 ## Threads (Spanish)
@@ -142,14 +142,14 @@ Busqué alternativas. Homerow es de pago y cerrado, y Vimac no tiene cambios des
 Así que hice JUMP. Presionas ⌘⇧Space, cada elemento clicable recibe una etiqueta, la escribes y hace clic. Gratis y de código abierto.
 
 Cómo lo construí 👇
-https://www.alvaldes.dev/blog/introducing-jump/
+https://www.alvaldes.dev/es/blog/introducing-jump/
 ```
 
 ## Instagram (Spanish)
 
 Carousel post with `stitchslide-01.png` to `stitchslide-03.png` (4:5 at 1080×1350 is Instagram's native portrait size, no cropping). 779 characters. Human score 59.4 REVIEW (only VOICE fails).
 
-- Links in captions and comments are not clickable, and the bio link stays as it is. The caption names a short address people can type: `alvaldes.dev/blog` redirects to https://www.alvaldes.dev/blog, where the post is featured. Optional: a story with a link sticker to https://www.alvaldes.dev/blog/introducing-jump/, saved to a highlight named "JUMP", adds a clickable link.
+- Links in captions and comments are not clickable, and the bio link stays as it is. The caption names a short address people can type: `alvaldes.dev/es/blog` redirects to https://www.alvaldes.dev/es/blog/, where the post is featured. (Captions published before 2026-11-01 name `alvaldes.dev/blog`, which now serves the English blog.) Optional: a story with a link sticker to https://www.alvaldes.dev/es/blog/introducing-jump/, saved to a highlight named "JUMP", adds a clickable link.
 - Alternative: "Comenta JUMP y te mando el artículo por DM" (more comments, but every DM is answered by hand).
 - Instagram caps hashtags at five per post since December 2025; this caption uses three.
 
@@ -166,7 +166,7 @@ En el navegador ya trabajaba así con Surfingkeys. Fuera de él, cada clic en Fi
 
 Por dentro usa la Accessibility API de macOS, y para terminales y PDF tiene un OCR opcional con Vision.
 
-El artículo sobre cómo lo construí está en alvaldes.dev/blog
+El artículo sobre cómo lo construí está en alvaldes.dev/es/blog
 
 ¿Qué tarea todavía te obliga a soltar el teclado?
 
@@ -175,7 +175,7 @@ El artículo sobre cómo lo construí está en alvaldes.dev/blog
 
 ## Medium (English)
 
-Import with **Stories → Import a story** and the English URL: https://www.alvaldes.dev/en/blog/introducing-jump/. The importer adds the canonical link and keeps the original date.
+Import with **Stories → Import a story** and the English URL: https://www.alvaldes.dev/blog/introducing-jump/. The importer adds the canonical link and keeps the original date.
 
 Medium's editor has no tables, so the shortcuts table needs replacing by hand after the import. Paste this list in its place:
 
