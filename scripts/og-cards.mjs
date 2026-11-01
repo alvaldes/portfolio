@@ -35,9 +35,10 @@ const THEMES = {
 	},
 };
 
+// Kept short and large: link previews often shrink the card to a few hundred pixels.
 const LINES = {
-	es: { stack: "Angular · React · Spring Boot", tagline: "Full-stack: frontend, backend y bases de datos" },
-	en: { stack: "Angular · React · Spring Boot", tagline: "Full-stack: frontend, backend and databases" },
+	es: { stack: "Angular · React · Spring Boot" },
+	en: { stack: "Angular · React · Spring Boot" },
 };
 
 const colors = THEMES[theme];
@@ -50,7 +51,7 @@ const escape = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 
 function card(lang) {
 	const locale = JSON.parse(readFileSync(resolve(root, `src/i18n/locales/${lang}.json`), "utf8"));
-	const { stack, tagline } = LINES[lang];
+	const { stack } = LINES[lang];
 	const domain = new URL(readFileSync(resolve(root, "astro.config.mjs"), "utf8").match(/site:\s*['"]([^'"]+)/)[1]).hostname.replace(/^www\./, "");
 
 	return `<!doctype html>
@@ -64,26 +65,23 @@ function card(lang) {
 html,body{width:1200px;height:630px;overflow:hidden}
 body{background:${colors.background};color:${colors.foreground};font-family:"MPR",sans-serif;position:relative}
 .glow{position:absolute;inset:0;background:radial-gradient(circle at 78% 50%,color-mix(in srgb,${colors.primary} 14%,transparent),transparent 55%)}
-.text{position:absolute;left:84px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center}
-.brand{display:flex;align-items:center;gap:14px;font-weight:700;font-size:26px;margin-bottom:34px}
-.brand img{width:30px;height:36px}
-h1{font-weight:700;font-size:74px;line-height:1.05;letter-spacing:-1px}
-.row{display:flex;align-items:flex-start;gap:12px}
-.role{margin-top:26px;font-family:"Comfortaa",sans-serif;font-weight:700;font-size:44px;color:${colors.primary}}
-.badge{margin-top:14px;background:${colors.secondary};color:${colors.primaryForeground};font-weight:700;font-size:17px;padding:4px 10px;border-radius:10px;box-shadow:0 6px 16px color-mix(in srgb,${colors.secondary} 40%,transparent);white-space:nowrap}
-.stack{margin-top:16px;font-size:30px;font-weight:500}
-.tagline{margin-top:8px;font-size:23px;opacity:.7}
-.photo{position:absolute;right:110px;top:50%;width:340px;height:340px;transform:translateY(-50%)}
+.text{position:absolute;left:72px;top:0;bottom:0;width:720px;display:flex;flex-direction:column;justify-content:center}
+.brand{display:flex;align-items:center;gap:16px;font-weight:700;font-size:34px;margin-bottom:28px}
+.brand img{width:36px;height:43px}
+.badge{margin-left:8px;background:${colors.secondary};color:${colors.primaryForeground};font-weight:700;font-size:26px;padding:4px 14px;border-radius:12px;white-space:nowrap}
+h1{font-weight:700;font-size:92px;line-height:1.05;letter-spacing:-1.5px}
+.role{margin-top:18px;font-family:"Comfortaa",sans-serif;font-weight:700;font-size:58px;color:${colors.primary}}
+.stack{margin-top:22px;font-size:40px;font-weight:500}
+.photo{position:absolute;right:78px;top:50%;width:300px;height:300px;transform:translateY(-50%)}
 .photo svg{position:absolute;left:-25%;top:-25%;width:150%;height:150%;color:${colors.primary};filter:blur(1px)}
 .photo img{position:relative;width:100%;height:100%;border-radius:50%;border:4px solid ${colors.primary};object-fit:cover}
 </style></head><body>
 <div class="glow"></div>
 <div class="text">
-	<div class="brand"><img src="${file(`public/images/${colors.logo}`)}" alt="">${escape(domain)}</div>
+	<div class="brand"><img src="${file(`public/images/${colors.logo}`)}" alt="">${escape(domain)}<span class="badge">${escape(locale.home.experience)}</span></div>
 	<h1>${escape(locale.home.name)}</h1>
-	<div class="row"><div class="role">${escape(locale.site.jobTitle)}</div><span class="badge">${escape(locale.home.experience)}</span></div>
+	<div class="role">${escape(locale.site.jobTitle)}</div>
 	<div class="stack">${escape(stack)}</div>
-	<div class="tagline">${escape(tagline)}</div>
 </div>
 <div class="photo">
 	<svg viewBox="0 0 500 500" aria-hidden="true"><g transform="rotate(84 250 250)"><path fill="currentColor" d="${blob}"/></g></svg>
