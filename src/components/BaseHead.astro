@@ -25,6 +25,18 @@ const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
 	href: new URL(getLocalizedPathname(Astro.url.pathname, hreflang), siteURL),
 	hreflang,
 }));
+
+// schema.org Person describing the site owner, for search engines.
+// "<" is escaped so the JSON can never close the <script> element early.
+const person = JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: feed.home.name,
+	jobTitle: feed.site.jobTitle,
+	description: feed.site.description,
+	url: new URL(getRelativeLocaleUrl(lang), siteURL).href,
+	sameAs: ["https://github.com/alvaldes", "https://www.linkedin.com/in/alvaldes/"],
+}).replace(/</g, "\\u003c");
 ---
 
 <!-- Global Metadata -->
@@ -66,6 +78,9 @@ const alternateLinks = (Object.keys(LANGUAGES) as UiType[]).map((hreflang) => ({
 		<>
 			<!-- Canonical URL -->
 			<link rel="canonical" href={canonicalURL} />
+
+			<!-- Structured data -->
+			<script type="application/ld+json" set:html={person} />
 
 			<!-- Alternate URLs -->
 			{alternateLinks.map(({ href, hreflang }) => (
