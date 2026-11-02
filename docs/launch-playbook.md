@@ -90,11 +90,12 @@ All three take the same article; the canonical URL is what keeps search engines 
 - **Gate**: an account and a publication (blog) created first; the subdomain is chosen once.
 - **Format**: Markdown mode, cover 1600×840, subheading; tags, SEO description and canonical URL ("Are you republishing?") in **Draft settings → Discovery**.
 - **How**: the Publish button opens Draft settings; the final Publish is inside it.
+- **Gotcha**: the canonical URL can fail to save (seen 2026-11-01). After publishing, check `<link rel="canonical">` in the page head; to fix it, open the post from **Drafts → Published** (an `/edit/` URL, not the old `/draft/` one) and press **Update**.
 - **Automation**: browser (Hashnode also has a GraphQL API).
 
 #### Medium
 - **How**: **Stories → Import a story** with the English URL; the importer sets the canonical and the original date.
-- **Gotchas**: no tables (replace them by hand with a list); the importer copies the page `<title>`, so a site suffix like " | Angel L. Valdés" lands in the story title. Fix the title after importing.
+- **Gotchas**: no tables (replace them by hand with a list); the importer copies the page `<title>`, so a site suffix like " | Angel L. Valdés" lands in the story title. Fix the title after importing. The importer also drops every WebP image and every `<video>` (seen on 2026-11-01 with `my-ai-dev-stack`): convert the images to PNG and upload them by hand, and use each video's poster with a caption pointing at the original post.
 - **Automation**: draft plus a manual import.
 
 ### Launch communities
