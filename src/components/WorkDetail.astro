@@ -5,6 +5,7 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { getProjectImage, youTubeVideoId, type Project } from "../lib/projects";
 import ExternalLink from "./ExternalLink.astro";
 import GithubIcon from "./icons/GithubIcon.astro";
+import ImageZoom from "./ImageZoom.astro";
 import OutlineIcon from "./icons/OutlineIcon.astro";
 import SolidIcon from "./icons/SolidIcon.astro";
 import LiteYouTube from "./LiteYouTube.astro";
@@ -35,6 +36,7 @@ const fullWidth = { widths: [480, 768, 1024, 1536], sizes: "(min-width: 1024px) 
 			alt={`${project.id}-thumbFirst`}
 			loading="eager"
 			{...fullWidth}
+			data-zoomable
 			class:list={[imageClass, "rounded-sm"]}
 		/>
 	</div>
@@ -124,7 +126,9 @@ const fullWidth = { widths: [480, 768, 1024, 1536], sizes: "(min-width: 1024px) 
 			src={getProjectImage(project.id, project.thumbMockup)}
 			alt={`${project.id}-thumbMockup`}
 			{...fullWidth}
+			data-zoomable
 			class:list={[imageClass, "rounded-sm"]}
 		/>
 	</div>
+	<ImageZoom selector="[data-zoomable]" />
 </Section>

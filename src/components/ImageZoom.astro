@@ -1,0 +1,203 @@
+---
+/**
+ * Medium-style media zoom: images and looping videos matching `selector` show a zoom-in cursor, and
+ * a click (or Enter / Space) grows them to fill the viewport over a darkened page, uncropped. A
+ * click, Escape, scrolling or a resize closes it. Videos with controls are skipped: a click there
+ * belongs to the controls, which already offer full screen. Renders nothing visible.
+ */
+interface Props {
+	selector: string;
+}
+
+const { selector } = Astro.props;
+---
+
+<image-zoom data-selector={selector}></image-zoom>
+
+<script>
+	import { largestSrcsetWidth, zoomBox, type Box } from "../lib/zoom";
+
+	type Media = HTMLImageElement | HTMLVideoElement;
+
+	const DURATION = 300;
+	// Scrolling further than this while zoomed closes the media, like Medium.
+	const SCROLL_CLOSE_DISTANCE = 40;
+
+	class ImageZoom extends HTMLElement {
+		connectedCallback() {
+			const selector = this.dataset.selector;
+			if (!selector) return;
+			for (const media of document.querySelectorAll<Media>(selector)) {
+				if (!isZoomable(media) || media.classList.contains("zoomable")) continue;
+				media.classList.add("zoomable");
+				media.tabIndex = 0;
+				media.setAttribute("role", "button");
+				media.addEventListener("click", () => open(media));
+				// Typed as HTMLElement: the image/video union loses the keydown event type.
+				(media as HTMLElement).addEventListener("keydown", (event) => {
+					if (event.key !== "Enter" && event.key !== " ") return;
+					event.preventDefault();
+					open(media);
+				});
+			}
+		}
+	}
+
+	function isZoomable(media: Element): media is Media {
+		// A linked image already does something on click.
+		if (media instanceof HTMLImageElement) return !media.closest("a");
+		return media instanceof HTMLVideoElement && !media.controls;
+	}
+
+	/** The largest size the media can show without upscaling, at its natural aspect ratio. */
+	function naturalSize(media: Media, rect: DOMRect) {
+		const [width, height] =
+			media instanceof HTMLVideoElement
+				? [media.videoWidth, media.videoHeight]
+				: [media.naturalWidth, media.naturalHeight];
+		if (!width || !height) return { width: rect.width, height: rect.height };
+		const widest = media instanceof HTMLImageElement ? largestSrcsetWidth(media.srcset) : 0;
+		const scale = Math.max(1, widest / width);
+		return { width: width * scale, height: height * scale };
+	}
+
+	function place(element: HTMLElement, box: Box) {
+		Object.assign(element.style, {
+			left: `${box.left}px`,
+			top: `${box.top}px`,
+			width: `${box.width}px`,
+			height: `${box.height}px`,
+		});
+	}
+
+	/** A fixed copy of the media: it escapes any stacking context or overflow the original sits in. */
+	function cloneMedia(media: Media, box: Box): Media {
+		if (media instanceof HTMLVideoElement) {
+			const video = media.cloneNode(true) as HTMLVideoElement;
+			video.removeAttribute("id");
+			video.muted = true;
+			// Pick up where the original was, so the loop does not jump back to the start.
+			video.addEventListener("loadedmetadata", () => (video.currentTime = media.currentTime), { once: true });
+			video.play().catch(() => {});
+			return video;
+		}
+		const img = document.createElement("img");
+		img.alt = "";
+		img.src = media.currentSrc || media.src;
+		// Let the browser pick a sharper candidate for the zoomed size.
+		if (media.srcset) {
+			img.srcset = media.srcset;
+			img.sizes = `${Math.ceil(box.width)}px`;
+		}
+		return img;
+	}
+
+	let close: (() => void) | null = null;
+
+	function open(media: Media) {
+		if (close) return;
+		const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		const rect = media.getBoundingClientRect();
+		const radius = getComputedStyle(media).borderRadius;
+		const target = zoomBox(rect, naturalSize(media, rect), {
+			width: document.documentElement.clientWidth,
+			height: window.innerHeight,
+		});
+
+		const overlay = document.createElement("div");
+		overlay.className = "zoom-overlay";
+		const clone = cloneMedia(media, target);
+		clone.className = "zoom-media";
+		clone.removeAttribute("role");
+		clone.removeAttribute("tabindex");
+		clone.setAttribute("aria-hidden", "true");
+		clone.style.borderRadius = radius;
+		place(clone, rect);
+
+		document.body.append(overlay, clone);
+		media.style.visibility = "hidden";
+		// Force a layout so the transitions start from the media's place on the page.
+		void clone.offsetWidth;
+		overlay.classList.add("is-open");
+		place(clone, target);
+		clone.style.borderRadius = "0";
+
+		const startScroll = window.scrollY;
+		const onScroll = () => {
+			if (Math.abs(window.scrollY - startScroll) > SCROLL_CLOSE_DISTANCE) close?.();
+		};
+		const onKey = (event: KeyboardEvent) => {
+			if (event.key === "Escape") close?.();
+		};
+		const onClose = () => close?.();
+
+		close = () => {
+			close = null;
+			window.removeEventListener("scroll", onScroll);
+			window.removeEventListener("resize", onClose);
+			document.removeEventListener("keydown", onKey);
+
+			// Follow the original if the page scrolled while zoomed.
+			place(clone, media.getBoundingClientRect());
+			clone.style.borderRadius = radius;
+			overlay.classList.remove("is-open");
+
+			const finish = () => {
+				overlay.remove();
+				clone.remove();
+				media.style.visibility = "";
+				media.focus({ preventScroll: true });
+			};
+			if (reducedMotion) finish();
+			else window.setTimeout(finish, DURATION);
+		};
+
+		window.addEventListener("scroll", onScroll, { passive: true });
+		window.addEventListener("resize", onClose);
+		document.addEventListener("keydown", onKey);
+		overlay.addEventListener("click", onClose);
+		clone.addEventListener("click", onClose);
+	}
+
+	customElements.define("image-zoom", ImageZoom);
+</script>
+
+<style is:global>
+	.zoomable {
+		cursor: zoom-in;
+	}
+
+	.zoom-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		background: rgb(0 0 0 / 0.85);
+		cursor: zoom-out;
+		opacity: 0;
+		transition: opacity 300ms ease;
+
+		&.is-open {
+			opacity: 1;
+		}
+	}
+
+	.zoom-media {
+		position: fixed;
+		z-index: 101;
+		max-width: none;
+		max-height: none;
+		margin: 0;
+		object-fit: cover;
+		cursor: zoom-out;
+		transition-property: left, top, width, height, border-radius;
+		transition-duration: 300ms;
+		transition-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.zoom-overlay,
+		.zoom-media {
+			transition: none;
+		}
+	}
+</style>

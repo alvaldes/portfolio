@@ -4,6 +4,7 @@ import { render } from "astro:content";
 import { getLangFromUrl, getLocalizedPathname, useTranslations } from "../i18n/utils";
 import { formatPostDate, type Post } from "../lib/blog";
 import { tocSections } from "../lib/toc";
+import ImageZoom from "./ImageZoom.astro";
 import Section from "./Section.astro";
 import TableOfContents from "./TableOfContents.astro";
 
@@ -73,6 +74,7 @@ const { title, description, pubDate, updatedDate, cover, coverAlt, tags } = post
 			sizes="(min-width: 768px) 768px, 100vw"
 			loading="eager"
 			fetchpriority="high"
+			data-zoomable
 			class="mt-2 aspect-video w-full rounded-xl object-cover ring-1 ring-foreground/10"
 		/>
 	</header>
@@ -82,6 +84,7 @@ const { title, description, pubDate, updatedDate, cover, coverAlt, tags } = post
 	<div class="post-content" data-copy-label={t("blog.copy")} data-copied-label={t("blog.copied")}>
 		<Content />
 	</div>
+	<ImageZoom selector=".post-content :is(img, video), [data-zoomable]" />
 </Section>
 
 <script>
