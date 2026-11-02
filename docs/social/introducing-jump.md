@@ -14,9 +14,9 @@ Status as of 2026-10-28.
 | LinkedIn (Spanish) | Published 2026-10-26 | Carousel post, link in the first comment. See [LinkedIn](#linkedin-spanish-published-2026-10-26). |
 | X (@alvaldes_) | Published 2026-10-26 | https://x.com/alvaldes_/status/2114797885824905610. The ad copy with the carousel, linking to the English post. Tags @homerow_app. |
 | Threads (@alvaldes_) | Published 2026-10-27 | https://www.threads.com/@alvaldes_/post/De-BSniFP6S. Links to the Spanish post; no slide images attached. |
-| Medium | Published 2026-10-26 | https://medium.com/@alvaldes/jump-keyboard-first-even-outside-the-browser-angel-l-vald%C3%A9s-39999c2184dd. Canonical points at the blog. The title picked up " \| Angel L. Valdés" from the page title; edit it out. |
-| Dev.to | Published 2026-10-28 | https://dev.to/alvaldesdev/jump-keyboard-first-even-outside-the-browser-22km (canonical to the blog) |
-| Hashnode | Published 2026-10-28 | https://alvaldes.hashnode.dev/jump-keyboard-first-even-outside-the-browser (canonical to the blog) |
+| Medium | Published 2026-10-26 | https://medium.com/@alvaldes/jump-keyboard-first-even-outside-the-browser-angel-l-vald%C3%A9s-39999c2184dd. Canonical moved from `/en/blog/introducing-jump/` to `/blog/introducing-jump/` on 2026-11-01. The " \| Angel L. Valdés" suffix is removed in the editor; it shows once "Save and publish" is pressed. |
+| Dev.to | Published 2026-10-28 | https://dev.to/alvaldesdev/jump-keyboard-first-even-outside-the-browser-22km (canonical to the blog, moved off `/en/` on 2026-11-01) |
+| Hashnode | Published 2026-10-28 | https://alvaldes.hashnode.dev/jump-keyboard-first-even-outside-the-browser (canonical to the blog, moved off `/en/` on 2026-11-01) |
 | r/macapps | Published 2026-10-28 | Comment in "The App Pile – October 2026": https://www.reddit.com/r/macapps/comments/1wuoav5/comment/19rsiox8wnw69/. Rule 3: no JUMP promotion there until 2026-11-27. |
 | Product Hunt | Scheduled for 2026-10-29 | Launches at 12:01 a.m. Pacific. |
 | Indie Hackers | Product page live | https://www.indiehackers.com/product/jump-2. Posting needs an established account. |
